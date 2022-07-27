@@ -1,0 +1,25 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="msm_arr" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="msm_arr"/>
+            </pragma>
+        </directive>
+        <directive functionName="msm_arr" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="msm_arr"/>
+            </pragma>
+        </directive>
+        <directive functionName="msm_arr" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="msm_arr"/>
+            </pragma>
+        </directive>
+        <directive functionName="msm_arr" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="msm_arr"/>
+            </pragma>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

@@ -1,0 +1,204 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'msm_arr'" level="0">
+<item name = "Date">Wed Jul 27 12:00:25 2022
+</item>
+<item name = "Version">2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)</item>
+<item name = "Project">hls_msm_32w_13bit</item>
+<item name = "Solution">solution1 (Vivado IP Flow Target)</item>
+<item name = "Product family">virtexuplus</item>
+<item name = "Target device">xcvu9p-flga2104-2-i</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">4.00 ns, 3.127 ns, 1.08 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, ?, ?, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_bucket_unit_csim_sr_fu_430">bucket_unit_csim_sr, ?, ?, ?, ?, ?, ?, dataflow</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- VITIS_LOOP_98_1">128, 128, 2, 1, 1, 128, yes</column>
+<column name="- VITIS_LOOP_108_2">129, 129, 3, 1, 1, 128, yes</column>
+<column name="- VITIS_LOOP_117_3">15, 15, 2, 1, 1, 15, yes</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 215, -</column>
+<column name="FIFO">2, -, 153, 97, -</column>
+<column name="Instance">0, 23, 6245, 12672, -</column>
+<column name="Memory">2, -, 20, 26, -</column>
+<column name="Multiplexer">-, -, -, 349, -</column>
+<column name="Register">-, -, 165, -, -</column>
+<specialColumn name="Available SLR">1440, 2280, 788160, 394080, 320</specialColumn>
+<specialColumn name="Utilization SLR (%)">~0, 1, ~0, 3, 0</specialColumn>
+<specialColumn name="Available">4320, 6840, 2364480, 1182240, 960</specialColumn>
+<specialColumn name="Utilization (%)">~0, ~0, ~0, 1, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="grp_bucket_unit_csim_sr_fu_430">bucket_unit_csim_sr, 0, 23, 6245, 12672, 0</column>
+</table>
+</item>
+<item name = "DSP"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="GBUFF_K_V_U">GBUFF_K_V, 0, 4, 9, 0, 128, 4, 1, 512</column>
+<column name="GBUFF_P_V_U">GBUFF_P_V, 2, 0, 0, 0, 128, 39, 1, 4992</column>
+<column name="count_B_V_U">count_B_V, 0, 16, 17, 0, 16, 13, 1, 208</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+<column name="BFIFO_1_fifo_U">2, 153, 0, -, 128, 43, 5504</column>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="add_ln108_fu_498_p2">+, 0, 0, 15, 8, 1</column>
+<column name="add_ln117_fu_570_p2">+, 0, 0, 12, 5, 1</column>
+<column name="add_ln691_1_fu_587_p2">+, 0, 0, 17, 13, 2</column>
+<column name="add_ln691_fu_544_p2">+, 0, 0, 20, 13, 1</column>
+<column name="add_ln98_fu_440_p2">+, 0, 0, 15, 8, 1</column>
+<column name="num_padd_ops_V_1_fu_593_p2">+, 0, 0, 17, 13, 13</column>
+<column name="ap_block_pp1_stage0_01001">and, 0, 0, 2, 1, 1</column>
+<column name="ap_block_state14_pp1_stage0_iter2">and, 0, 0, 2, 1, 1</column>
+<column name="addr_cmp_fu_523_p2">icmp, 0, 0, 29, 64, 64</column>
+<column name="icmp_ln108_fu_504_p2">icmp, 0, 0, 11, 8, 9</column>
+<column name="icmp_ln117_fu_564_p2">icmp, 0, 0, 10, 5, 6</column>
+<column name="icmp_ln874_fu_581_p2">icmp, 0, 0, 12, 13, 1</column>
+<column name="icmp_ln98_fu_446_p2">icmp, 0, 0, 11, 8, 9</column>
+<column name="ap_sync_grp_bucket_unit_csim_sr_fu_430_ap_done">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_grp_bucket_unit_csim_sr_fu_430_ap_ready">or, 0, 0, 2, 1, 1</column>
+<column name="num_padd_ops_V_2_fu_599_p3">select, 0, 0, 13, 1, 13</column>
+<column name="reuse_select_fu_537_p3">select, 0, 0, 13, 1, 13</column>
+<column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
+<column name="ap_enable_pp1">xor, 0, 0, 2, 1, 2</column>
+<column name="ap_enable_pp2">xor, 0, 0, 2, 1, 2</column>
+<column name="ap_enable_reg_pp0_iter1">xor, 0, 0, 2, 2, 1</column>
+<column name="ap_enable_reg_pp1_iter1">xor, 0, 0, 2, 2, 1</column>
+<column name="ap_enable_reg_pp2_iter1">xor, 0, 0, 2, 2, 1</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="BFIFO_1_read">9, 2, 1, 2</column>
+<column name="GBUFF_K_V_address0">14, 3, 7, 21</column>
+<column name="GBUFF_P_V_address0">14, 3, 7, 21</column>
+<column name="ap_NS_fsm">65, 16, 1, 16</column>
+<column name="ap_enable_reg_pp0_iter1">14, 3, 1, 3</column>
+<column name="ap_enable_reg_pp1_iter1">9, 2, 1, 2</column>
+<column name="ap_enable_reg_pp1_iter2">9, 2, 1, 2</column>
+<column name="ap_enable_reg_pp2_iter1">14, 3, 1, 3</column>
+<column name="count_B_V_address0">65, 12, 4, 48</column>
+<column name="count_B_V_address1">54, 10, 4, 40</column>
+<column name="count_B_V_ce0">14, 3, 1, 3</column>
+<column name="count_B_V_d0">14, 3, 13, 39</column>
+<column name="i_1_reg_396">9, 2, 8, 16</column>
+<column name="i_2_reg_407">9, 2, 5, 10</column>
+<column name="i_reg_385">9, 2, 8, 16</column>
+<column name="num_padd_ops_V_reg_418">9, 2, 13, 26</column>
+<column name="reuse_addr_reg_fu_110">9, 2, 64, 128</column>
+<column name="reuse_reg_fu_114">9, 2, 13, 26</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="addr_cmp_reg_692">1, 0, 1, 0</column>
+<column name="ap_CS_fsm">15, 0, 15, 0</column>
+<column name="ap_enable_reg_pp0_iter0">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter0">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter2">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter0">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter1">1, 0, 1, 0</column>
+<column name="ap_sync_reg_grp_bucket_unit_csim_sr_fu_430_ap_done">1, 0, 1, 0</column>
+<column name="ap_sync_reg_grp_bucket_unit_csim_sr_fu_430_ap_ready">1, 0, 1, 0</column>
+<column name="count_B_V_addr_16_reg_686">4, 0, 4, 0</column>
+<column name="grp_bucket_unit_csim_sr_fu_430_ap_start_reg">1, 0, 1, 0</column>
+<column name="i_1_reg_396">8, 0, 8, 0</column>
+<column name="i_2_reg_407">5, 0, 5, 0</column>
+<column name="i_reg_385">8, 0, 8, 0</column>
+<column name="icmp_ln108_reg_667">1, 0, 1, 0</column>
+<column name="icmp_ln108_reg_667_pp1_iter1_reg">1, 0, 1, 0</column>
+<column name="icmp_ln117_reg_702">1, 0, 1, 0</column>
+<column name="icmp_ln98_reg_632">1, 0, 1, 0</column>
+<column name="num_padd_ops_V_reg_418">13, 0, 13, 0</column>
+<column name="p_Val2_s_reg_681">4, 0, 4, 0</column>
+<column name="reuse_addr_reg_fu_110">64, 0, 64, 0</column>
+<column name="reuse_reg_fu_114">13, 0, 13, 0</column>
+<column name="zext_ln108_reg_671">8, 0, 64, 56</column>
+<column name="zext_ln98_reg_636">8, 0, 64, 56</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, msm_arr, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, msm_arr, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, msm_arr, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, msm_arr, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, msm_arr, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, msm_arr, return value</column>
+<column name="P_arr_x_address0">out, 7, ap_memory, P_arr_x, array</column>
+<column name="P_arr_x_ce0">out, 1, ap_memory, P_arr_x, array</column>
+<column name="P_arr_x_q0">in, 16, ap_memory, P_arr_x, array</column>
+<column name="P_arr_y_address0">out, 7, ap_memory, P_arr_y, array</column>
+<column name="P_arr_y_ce0">out, 1, ap_memory, P_arr_y, array</column>
+<column name="P_arr_y_q0">in, 16, ap_memory, P_arr_y, array</column>
+<column name="P_arr_z_address0">out, 7, ap_memory, P_arr_z, array</column>
+<column name="P_arr_z_ce0">out, 1, ap_memory, P_arr_z, array</column>
+<column name="P_arr_z_q0">in, 16, ap_memory, P_arr_z, array</column>
+<column name="K_arr_address0">out, 7, ap_memory, K_arr, array</column>
+<column name="K_arr_ce0">out, 1, ap_memory, K_arr, array</column>
+<column name="K_arr_q0">in, 16, ap_memory, K_arr, array</column>
+<column name="B_i_address0">out, 5, ap_memory, B_i, array</column>
+<column name="B_i_ce0">out, 1, ap_memory, B_i, array</column>
+<column name="B_i_we0">out, 1, ap_memory, B_i, array</column>
+<column name="B_i_d0">out, 32, ap_memory, B_i, array</column>
+<column name="B_i_address1">out, 5, ap_memory, B_i, array</column>
+<column name="B_i_ce1">out, 1, ap_memory, B_i, array</column>
+<column name="B_i_we1">out, 1, ap_memory, B_i, array</column>
+<column name="B_i_d1">out, 32, ap_memory, B_i, array</column>
+</table>
+</item>
+</section>
+</profile>

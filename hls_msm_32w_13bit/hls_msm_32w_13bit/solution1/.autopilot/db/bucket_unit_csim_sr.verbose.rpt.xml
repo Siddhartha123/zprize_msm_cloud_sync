@@ -1,0 +1,144 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'bucket_unit_csim_sr'" level="0">
+<item name = "Date">Wed Jul 27 12:00:23 2022
+</item>
+<item name = "Version">2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)</item>
+<item name = "Project">hls_msm_32w_13bit</item>
+<item name = "Solution">solution1 (Vivado IP Flow Target)</item>
+<item name = "Product family">virtexuplus</item>
+<item name = "Target device">xcvu9p-flga2104-2-i</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">4.00 ns, 3.127 ns, 1.08 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, ?, ?, dataflow</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10_U0">bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10, 2, 8226, 8.000 ns, 32.904 us, 2, 8226, none</column>
+<column name="bucket_unit_csim_sr_Block_split30_proc9_U0">bucket_unit_csim_sr_Block_split30_proc9, ?, ?, ?, ?, ?, ?, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 6, -</column>
+<column name="FIFO">0, -, 449, 378, -</column>
+<column name="Instance">0, 23, 5796, 12288, -</column>
+<column name="Memory">-, -, -, -, -</column>
+<column name="Multiplexer">-, -, -, -, -</column>
+<column name="Register">-, -, -, -, -</column>
+<specialColumn name="Available SLR">1440, 2280, 788160, 394080, 320</specialColumn>
+<specialColumn name="Utilization SLR (%)">0, 1, ~0, 3, 0</specialColumn>
+<specialColumn name="Available">4320, 6840, 2364480, 1182240, 960</specialColumn>
+<specialColumn name="Utilization (%)">0, ~0, ~0, 1, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="bucket_unit_csim_sr_Block_split30_proc9_U0">bucket_unit_csim_sr_Block_split30_proc9, 0, 0, 911, 1923, 0</column>
+<column name="bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10_U0">bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10, 0, 23, 4885, 10365, 0</column>
+</table>
+</item>
+<item name = "DSP"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+<column name="BFIFO_2_U">0, 7, 0, -, 15, 43, 645</column>
+<column name="CFIFO_U">0, 406, 0, -, 48, 82, 3936</column>
+<column name="num_padd_ops_c_U">0, 36, 0, -, 2, 13, 26</column>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="ap_idle">and, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_continue">and, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_done">and, 0, 0, 2, 1, 1</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="BFIFO_1176_dout">in, 43, ap_fifo, BFIFO_1176, pointer</column>
+<column name="BFIFO_1176_empty_n">in, 1, ap_fifo, BFIFO_1176, pointer</column>
+<column name="BFIFO_1176_read">out, 1, ap_fifo, BFIFO_1176, pointer</column>
+<column name="B_i_address0">out, 5, ap_memory, B_i, array</column>
+<column name="B_i_ce0">out, 1, ap_memory, B_i, array</column>
+<column name="B_i_d0">out, 32, ap_memory, B_i, array</column>
+<column name="B_i_q0">in, 32, ap_memory, B_i, array</column>
+<column name="B_i_we0">out, 1, ap_memory, B_i, array</column>
+<column name="B_i_address1">out, 5, ap_memory, B_i, array</column>
+<column name="B_i_ce1">out, 1, ap_memory, B_i, array</column>
+<column name="B_i_d1">out, 32, ap_memory, B_i, array</column>
+<column name="B_i_q1">in, 32, ap_memory, B_i, array</column>
+<column name="B_i_we1">out, 1, ap_memory, B_i, array</column>
+<column name="num_padd_ops">in, 13, ap_none, num_padd_ops, scalar</column>
+<column name="num_padd_ops_ap_vld">in, 1, ap_none, num_padd_ops, scalar</column>
+<column name="count_B_address0">out, 4, ap_memory, count_B, array</column>
+<column name="count_B_ce0">out, 1, ap_memory, count_B, array</column>
+<column name="count_B_d0">out, 13, ap_memory, count_B, array</column>
+<column name="count_B_q0">in, 13, ap_memory, count_B, array</column>
+<column name="count_B_we0">out, 1, ap_memory, count_B, array</column>
+<column name="count_B_address1">out, 4, ap_memory, count_B, array</column>
+<column name="count_B_ce1">out, 1, ap_memory, count_B, array</column>
+<column name="count_B_d1">out, 13, ap_memory, count_B, array</column>
+<column name="count_B_q1">in, 13, ap_memory, count_B, array</column>
+<column name="count_B_we1">out, 1, ap_memory, count_B, array</column>
+<column name="ap_clk">in, 1, ap_ctrl_hs, bucket_unit_csim_sr, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, bucket_unit_csim_sr, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, bucket_unit_csim_sr, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, bucket_unit_csim_sr, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, bucket_unit_csim_sr, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, bucket_unit_csim_sr, return value</column>
+<column name="ap_continue">in, 1, ap_ctrl_hs, bucket_unit_csim_sr, return value</column>
+</table>
+</item>
+</section>
+</profile>

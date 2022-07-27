@@ -1,0 +1,692 @@
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 4ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 4 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 64.436 MB.
+INFO: [HLS 200-10] Analyzing design file 'src/bn128.cpp' ... 
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:112:12
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:113:12
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:114:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:115:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:116:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:117:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:118:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:119:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:120:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:121:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:130:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:131:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:132:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:133:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:134:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:135:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:136:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:137:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:138:14
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:139:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:140:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:141:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:142:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:143:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:144:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:145:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:146:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:147:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:148:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:149:9
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bn128.cpp:105:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bn128.cpp:106:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bn128.cpp:123:5
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:165:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:166:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:167:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:168:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:169:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:170:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:171:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:172:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:173:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:174:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:175:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:176:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:177:15
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:178:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:179:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:180:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:181:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:182:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:183:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:184:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:185:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:186:10
+WARNING: [HLS 200-471] Dataflow form checks found 55 issue(s) in file src/bn128.cpp
+INFO: [HLS 200-10] Analyzing design file 'src/field.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'src/bucket.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:40:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:142:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:226:5
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bucket.cpp:307:14
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:261:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:308:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:315:3
+WARNING: [HLS 214-169] There are a total of 4 such instances of non-canonical statements in the dataflow region: src/bucket.cpp:242:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:375:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:421:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:431:3
+WARNING: [HLS 200-471] Dataflow form checks found 11 issue(s) in file src/bucket.cpp
+WARNING: [HLS 207-5522] The 'enable_flush' option of the 'HLS pipeline' directive or pragma is deprecated, and it is suggested to use style=flp as replacement.: src/bucket.cpp:227:34
+INFO: [HLS 200-10] Analyzing design file 'src/msm.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 14.36 seconds. CPU system time: 1.18 seconds. Elapsed time: 18.47 seconds; current allocated memory: 66.783 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::read(ap_uint<43>&)' into 'hls::stream<ap_uint<43>, 0>::read()' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:156:9)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<82>, 0>::read(ap_uint<82>&)' into 'hls::stream<ap_uint<82>, 0>::read()' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:156:9)
+INFO: [HLS 214-131] Inlining function 'mod(ap_uint<26>)' into 'mul(ap_uint<13>, ap_uint<13>)' (src/field.cpp:48:12)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:71:9)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:72:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:92:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:91:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:90:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:89:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:88:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:87:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:86:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:84:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:83:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:82:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:81:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:80:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:79:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:78:9)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:77:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:76:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:75:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:74:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:73:9)
+INFO: [HLS 214-131] Inlining function 'mod(ap_uint<26>)' into 'square(ap_uint<13>)' (src/field.cpp:55:12)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:46:9)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:45:11)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:44:11)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:43:11)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:42:11)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:41:9)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:40:11)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:39:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:38:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:37:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:36:9)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:35:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:34:10)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:33:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:32:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:31:9)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:30:9)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:29:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:28:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:26:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:25:9)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:24:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:23:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:22:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:21:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:20:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:19:10)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:18:12)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:17:12)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::write(ap_uint<43> const&)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:233:15)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<82>, 0>::read()' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:228:57)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<82>, 0>::write(ap_uint<82> const&)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:217:13)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::read()' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:159:22)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::empty() const' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:158:53)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::read()' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:145:22)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::full() const' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:144:54)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::empty() const' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:144:34)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<82>, 0>::stream(char const*)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:131:33)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::stream(char const*)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:129:29)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::stream(char const*)' into 'msm_arr(ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<32>*)' (src/msm.cpp:86:29)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::write(ap_uint<43> const&)' into 'msm_arr(ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<32>*)' (src/msm.cpp:112:13)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_181_2' (src/bucket.cpp:181:27) in function 'bucket_unit_csim_sr' completely with a factor of 7 (src/bucket.cpp:181:27)
+INFO: [HLS 214-178] Inlining function 'bn128_p::bn128_p(ap_uint<13>, ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:64:0)
+INFO: [HLS 214-178] Inlining function 'bn128_p::bn128_p(ap_uint<13>, ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:5:0)
+INFO: [HLS 214-178] Inlining function 'bn128_p::bn128_p(ap_uint<13>, ap_uint<13>, ap_uint<13>)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:120:0)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uint.0s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (src/bucket.cpp:150:37)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i43.s_struct.ap_uint.46s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:174:9)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uint.0s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (src/bucket.cpp:151:41)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uint.0s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (src/bucket.cpp:167:37)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i82.s_struct.ap_uint.14s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:174:9)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uint.0s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (src/bucket.cpp:168:41)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i43.s_struct.ap_uint.46s' into 'msm_arr(ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<32>*)' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:174:9)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 9.16 seconds. CPU system time: 0.26 seconds. Elapsed time: 11.95 seconds; current allocated memory: 68.152 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 68.154 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.46 seconds; current allocated memory: 89.581 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.35 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.51 seconds; current allocated memory: 123.165 MB.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'bucket_unit_csim_sr' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-3' in function 'bucket_unit_csim_sr' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'VITIS_LOOP_142_1' in function 'bucket_unit_csim_sr' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'VITIS_LOOP_198_3' (src/bucket.cpp:198) in function 'bucket_unit_csim_sr' completely with a factor of 15.
+INFO: [XFORM 203-102] Partitioning array 'B.V' (src/bucket.cpp:124) in dimension 2 automatically.
+INFO: [XFORM 203-721] Changing loop 'Loop_VITIS_LOOP_226_5_proc' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:0) to a process function for dataflow in function 'bucket_unit_csim_sr'.
+INFO: [XFORM 203-712] Applying dataflow to function 'bucket_unit_csim_sr' (src/bucket.cpp:132:1), detected/extracted 2 process function(s): 
+	 'bucket_unit_csim_sr_Block_.split30_proc9'
+	 'bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10'.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (src/bn128.cpp:61:5) in function 'padd'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/msm.cpp:93:11) in function 'msm_arr'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/bucket.cpp:199:12) to (src/bucket.cpp:209:36) in function 'bucket_unit_csim_sr_Block_.split30_proc9'... converting 16 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.96 seconds. CPU system time: 0.04 seconds. Elapsed time: 1.39 seconds; current allocated memory: 177.247 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'count_B.V' 
+INFO: [HLS 200-472] Inferring partial write operation for 'GBUFF_P.V' (src/msm.cpp:100:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'GBUFF_K.V' (src/msm.cpp:103:16)
+INFO: [HLS 200-472] Inferring partial write operation for 'count_B.V' 
+INFO: [HLS 200-472] Inferring partial write operation for 'bcount' 
+INFO: [HLS 200-472] Inferring partial write operation for 'fill_count' 
+INFO: [HLS 200-472] Inferring partial write operation for 'B.V[0]' (src/bucket.cpp:183:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'B.V[7]' (src/bucket.cpp:185:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'bcount' (src/bucket.cpp:186:25)
+INFO: [HLS 200-472] Inferring partial write operation for 'fill_count' (src/bucket.cpp:187:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'bcount' (src/bucket.cpp:212:23)
+WARNING: [HLS 200-657] Generating channel BFIFO_2 that flows backwards in the dataflow region.
+WARNING: [HLS 200-1450] Process bucket_unit_csim_sr_Block_.split30_proc9 has both a successor and writes an output to its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this output via a successor process.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.89 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.25 seconds; current allocated memory: 242.878 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'msm_arr' ...
+WARNING: [SYN 201-103] Legalizing function name 'bucket_unit_csim_sr_Block_.split30_proc9' to 'bucket_unit_csim_sr_Block_split30_proc9'.
+WARNING: [HLS 200-1473] Flushable pipeline is not supported for loop pipelining, 'enable_flush'/'style=flp' option will be replaced with 'style=stp' for Loop 'VITIS_LOOP_226_5'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bucket_unit_csim_sr_Block_split30_proc9' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'B_V_1'. Use bind_storage pragma to overwrite if needed.
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'fill_count'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'Loop 2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 2'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_142_1'.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between 'store' operation ('bcount_addr_16_write_ln186', src/bucket.cpp:186) of variable 'add_ln186', src/bucket.cpp:186 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load', src/bucket.cpp:186) on array 'bcount', src/bucket.cpp:140.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between 'store' operation ('bcount_addr_17_write_ln212', src/bucket.cpp:212) of variable 'add_ln212', src/bucket.cpp:212 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load_1', src/bucket.cpp:199) on array 'bcount', src/bucket.cpp:140.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between 'store' operation ('bcount_addr_17_write_ln212', src/bucket.cpp:212) of variable 'add_ln212', src/bucket.cpp:212 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load_1', src/bucket.cpp:199) on array 'bcount', src/bucket.cpp:140.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between 'store' operation ('bcount_addr_17_write_ln212', src/bucket.cpp:212) of variable 'add_ln212', src/bucket.cpp:212 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load_1', src/bucket.cpp:199) on array 'bcount', src/bucket.cpp:140.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 19, distance = 1, offset = 1) between 'store' operation ('bcount_addr_17_write_ln212', src/bucket.cpp:212) of variable 'add_ln212', src/bucket.cpp:212 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load', src/bucket.cpp:186) on array 'bcount', src/bucket.cpp:140.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 20, Depth = 22, loop 'VITIS_LOOP_142_1'
+WARNING: [HLS 200-871] Estimated clock period (3.12681ns) exceeds the target (target clock period: 4ns, clock uncertainty: 1.08ns, effective delay budget: 2.92ns).
+WARNING: [HLS 200-1016] The critical path in module 'bucket_unit_csim_sr_Block_split30_proc9' consists of the following:	'load' operation ('bcount_load_15', src/bucket.cpp:199) on array 'bcount', src/bucket.cpp:140 [310]  (0.699 ns)
+	'icmp' operation ('icmp_ln199_14', src/bucket.cpp:199) [312]  (0.848 ns)
+	'select' operation ('select_ln199', src/bucket.cpp:199) [313]  (0.278 ns)
+	multiplexor before 'phi' operation ('nibble_K.V', src/bucket.cpp:199) with incoming values : ('select_ln199', src/bucket.cpp:199) [316]  (0.524 ns)
+	'phi' operation ('nibble_K.V', src/bucket.cpp:199) with incoming values : ('select_ln199', src/bucket.cpp:199) [316]  (0 ns)
+	'icmp' operation ('icmp_ln874_1') [320]  (0.656 ns)
+	'and' operation ('and_ln209', src/bucket.cpp:209) [321]  (0.122 ns)
+
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.36 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.89 seconds; current allocated memory: 244.422 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.39 seconds. CPU system time: 0 seconds. Elapsed time: 0.6 seconds; current allocated memory: 245.807 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'pdouble' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_14) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_13) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_8) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_2) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'pdouble'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 23, function 'pdouble'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.5 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.9 seconds; current allocated memory: 246.739 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.27 seconds. CPU system time: 0 seconds. Elapsed time: 0.49 seconds; current allocated memory: 247.866 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'padd' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_35) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_34) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_32) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_30) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_28) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_27) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_25) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_24) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_22) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_21) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_20) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_19) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_18) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_16) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'padd'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 32, function 'padd'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.82 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.68 seconds; current allocated memory: 249.782 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.62 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.89 seconds; current allocated memory: 252.118 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_226_5'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 35, loop 'VITIS_LOOP_226_5'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.19 seconds. CPU system time: 0 seconds. Elapsed time: 1.53 seconds; current allocated memory: 252.326 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.42 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.65 seconds; current allocated memory: 252.657 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bucket_unit_csim_sr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.95 seconds. CPU system time: 0 seconds. Elapsed time: 1.19 seconds; current allocated memory: 252.719 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.73 seconds. CPU system time: 0 seconds. Elapsed time: 0.94 seconds; current allocated memory: 252.844 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'msm_arr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_98_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_98_1'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_108_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_108_2'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_117_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_117_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.19 seconds. CPU system time: 0 seconds. Elapsed time: 1.58 seconds; current allocated memory: 253.243 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.52 seconds. CPU system time: 0 seconds. Elapsed time: 0.73 seconds; current allocated memory: 253.740 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'bucket_unit_csim_sr_Block_split30_proc9' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Setting dangling out port 'bucket_unit_csim_sr_Block_split30_proc9/BFIFO_2_din' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'bucket_unit_csim_sr_Block_split30_proc9/BFIFO_2_write' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'bucket_unit_csim_sr_Block_split30_proc9'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.25 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.57 seconds; current allocated memory: 255.969 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'pdouble' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_13ns_13ns_26_4_1': 7 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'pdouble'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.74 seconds. CPU system time: 0 seconds. Elapsed time: 1.22 seconds; current allocated memory: 262.428 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 4ns.
+INFO: [HLS 200-10] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 4 -name default 
+INFO: [HLS 200-1510] Running: config_compile -pipeline_style frp 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.27 seconds. CPU system time: 0.08 seconds. Elapsed time: 0.34 seconds; current allocated memory: 64.439 MB.
+INFO: [HLS 200-10] Analyzing design file 'src/bn128.cpp' ... 
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:112:12
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:113:12
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:114:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:115:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:116:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:117:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:118:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:119:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:120:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:121:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:130:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:131:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:132:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:133:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:134:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:135:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:136:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:137:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:138:14
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:139:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:140:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:141:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:142:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:143:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:144:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:145:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:146:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:147:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:148:11
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:149:9
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bn128.cpp:105:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bn128.cpp:106:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bn128.cpp:123:5
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:165:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:166:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:167:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:168:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:169:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:170:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:171:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:172:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:173:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:174:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:175:9
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:176:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:177:15
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:178:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:179:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:180:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:181:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:182:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:183:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:184:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:185:10
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bn128.cpp:186:10
+WARNING: [HLS 200-471] Dataflow form checks found 55 issue(s) in file src/bn128.cpp
+INFO: [HLS 200-10] Analyzing design file 'src/field.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'src/bucket.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:40:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:142:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:226:5
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body: src/bucket.cpp:307:14
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:261:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:308:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:315:3
+WARNING: [HLS 214-169] There are a total of 4 such instances of non-canonical statements in the dataflow region: src/bucket.cpp:242:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:375:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:421:3
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: src/bucket.cpp:431:3
+WARNING: [HLS 200-471] Dataflow form checks found 11 issue(s) in file src/bucket.cpp
+WARNING: [HLS 207-5522] The 'enable_flush' option of the 'HLS pipeline' directive or pragma is deprecated, and it is suggested to use style=flp as replacement.: src/bucket.cpp:227:34
+INFO: [HLS 200-10] Analyzing design file 'src/msm.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 14.61 seconds. CPU system time: 1.07 seconds. Elapsed time: 19.25 seconds; current allocated memory: 66.818 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::read(ap_uint<43>&)' into 'hls::stream<ap_uint<43>, 0>::read()' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:156:9)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<82>, 0>::read(ap_uint<82>&)' into 'hls::stream<ap_uint<82>, 0>::read()' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:156:9)
+INFO: [HLS 214-131] Inlining function 'mod(ap_uint<26>)' into 'mul(ap_uint<13>, ap_uint<13>)' (src/field.cpp:48:12)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:71:9)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:72:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:92:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:91:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:90:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:89:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:88:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:87:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:86:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:84:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:83:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:82:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:81:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:80:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:79:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:78:9)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:77:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:76:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:75:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:74:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:73:9)
+INFO: [HLS 214-131] Inlining function 'mod(ap_uint<26>)' into 'square(ap_uint<13>)' (src/field.cpp:55:12)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:46:9)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:45:11)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:44:11)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:43:11)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:42:11)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:41:9)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:40:11)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:39:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:38:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:37:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:36:9)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:35:10)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:34:10)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:33:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:32:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:31:9)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:30:9)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:29:9)
+INFO: [HLS 214-131] Inlining function 'add(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:28:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:26:10)
+INFO: [HLS 214-131] Inlining function 'sub(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:25:9)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:24:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:23:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:22:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:21:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:20:10)
+INFO: [HLS 214-131] Inlining function 'mul(ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:19:10)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:18:12)
+INFO: [HLS 214-131] Inlining function 'square(ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:17:12)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::write(ap_uint<43> const&)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:233:15)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<82>, 0>::read()' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:228:57)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<82>, 0>::write(ap_uint<82> const&)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:217:13)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::read()' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:159:22)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::empty() const' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:158:53)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::read()' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:145:22)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::full() const' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:144:54)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::empty() const' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:144:34)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<82>, 0>::stream(char const*)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:131:33)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::stream(char const*)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:129:29)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::stream(char const*)' into 'msm_arr(ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<32>*)' (src/msm.cpp:86:29)
+INFO: [HLS 214-131] Inlining function 'hls::stream<ap_uint<43>, 0>::write(ap_uint<43> const&)' into 'msm_arr(ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<32>*)' (src/msm.cpp:112:13)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_181_2' (src/bucket.cpp:181:27) in function 'bucket_unit_csim_sr' completely with a factor of 7 (src/bucket.cpp:181:27)
+INFO: [HLS 214-178] Inlining function 'bn128_p::bn128_p(ap_uint<13>, ap_uint<13>, ap_uint<13>)' into 'pdouble(bn128_p)' (src/bn128.cpp:64:0)
+INFO: [HLS 214-178] Inlining function 'bn128_p::bn128_p(ap_uint<13>, ap_uint<13>, ap_uint<13>)' into 'padd(bn128_p, bn128_p)' (src/bn128.cpp:5:0)
+INFO: [HLS 214-178] Inlining function 'bn128_p::bn128_p(ap_uint<13>, ap_uint<13>, ap_uint<13>)' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*)' (src/bucket.cpp:120:0)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uint.0s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (src/bucket.cpp:150:37)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i43.s_struct.ap_uint.46s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:174:9)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uint.0s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (src/bucket.cpp:151:41)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uint.0s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (src/bucket.cpp:167:37)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i82.s_struct.ap_uint.14s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:174:9)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_uint.0s' into 'bucket_unit_csim_sr(ap_uint<13>, hls::stream<ap_uint<43>, 0>&, ap_uint<32>*, ap_uint<13>*) (.1)' (src/bucket.cpp:168:41)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i43.s_struct.ap_uint.46s' into 'msm_arr(ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<13>*, ap_uint<32>*)' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:174:9)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 9.49 seconds. CPU system time: 0.32 seconds. Elapsed time: 12.54 seconds; current allocated memory: 68.265 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 68.267 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.18 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.44 seconds; current allocated memory: 89.695 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.37 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.57 seconds; current allocated memory: 123.273 MB.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'bucket_unit_csim_sr' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-3' in function 'bucket_unit_csim_sr' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'VITIS_LOOP_142_1' in function 'bucket_unit_csim_sr' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'VITIS_LOOP_198_3' (src/bucket.cpp:198) in function 'bucket_unit_csim_sr' completely with a factor of 15.
+INFO: [XFORM 203-102] Partitioning array 'B.V' (src/bucket.cpp:124) in dimension 2 automatically.
+INFO: [XFORM 203-721] Changing loop 'Loop_VITIS_LOOP_226_5_proc' (/opt/Xilinx/Vitis_HLS/2020.2/common/technology/autopilot/hls_stream_39.h:0) to a process function for dataflow in function 'bucket_unit_csim_sr'.
+INFO: [XFORM 203-712] Applying dataflow to function 'bucket_unit_csim_sr' (src/bucket.cpp:132:1), detected/extracted 2 process function(s): 
+	 'bucket_unit_csim_sr_Block_.split30_proc9'
+	 'bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10'.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (src/bn128.cpp:61:5) in function 'padd'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/msm.cpp:93:11) in function 'msm_arr'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/bucket.cpp:199:12) to (src/bucket.cpp:209:36) in function 'bucket_unit_csim_sr_Block_.split30_proc9'... converting 16 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 1 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.48 seconds; current allocated memory: 177.357 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'count_B.V' 
+INFO: [HLS 200-472] Inferring partial write operation for 'GBUFF_P.V' (src/msm.cpp:100:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'GBUFF_K.V' (src/msm.cpp:103:16)
+INFO: [HLS 200-472] Inferring partial write operation for 'count_B.V' 
+INFO: [HLS 200-472] Inferring partial write operation for 'bcount' 
+INFO: [HLS 200-472] Inferring partial write operation for 'fill_count' 
+INFO: [HLS 200-472] Inferring partial write operation for 'B.V[0]' (src/bucket.cpp:183:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'B.V[7]' (src/bucket.cpp:185:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'bcount' (src/bucket.cpp:186:25)
+INFO: [HLS 200-472] Inferring partial write operation for 'fill_count' (src/bucket.cpp:187:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'bcount' (src/bucket.cpp:212:23)
+WARNING: [HLS 200-657] Generating channel BFIFO_2 that flows backwards in the dataflow region.
+WARNING: [HLS 200-1450] Process bucket_unit_csim_sr_Block_.split30_proc9 has both a successor and writes an output to its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this output via a successor process.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.89 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.26 seconds; current allocated memory: 242.959 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'msm_arr' ...
+WARNING: [SYN 201-103] Legalizing function name 'bucket_unit_csim_sr_Block_.split30_proc9' to 'bucket_unit_csim_sr_Block_split30_proc9'.
+WARNING: [HLS 200-1473] Flushable pipeline is not supported for loop pipelining, 'enable_flush'/'style=flp' option will be replaced with 'style=stp' for Loop 'VITIS_LOOP_226_5'.
+WARNING: [HLS 200-1518] Conflicting pipeline specifications/pragma, please verify pipeline pragma in 'padd', as well as pragma(s) in its caller(s).
+WARNING: [HLS 200-1519] Pipeline spec in upper hierarchy is prioritized; pipeline style 'Free-Running Pipeline' replaced with 'Stalling Pipeline'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bucket_unit_csim_sr_Block_split30_proc9' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'B_V_1'. Use bind_storage pragma to overwrite if needed.
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'fill_count'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'Loop 2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 2'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_142_1'.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between 'store' operation ('bcount_addr_16_write_ln186', src/bucket.cpp:186) of variable 'add_ln186', src/bucket.cpp:186 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load', src/bucket.cpp:186) on array 'bcount', src/bucket.cpp:140.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between 'store' operation ('bcount_addr_17_write_ln212', src/bucket.cpp:212) of variable 'add_ln212', src/bucket.cpp:212 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load_1', src/bucket.cpp:199) on array 'bcount', src/bucket.cpp:140.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between 'store' operation ('bcount_addr_17_write_ln212', src/bucket.cpp:212) of variable 'add_ln212', src/bucket.cpp:212 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load_1', src/bucket.cpp:199) on array 'bcount', src/bucket.cpp:140.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between 'store' operation ('bcount_addr_17_write_ln212', src/bucket.cpp:212) of variable 'add_ln212', src/bucket.cpp:212 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load_1', src/bucket.cpp:199) on array 'bcount', src/bucket.cpp:140.
+WARNING: [HLS 200-880] The II Violation in module 'bucket_unit_csim_sr_Block_split30_proc9' (loop 'VITIS_LOOP_142_1'): Unable to enforce a carried dependence constraint (II = 19, distance = 1, offset = 1) between 'store' operation ('bcount_addr_17_write_ln212', src/bucket.cpp:212) of variable 'add_ln212', src/bucket.cpp:212 on array 'bcount', src/bucket.cpp:140 and 'load' operation ('bcount_load', src/bucket.cpp:186) on array 'bcount', src/bucket.cpp:140.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 20, Depth = 22, loop 'VITIS_LOOP_142_1'
+WARNING: [HLS 200-871] Estimated clock period (3.12681ns) exceeds the target (target clock period: 4ns, clock uncertainty: 1.08ns, effective delay budget: 2.92ns).
+WARNING: [HLS 200-1016] The critical path in module 'bucket_unit_csim_sr_Block_split30_proc9' consists of the following:	'load' operation ('bcount_load_15', src/bucket.cpp:199) on array 'bcount', src/bucket.cpp:140 [310]  (0.699 ns)
+	'icmp' operation ('icmp_ln199_14', src/bucket.cpp:199) [312]  (0.848 ns)
+	'select' operation ('select_ln199', src/bucket.cpp:199) [313]  (0.278 ns)
+	multiplexor before 'phi' operation ('nibble_K.V', src/bucket.cpp:199) with incoming values : ('select_ln199', src/bucket.cpp:199) [316]  (0.524 ns)
+	'phi' operation ('nibble_K.V', src/bucket.cpp:199) with incoming values : ('select_ln199', src/bucket.cpp:199) [316]  (0 ns)
+	'icmp' operation ('icmp_ln874_1') [320]  (0.656 ns)
+	'and' operation ('and_ln209', src/bucket.cpp:209) [321]  (0.122 ns)
+
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.36 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.94 seconds; current allocated memory: 244.502 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.38 seconds. CPU system time: 0 seconds. Elapsed time: 0.64 seconds; current allocated memory: 245.888 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'pdouble' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_14) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_13) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_8) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_2) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'pdouble'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 23, function 'pdouble'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.5 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.95 seconds; current allocated memory: 246.835 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.27 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.52 seconds; current allocated memory: 247.963 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'padd' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_35) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_34) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_32) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_30) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_28) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_27) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_25) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_24) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_22) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_21) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_20) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_19) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_18) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret_16) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=ret) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'padd'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 32, function 'padd'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.83 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.72 seconds; current allocated memory: 249.881 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.64 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.97 seconds; current allocated memory: 252.219 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_226_5'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 35, loop 'VITIS_LOOP_226_5'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.19 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.6 seconds; current allocated memory: 252.426 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.43 seconds. CPU system time: 0 seconds. Elapsed time: 0.66 seconds; current allocated memory: 252.757 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bucket_unit_csim_sr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.96 seconds. CPU system time: 0 seconds. Elapsed time: 1.2 seconds; current allocated memory: 252.819 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.73 seconds. CPU system time: 0 seconds. Elapsed time: 0.95 seconds; current allocated memory: 252.945 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'msm_arr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_98_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_98_1'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_108_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_108_2'
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_117_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_117_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.2 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.62 seconds; current allocated memory: 253.343 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.53 seconds. CPU system time: 0 seconds. Elapsed time: 0.79 seconds; current allocated memory: 253.856 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'bucket_unit_csim_sr_Block_split30_proc9' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [HLS 200-1553] Disabling free running pipeline (frp) architecture on pipeline 'Loop 1' in module 'bucket_unit_csim_sr_Block_split30_proc9', because it has a control structure that is incompatible.
+WARNING: [HLS 200-1553] Disabling free running pipeline (frp) architecture on pipeline 'Loop 2' in module 'bucket_unit_csim_sr_Block_split30_proc9', because it has a control structure that is incompatible.
+WARNING: [HLS 200-1553] Disabling free running pipeline (frp) architecture on pipeline 'VITIS_LOOP_142_1' in module 'bucket_unit_csim_sr_Block_split30_proc9', because it has a control structure that is incompatible.

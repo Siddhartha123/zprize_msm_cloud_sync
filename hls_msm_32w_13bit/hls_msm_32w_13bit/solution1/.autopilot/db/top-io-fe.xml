@@ -1,0 +1,34 @@
+<root versionMajor = "1" versionMinor = "5">
+  <kernel src_name="msm_arr" language="c" hwCtrl="ap_ctrl_hs" mem_layout="fpga64-xilinx-none">
+    <args>
+      <arg id="0" access_type="r" src_name="P_arr_x" src_type="ap_uint&lt;13&gt;*" src_isptr="1" src_bitwidth="16" src_size_or_depth="128">
+        <hw hw_usage="data" hw_interface="BRAM" hw_name="P_arr_x" hw_bitwidth="16" hw_size_or_depth="128">
+          <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0"/>
+        </hw>
+      </arg>
+      <arg id="1" access_type="r" src_name="P_arr_y" src_type="ap_uint&lt;13&gt;*" src_isptr="1" src_bitwidth="16" src_size_or_depth="128">
+        <hw hw_usage="data" hw_interface="BRAM" hw_name="P_arr_y" hw_bitwidth="16" hw_size_or_depth="128">
+          <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0"/>
+        </hw>
+      </arg>
+      <arg id="2" access_type="r" src_name="P_arr_z" src_type="ap_uint&lt;13&gt;*" src_isptr="1" src_bitwidth="16" src_size_or_depth="128">
+        <hw hw_usage="data" hw_interface="BRAM" hw_name="P_arr_z" hw_bitwidth="16" hw_size_or_depth="128">
+          <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0"/>
+        </hw>
+      </arg>
+      <arg id="3" access_type="r" src_name="K_arr" src_type="ap_uint&lt;13&gt;*" src_isptr="1" src_bitwidth="16" src_size_or_depth="128">
+        <hw hw_usage="data" hw_interface="BRAM" hw_name="K_arr" hw_bitwidth="16" hw_size_or_depth="128">
+          <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0"/>
+        </hw>
+      </arg>
+      <arg id="4" access_type="w" src_name="B_i" src_type="ap_uint&lt;32&gt;*" src_isptr="1" src_bitwidth="32" src_size_or_depth="30">
+        <hw hw_usage="data" hw_interface="BRAM" hw_name="B_i" hw_bitwidth="32" hw_size_or_depth="30">
+          <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0"/>
+        </hw>
+      </arg>
+    </args>
+    <return src_type="void" src_bitwidth="0" offset="0x0">
+      <hw hw_usage="data" hw_interface="" hw_name="" hw_bitwidth="0"/>
+    </return>
+  </kernel>
+</root>
