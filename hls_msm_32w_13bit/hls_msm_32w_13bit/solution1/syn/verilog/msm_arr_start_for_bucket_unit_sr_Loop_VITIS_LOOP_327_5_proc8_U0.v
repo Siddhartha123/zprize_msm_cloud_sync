@@ -5,7 +5,7 @@
 
 `timescale 1 ns / 1 ps
 
-module msm_arr_start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10_U0_shiftReg (
+module msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg (
     clk,
     data,
     ce,
@@ -39,7 +39,7 @@ assign q = SRL_SIG[a];
 
 endmodule
 
-module msm_arr_start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10_U0 (
+module msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0 (
     clk,
     reset,
     if_empty_n,
@@ -109,12 +109,12 @@ end
 assign shiftReg_addr = mOutPtr[ADDR_WIDTH] == 1'b0 ? mOutPtr[ADDR_WIDTH-1:0]:{ADDR_WIDTH{1'b0}};
 assign shiftReg_ce = (if_write & if_write_ce) & internal_full_n;
 
-msm_arr_start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10_U0_shiftReg 
+msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg 
 #(
     .DATA_WIDTH(DATA_WIDTH),
     .ADDR_WIDTH(ADDR_WIDTH),
     .DEPTH(DEPTH))
-U_msm_arr_start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc10_U0_ram (
+U_msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_ram (
     .clk(clk),
     .data(shiftReg_data),
     .ce(shiftReg_ce),

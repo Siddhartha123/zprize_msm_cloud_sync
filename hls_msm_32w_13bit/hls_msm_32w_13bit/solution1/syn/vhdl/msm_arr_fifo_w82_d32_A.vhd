@@ -7,11 +7,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
-entity msm_arr_fifo_w82_d48_A_ram is
+entity msm_arr_fifo_w82_d32_A_ram is
     generic (
         DATA_WIDTH  : natural := 82;
-        ADDR_WIDTH  : natural := 6;
-        DEPTH       : natural := 48
+        ADDR_WIDTH  : natural := 5;
+        DEPTH       : natural := 32
     );
     port (
         clk         : in std_logic;
@@ -23,7 +23,7 @@ entity msm_arr_fifo_w82_d48_A_ram is
     );
 end entity;
 
-architecture arch of msm_arr_fifo_w82_d48_A_ram is
+architecture arch of msm_arr_fifo_w82_d32_A_ram is
     type memtype is array (0 to DEPTH - 1) of std_logic_vector(DATA_WIDTH - 1 downto 0);
     signal mem        : memtype;
     attribute rw_addr_collision : string;
@@ -56,11 +56,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity msm_arr_fifo_w82_d48_A is
+entity msm_arr_fifo_w82_d32_A is
     generic (
         DATA_WIDTH  : natural := 82;
-        ADDR_WIDTH  : natural := 6;
-        DEPTH       : natural := 48
+        ADDR_WIDTH  : natural := 5;
+        DEPTH       : natural := 32
     );
     port (
         clk         : in  std_logic;
@@ -76,14 +76,14 @@ entity msm_arr_fifo_w82_d48_A is
     );
 end entity;
 
-architecture arch of msm_arr_fifo_w82_d48_A is
+architecture arch of msm_arr_fifo_w82_d32_A is
 
     -- component
-    component msm_arr_fifo_w82_d48_A_ram is
+    component msm_arr_fifo_w82_d32_A_ram is
     generic (
         DATA_WIDTH  : natural := 82;
-        ADDR_WIDTH  : natural := 6;
-        DEPTH       : natural := 48
+        ADDR_WIDTH  : natural := 5;
+        DEPTH       : natural := 32
         );
     port (
         clk         : in std_logic;
@@ -106,7 +106,7 @@ architecture arch of msm_arr_fifo_w82_d48_A is
     signal empty_n    : std_logic := '0';
 begin
     ----------------------- Instantiation -----------------------
-    U_msm_arr_fifo_w82_d48_A_ram : msm_arr_fifo_w82_d48_A_ram
+    U_msm_arr_fifo_w82_d32_A_ram : msm_arr_fifo_w82_d32_A_ram
     generic map (
         DATA_WIDTH => DATA_WIDTH,
         ADDR_WIDTH => ADDR_WIDTH,

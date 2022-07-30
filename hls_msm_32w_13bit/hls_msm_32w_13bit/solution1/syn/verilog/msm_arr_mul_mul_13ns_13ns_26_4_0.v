@@ -1,7 +1,7 @@
 
 `timescale 1 ns / 1 ps
 
-  module msm_arr_mul_mul_13ns_13ns_26_4_1_DSP48_0(clk, rst, ce, a, b, p);
+  module msm_arr_mul_mul_13ns_13ns_26_4_0_DSP48_0(clk, rst, ce, a, b, p);
 input clk;
 input rst;
 input ce;
@@ -29,7 +29,7 @@ assign p = p_reg;
 
 endmodule
 `timescale 1 ns / 1 ps
-module msm_arr_mul_mul_13ns_13ns_26_4_1(
+module msm_arr_mul_mul_13ns_13ns_26_4_0(
     clk,
     reset,
     ce,
@@ -51,7 +51,7 @@ output[dout_WIDTH - 1:0] dout;
 
 
 
-msm_arr_mul_mul_13ns_13ns_26_4_1_DSP48_0 msm_arr_mul_mul_13ns_13ns_26_4_1_DSP48_0_U(
+msm_arr_mul_mul_13ns_13ns_26_4_0_DSP48_0 msm_arr_mul_mul_13ns_13ns_26_4_0_DSP48_0_U(
     .clk( clk ),
     .rst( reset ),
     .ce( ce ),

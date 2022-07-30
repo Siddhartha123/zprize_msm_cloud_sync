@@ -3,9 +3,9 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // ==============================================================
 `timescale 1 ns / 1 ps
-module msm_arr_bucket_unit_csim_sr_Block_split30_proc9_B_V_1_ram (addr0, ce0, d0, we0, q0,  clk);
+module msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram (addr0, ce0, d0, we0, q0,  clk);
 
-parameter DWIDTH = 39;
+parameter DWIDTH = 32;
 parameter AWIDTH = 4;
 parameter MEM_SIZE = 16;
 
@@ -16,7 +16,8 @@ input we0;
 output reg[DWIDTH-1:0] q0;
 input clk;
 
-reg [DWIDTH-1:0] ram0[0:MEM_SIZE-1];
+reg [DWIDTH-1:0] ram[0:MEM_SIZE-1];
+
 
 
 
@@ -24,8 +25,8 @@ always @(posedge clk)
 begin 
     if (ce0) begin
         if (we0) 
-            ram0[addr0] <= d0; 
-        q0 <= ram0[addr0];
+            ram[addr0] <= d0; 
+        q0 <= ram[addr0];
     end
 end
 
@@ -33,7 +34,7 @@ end
 endmodule
 
 `timescale 1 ns / 1 ps
-module msm_arr_bucket_unit_csim_sr_Block_split30_proc9_B_V_1(
+module msm_arr_bucket_unit_sr_Block_split153_proc7_bcount(
     reset,
     clk,
     address0,
@@ -42,7 +43,7 @@ module msm_arr_bucket_unit_csim_sr_Block_split30_proc9_B_V_1(
     d0,
     q0);
 
-parameter DataWidth = 32'd39;
+parameter DataWidth = 32'd32;
 parameter AddressRange = 32'd16;
 parameter AddressWidth = 32'd4;
 input reset;
@@ -55,7 +56,7 @@ output[DataWidth - 1:0] q0;
 
 
 
-msm_arr_bucket_unit_csim_sr_Block_split30_proc9_B_V_1_ram msm_arr_bucket_unit_csim_sr_Block_split30_proc9_B_V_1_ram_U(
+msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram_U(
     .clk( clk ),
     .addr0( address0 ),
     .ce0( ce0 ),

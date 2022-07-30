@@ -5,11 +5,11 @@
 
 `timescale 1ns/1ps
 
-module msm_arr_fifo_w82_d48_A_ram
+module msm_arr_fifo_w82_d32_A_ram
 #(parameter
     DATA_WIDTH  = 82,
-    ADDR_WIDTH  = 6,
-    DEPTH       = 48
+    ADDR_WIDTH  = 5,
+    DEPTH       = 32
 )
 (
     input  wire                  clk,
@@ -40,11 +40,11 @@ assign dout = mem[raddr_reg];
 
 endmodule
 
-module msm_arr_fifo_w82_d48_A
+module msm_arr_fifo_w82_d32_A
 #(parameter
     DATA_WIDTH  = 82,
-    ADDR_WIDTH  = 6,
-    DEPTH       = 48
+    ADDR_WIDTH  = 5,
+    DEPTH       = 32
 )
 (
     // system signal
@@ -78,12 +78,12 @@ reg                   empty_n = 1'b0;
 
 
 //------------------------Instantiation------------------
-msm_arr_fifo_w82_d48_A_ram
+msm_arr_fifo_w82_d32_A_ram
 #(
  .DATA_WIDTH(DATA_WIDTH),
  .ADDR_WIDTH(ADDR_WIDTH),
  .DEPTH(DEPTH))
-U_msm_arr_fifo_w82_d48_A_ram(
+U_msm_arr_fifo_w82_d32_A_ram(
  .clk(clk),
  .we(push),
  .waddr(waddr),

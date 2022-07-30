@@ -7,7 +7,7 @@ library ieee;
 use ieee.std_logic_1164.all; 
 use ieee.std_logic_unsigned.all;
 
-entity msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount_ram is 
+entity msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram is 
     generic(
             DWIDTH     : integer := 32; 
             AWIDTH     : integer := 4; 
@@ -24,7 +24,7 @@ entity msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount_ram is
 end entity; 
 
 
-architecture rtl of msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount_ram is 
+architecture rtl of msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram is 
 
 signal addr0_tmp : std_logic_vector(AWIDTH-1 downto 0); 
 type mem_array is array (0 to MEM_SIZE-1) of std_logic_vector (DWIDTH-1 downto 0); 
@@ -64,7 +64,7 @@ end rtl;
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount is
+entity msm_arr_bucket_unit_sr_Block_split153_proc7_bcount is
     generic (
         DataWidth : INTEGER := 32;
         AddressRange : INTEGER := 16;
@@ -79,8 +79,8 @@ entity msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount is
         q0 : OUT STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0));
 end entity;
 
-architecture arch of msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount is
-    component msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount_ram is
+architecture arch of msm_arr_bucket_unit_sr_Block_split153_proc7_bcount is
+    component msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram is
         port (
             clk : IN STD_LOGIC;
             addr0 : IN STD_LOGIC_VECTOR;
@@ -93,7 +93,7 @@ architecture arch of msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount is
 
 
 begin
-    msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount_ram_U :  component msm_arr_bucket_unit_csim_sr_Block_split30_proc9_bcount_ram
+    msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram_U :  component msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram
     port map (
         clk => clk,
         addr0 => address0,

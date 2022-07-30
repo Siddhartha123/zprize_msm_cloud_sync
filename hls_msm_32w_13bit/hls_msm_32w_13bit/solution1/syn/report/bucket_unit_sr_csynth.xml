@@ -8,7 +8,7 @@
 <unit>ns</unit>
 <ProductFamily>virtexuplus</ProductFamily>
 <Part>xcvu9p-flga2104-2-i</Part>
-<TopModelName>bucket_unit_csim_sr</TopModelName>
+<TopModelName>bucket_unit_sr</TopModelName>
 <TargetClockPeriod>4.00</TargetClockPeriod>
 <ClockUncertainty>1.08</ClockUncertainty>
 <FlowTarget>vivado</FlowTarget>
@@ -18,7 +18,7 @@
 <PipelineType>dataflow</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>3.127</EstimatedClockPeriod>
+<EstimatedClockPeriod>2.833</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
@@ -38,8 +38,8 @@
 <Resources>
 <BRAM_18K>0</BRAM_18K>
 <DSP>23</DSP>
-<FF>6245</FF>
-<LUT>12672</LUT>
+<FF>5631</FF>
+<LUT>11814</LUT>
 <URAM>0</URAM>
 </Resources>
 <AvailableResources>
@@ -329,7 +329,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_clk</name>
-<Object>bucket_unit_csim_sr</Object>
+<Object>bucket_unit_sr</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -340,7 +340,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_rst</name>
-<Object>bucket_unit_csim_sr</Object>
+<Object>bucket_unit_sr</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -351,7 +351,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_start</name>
-<Object>bucket_unit_csim_sr</Object>
+<Object>bucket_unit_sr</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -362,7 +362,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_done</name>
-<Object>bucket_unit_csim_sr</Object>
+<Object>bucket_unit_sr</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -373,7 +373,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_ready</name>
-<Object>bucket_unit_csim_sr</Object>
+<Object>bucket_unit_sr</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -384,7 +384,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_idle</name>
-<Object>bucket_unit_csim_sr</Object>
+<Object>bucket_unit_sr</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -395,7 +395,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_continue</name>
-<Object>bucket_unit_csim_sr</Object>
+<Object>bucket_unit_sr</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
