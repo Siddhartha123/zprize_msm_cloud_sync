@@ -3,7 +3,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // ==============================================================
 `timescale 1 ns / 1 ps
-module msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram (addr0, ce0, d0, we0, q0,  clk);
+module msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram (addr0, ce0, d0, we0, q0,  clk);
 
 parameter DWIDTH = 32;
 parameter AWIDTH = 4;
@@ -34,7 +34,7 @@ end
 endmodule
 
 `timescale 1 ns / 1 ps
-module msm_arr_bucket_unit_sr_Block_split153_proc7_bcount(
+module msm_arr_bucket_unit_sr_Block_split28_proc9_bcount(
     reset,
     clk,
     address0,
@@ -56,7 +56,7 @@ output[DataWidth - 1:0] q0;
 
 
 
-msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram msm_arr_bucket_unit_sr_Block_split153_proc7_bcount_ram_U(
+msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram_U(
     .clk( clk ),
     .addr0( address0 ),
     .ce0( ce0 ),

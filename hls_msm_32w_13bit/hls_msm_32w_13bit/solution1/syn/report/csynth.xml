@@ -56,7 +56,7 @@
         <Resources>
             <BRAM_18K>4</BRAM_18K>
             <DSP>23</DSP>
-            <FF>5969</FF>
+            <FF>6061</FF>
             <LUT>12501</LUT>
             <URAM>0</URAM>
         </Resources>
@@ -387,22 +387,30 @@
                     <ID>430</ID>
                     <InstancesList>
                         <Instance>
-                            <InstName>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0</InstName>
-                            <ModuleName>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</ModuleName>
+                            <InstName>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0</InstName>
+                            <ModuleName>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</ModuleName>
                             <IsCompInst>true</IsCompInst>
                             <ID>70</ID>
                             <InstancesList>
                                 <Instance>
-                                    <InstName>grp_pdouble_fu_144</InstName>
-                                    <ModuleName>pdouble</ModuleName>
+                                    <InstName>grp_padd_fu_112</InstName>
+                                    <ModuleName>padd</ModuleName>
                                     <IsCompInst>true</IsCompInst>
-                                    <ID>144</ID>
+                                    <ID>112</ID>
+                                    <InstancesList>
+                                        <Instance>
+                                            <InstName>grp_pdouble_fu_102</InstName>
+                                            <ModuleName>pdouble</ModuleName>
+                                            <IsCompInst>true</IsCompInst>
+                                            <ID>102</ID>
+                                        </Instance>
+                                    </InstancesList>
                                 </Instance>
                             </InstancesList>
                         </Instance>
                         <Instance>
-                            <InstName>bucket_unit_sr_Block_split153_proc7_U0</InstName>
-                            <ModuleName>bucket_unit_sr_Block_split153_proc7</ModuleName>
+                            <InstName>bucket_unit_sr_Block_split28_proc9_U0</InstName>
+                            <ModuleName>bucket_unit_sr_Block_split28_proc9</ModuleName>
                             <IsCompInst>true</IsCompInst>
                             <ID>77</ID>
                         </Instance>
@@ -413,7 +421,7 @@
     </RTLDesignHierarchy>
     <ModuleInformation>
         <Module>
-            <Name>bucket_unit_sr_Block_split153_proc7</Name>
+            <Name>bucket_unit_sr_Block_split28_proc9</Name>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>4.00</TargetClockPeriod>
@@ -495,7 +503,7 @@
             <InterfaceSummary>
                 <RtlPorts>
                     <name>ap_clk</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -506,7 +514,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_rst</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -517,7 +525,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_start</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -528,7 +536,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>start_full_n</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -539,7 +547,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_done</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -550,7 +558,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_continue</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -561,7 +569,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_idle</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -572,7 +580,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_ready</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -583,7 +591,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>start_out</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -594,7 +602,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>start_write</name>
-                    <Object>bucket_unit_sr_Block_.split153_proc7</Object>
+                    <Object>bucket_unit_sr_Block_.split28_proc9</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -895,10 +903,10 @@
                     <DSP>7</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
                     <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>1257</FF>
+                    <FF>1217</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>3096</LUT>
+                    <LUT>3069</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -1012,7 +1020,182 @@
             </InterfaceSummary>
         </Module>
         <Module>
-            <Name>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</Name>
+            <Name>padd</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>4.00</TargetClockPeriod>
+                    <ClockUncertainty>1.08</ClockUncertainty>
+                    <TargetInitiationInterval>1</TargetInitiationInterval>
+                    <EstimatedClockPeriod>2.833</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>31</Best-caseLatency>
+                    <Average-caseLatency>31</Average-caseLatency>
+                    <Worst-caseLatency>31</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>0.124 us</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>0.124 us</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>0.124 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>1</PipelineInitiationInterval>
+                    <PipelineDepth>32</PipelineDepth>
+                    <PipelineType>yes</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <DSP>23</DSP>
+                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>4648</FF>
+                    <AVAIL_FF>2364480</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>10174</LUT>
+                    <AVAIL_LUT>1182240</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>4320</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>960</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <InterfaceSummary>
+                <RtlPorts>
+                    <name>ap_clk</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_rst</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_0</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_1</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_2</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_ce</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p1_x</name>
+                    <Object>p1_x</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p1_y</name>
+                    <Object>p1_y</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p1_z</name>
+                    <Object>p1_z</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p2_x</name>
+                    <Object>p2_x</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p2_y</name>
+                    <Object>p2_y</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p2_z</name>
+                    <Object>p2_z</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+            </InterfaceSummary>
+        </Module>
+        <Module>
+            <Name>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</Name>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>4.00</TargetClockPeriod>
@@ -1022,11 +1205,11 @@
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>2</Best-caseLatency>
                     <Average-caseLatency>undef</Average-caseLatency>
-                    <Worst-caseLatency>8225</Worst-caseLatency>
+                    <Worst-caseLatency>8226</Worst-caseLatency>
                     <Best-caseRealTimeLatency>8.000 ns</Best-caseRealTimeLatency>
                     <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>32.900 us</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>2 ~ 8225</PipelineInitiationInterval>
+                    <Worst-caseRealTimeLatency>32.904 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>2 ~ 8226</PipelineInitiationInterval>
                     <PipelineType>none</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
@@ -1038,10 +1221,10 @@
                                 <max>8191</max>
                             </range>
                         </TripCount>
-                        <Latency>0 ~ 8223</Latency>
-                        <AbsoluteTimeLatency>0 ns ~ 32.892 us</AbsoluteTimeLatency>
+                        <Latency>0 ~ 8224</Latency>
+                        <AbsoluteTimeLatency>0 ns ~ 32.896 us</AbsoluteTimeLatency>
                         <PipelineII>1</PipelineII>
-                        <PipelineDepth>34</PipelineDepth>
+                        <PipelineDepth>35</PipelineDepth>
                     </VITIS_LOOP_327_5>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
@@ -1050,7 +1233,7 @@
                     <DSP>23</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
                     <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>4793</FF>
+                    <FF>4885</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
                     <LUT>10365</LUT>
@@ -1067,7 +1250,7 @@
             <InterfaceSummary>
                 <RtlPorts>
                     <name>ap_clk</name>
-                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</Object>
+                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1078,7 +1261,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_rst</name>
-                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</Object>
+                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1089,7 +1272,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_start</name>
-                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</Object>
+                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1100,7 +1283,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_done</name>
-                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</Object>
+                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1111,7 +1294,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_continue</name>
-                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</Object>
+                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1122,7 +1305,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_idle</name>
-                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</Object>
+                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1133,7 +1316,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_ready</name>
-                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8</Object>
+                    <Object>bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1176,39 +1359,6 @@
                     <Attribute>control</Attribute>
                 </RtlPorts>
                 <RtlPorts>
-                    <name>BFIFO_2_din</name>
-                    <Object>BFIFO_2</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>ap_fifo</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>43</Bits>
-                    <Attribute>control</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>BFIFO_2_full_n</name>
-                    <Object>BFIFO_2</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>ap_fifo</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>control</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>BFIFO_2_write</name>
-                    <Object>BFIFO_2</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>ap_fifo</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>control</Attribute>
-                </RtlPorts>
-                <RtlPorts>
                     <name>CFIFO_dout</name>
                     <Object>CFIFO</Object>
                     <Type>pointer</Type>
@@ -1233,6 +1383,39 @@
                 <RtlPorts>
                     <name>CFIFO_read</name>
                     <Object>CFIFO</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>BFIFO_2_din</name>
+                    <Object>BFIFO_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>43</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>BFIFO_2_full_n</name>
+                    <Object>BFIFO_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>BFIFO_2_write</name>
+                    <Object>BFIFO_2</Object>
                     <Type>pointer</Type>
                     <Scope/>
                     <IOProtocol>ap_fifo</IOProtocol>
@@ -1271,7 +1454,7 @@
                     <DSP>23</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
                     <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>5631</FF>
+                    <FF>5723</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
                     <LUT>11814</LUT>
@@ -1690,7 +1873,7 @@
                     <DSP>23</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
                     <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>5969</FF>
+                    <FF>6061</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
                     <LUT>12501</LUT>

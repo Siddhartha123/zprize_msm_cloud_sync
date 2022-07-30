@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity msm_arr_mul_mul_13ns_13ns_26_4_0_DSP48_0 is
+entity msm_arr_mul_mul_13ns_13ns_26_4_1_DSP48_0 is
 port (
     clk: in std_logic;
     rst: in std_logic;
@@ -14,7 +14,7 @@ port (
 
 end entity;
 
-architecture behav of msm_arr_mul_mul_13ns_13ns_26_4_0_DSP48_0 is
+architecture behav of msm_arr_mul_mul_13ns_13ns_26_4_1_DSP48_0 is
     signal a_cvt: unsigned(13 - 1 downto 0);
     signal b_cvt: unsigned(13 - 1 downto 0);
     signal p_cvt: unsigned(26 - 1 downto 0);
@@ -48,7 +48,7 @@ end architecture;
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity msm_arr_mul_mul_13ns_13ns_26_4_0 is
+entity msm_arr_mul_mul_13ns_13ns_26_4_1 is
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -64,8 +64,8 @@ entity msm_arr_mul_mul_13ns_13ns_26_4_0 is
         dout : OUT STD_LOGIC_VECTOR(dout_WIDTH - 1 DOWNTO 0));
 end entity;
 
-architecture arch of msm_arr_mul_mul_13ns_13ns_26_4_0 is
-    component msm_arr_mul_mul_13ns_13ns_26_4_0_DSP48_0 is
+architecture arch of msm_arr_mul_mul_13ns_13ns_26_4_1 is
+    component msm_arr_mul_mul_13ns_13ns_26_4_1_DSP48_0 is
         port (
             clk : IN STD_LOGIC;
             rst : IN STD_LOGIC;
@@ -78,7 +78,7 @@ architecture arch of msm_arr_mul_mul_13ns_13ns_26_4_0 is
 
 
 begin
-    msm_arr_mul_mul_13ns_13ns_26_4_0_DSP48_0_U :  component msm_arr_mul_mul_13ns_13ns_26_4_0_DSP48_0
+    msm_arr_mul_mul_13ns_13ns_26_4_1_DSP48_0_U :  component msm_arr_mul_mul_13ns_13ns_26_4_1_DSP48_0
     port map (
         clk => clk,
         rst => reset,

@@ -1,9 +1,9 @@
 
 
 ================================================================
-== Vitis HLS Report for 'bucket_unit_sr_Block_split153_proc7'
+== Vitis HLS Report for 'bucket_unit_sr_Block_split28_proc9'
 ================================================================
-* Date:           Sat Jul 30 06:05:41 2022
+* Date:           Sat Jul 30 14:59:48 2022
 
 * Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)
 * Project:        hls_msm_32w_13bit
@@ -84,15 +84,15 @@
     N/A
 
     * Memory: 
-    +----------------+--------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
-    |     Memory     |                      Module                      | BRAM_18K| FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
-    +----------------+--------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
-    |bcount_U        |bucket_unit_sr_Block_split153_proc7_bcount        |        0|  32|  33|    0|    16|   32|     1|          512|
-    |fill_count_U    |bucket_unit_sr_Block_split153_proc7_bcount        |        0|  32|  33|    0|    16|   32|     1|          512|
-    |padd_count_V_U  |bucket_unit_sr_Block_split153_proc7_padd_count_V  |        0|  16|  17|    0|    16|   13|     1|          208|
-    +----------------+--------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
-    |Total           |                                                  |        0|  80|  83|    0|    48|   77|     3|         1232|
-    +----------------+--------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
+    +----------------+-------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
+    |     Memory     |                      Module                     | BRAM_18K| FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +----------------+-------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
+    |bcount_U        |bucket_unit_sr_Block_split28_proc9_bcount        |        0|  32|  33|    0|    16|   32|     1|          512|
+    |fill_count_U    |bucket_unit_sr_Block_split28_proc9_bcount        |        0|  32|  33|    0|    16|   32|     1|          512|
+    |padd_count_V_U  |bucket_unit_sr_Block_split28_proc9_padd_count_V  |        0|  16|  17|    0|    16|   13|     1|          208|
+    +----------------+-------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
+    |Total           |                                                 |        0|  80|  83|    0|    48|   77|     3|         1232|
+    +----------------+-------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
 
     * FIFO: 
     N/A
@@ -111,8 +111,8 @@
     |empty_29_fu_561_p2                 |         +|   0|  0|  12|           5|           1|
     |empty_32_fu_578_p2                 |         +|   0|  0|  12|           5|           1|
     |i_7_fu_959_p2                      |         +|   0|  0|  39|          32|           1|
-    |ret_V_21_fu_690_p2                 |         +|   0|  0|  21|          14|           2|
-    |ret_V_22_fu_716_p2                 |         +|   0|  0|  12|           4|           2|
+    |ret_V_1_fu_690_p2                  |         +|   0|  0|  21|          14|           2|
+    |ret_V_2_fu_716_p2                  |         +|   0|  0|  12|           4|           2|
     |ret_V_fu_810_p2                    |         +|   0|  0|  12|           4|           2|
     |ap_block_pp2_stage0_11001          |       and|   0|  0|   2|           1|           1|
     |ap_block_state22                   |       and|   0|  0|   2|           1|           1|
@@ -124,16 +124,16 @@
     |ap_predicate_op239_write_state22   |       and|   0|  0|   2|           1|           1|
     |tmp_8_i_nbreadreq_fu_202_p3        |       and|   0|  0|   2|           1|           0|
     |tmp_i_nbreadreq_fu_194_p3          |       and|   0|  0|   2|           1|           0|
-    |exitcond5035_i_fu_584_p2           |      icmp|   0|  0|  10|           5|           6|
-    |exitcond5136_i_fu_567_p2           |      icmp|   0|  0|  10|           5|           6|
+    |exitcond2735_i_fu_584_p2           |      icmp|   0|  0|  10|           5|           6|
+    |exitcond2836_i_fu_567_p2           |      icmp|   0|  0|  10|           5|           6|
     |icmp_ln307_fu_865_p2               |      icmp|   0|  0|  10|           5|           6|
     |icmp_ln308_fu_896_p2               |      icmp|   0|  0|  19|          31|           1|
     |icmp_ln315_fu_939_p2               |      icmp|   0|  0|  18|          29|           1|
     |icmp_ln870_3_fu_696_p2             |      icmp|   0|  0|  12|          14|          14|
     |icmp_ln870_fu_763_p2               |      icmp|   0|  0|  12|          13|           1|
     |icmp_ln874_fu_779_p2               |      icmp|   0|  0|   9|           4|           1|
-    |icmp_ln878_14_fu_627_p2            |      icmp|   0|  0|  12|          13|          13|
-    |icmp_ln878_15_fu_954_p2            |      icmp|   0|  0|  20|          32|          32|
+    |icmp_ln878_13_fu_627_p2            |      icmp|   0|  0|  12|          13|          13|
+    |icmp_ln878_14_fu_954_p2            |      icmp|   0|  0|  20|          32|          32|
     |icmp_ln878_fu_621_p2               |      icmp|   0|  0|  10|           6|           1|
     |lnot_i_i_i_fu_920_p2               |      icmp|   0|  0|   9|           4|           1|
     |ap_block_state1                    |        or|   0|  0|   2|           1|           1|
@@ -216,10 +216,10 @@
     |icmp_ln870_3_reg_1111          |   1|   0|    1|          0|
     |icmp_ln870_reg_1115            |   1|   0|    1|          0|
     |icmp_ln874_reg_1119            |   1|   0|    1|          0|
-    |icmp_ln878_14_reg_1053         |   1|   0|    1|          0|
-    |icmp_ln878_15_reg_1183         |   1|   0|    1|          0|
+    |icmp_ln878_13_reg_1053         |   1|   0|    1|          0|
+    |icmp_ln878_14_reg_1183         |   1|   0|    1|          0|
     |icmp_ln878_reg_1049            |   1|   0|    1|          0|
-    |lhs_V_7_reg_1077               |   4|   0|    4|          0|
+    |lhs_V_2_reg_1077               |   4|   0|    4|          0|
     |lhs_V_reg_1101                 |   4|   0|    4|          0|
     |nibble_K_V_reg_541             |   4|   0|    4|          0|
     |num_padd_ops_cast_reg_1174     |  13|   0|   32|         19|
@@ -243,42 +243,42 @@
 == Interface
 ================================================================
 * Summary: 
-+-------------------------+-----+-----+------------+--------------------------------------+--------------+
-|        RTL Ports        | Dir | Bits|  Protocol  |             Source Object            |    C Type    |
-+-------------------------+-----+-----+------------+--------------------------------------+--------------+
-|ap_clk                   |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|ap_rst                   |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|ap_start                 |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|start_full_n             |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|ap_done                  |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|ap_continue              |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|ap_idle                  |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|ap_ready                 |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|start_out                |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|start_write              |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split153_proc7|  return value|
-|num_padd_ops             |   in|   13|     ap_none|                          num_padd_ops|        scalar|
-|B_i_address0             |  out|    5|   ap_memory|                                   B_i|         array|
-|B_i_ce0                  |  out|    1|   ap_memory|                                   B_i|         array|
-|B_i_we0                  |  out|    1|   ap_memory|                                   B_i|         array|
-|B_i_d0                   |  out|   32|   ap_memory|                                   B_i|         array|
-|B_i_address1             |  out|    5|   ap_memory|                                   B_i|         array|
-|B_i_ce1                  |  out|    1|   ap_memory|                                   B_i|         array|
-|B_i_we1                  |  out|    1|   ap_memory|                                   B_i|         array|
-|B_i_d1                   |  out|   32|   ap_memory|                                   B_i|         array|
-|BFIFO_1176_dout          |   in|   43|     ap_fifo|                            BFIFO_1176|       pointer|
-|BFIFO_1176_empty_n       |   in|    1|     ap_fifo|                            BFIFO_1176|       pointer|
-|BFIFO_1176_read          |  out|    1|     ap_fifo|                            BFIFO_1176|       pointer|
-|count_B_address0         |  out|    4|   ap_memory|                               count_B|         array|
-|count_B_ce0              |  out|    1|   ap_memory|                               count_B|         array|
-|count_B_q0               |   in|   13|   ap_memory|                               count_B|         array|
-|BFIFO_2_dout             |   in|   43|     ap_fifo|                               BFIFO_2|       pointer|
-|BFIFO_2_empty_n          |   in|    1|     ap_fifo|                               BFIFO_2|       pointer|
-|BFIFO_2_read             |  out|    1|     ap_fifo|                               BFIFO_2|       pointer|
-|CFIFO_din                |  out|   82|     ap_fifo|                                 CFIFO|       pointer|
-|CFIFO_full_n             |   in|    1|     ap_fifo|                                 CFIFO|       pointer|
-|CFIFO_write              |  out|    1|     ap_fifo|                                 CFIFO|       pointer|
-|num_padd_ops_out_din     |  out|   13|     ap_fifo|                      num_padd_ops_out|       pointer|
-|num_padd_ops_out_full_n  |   in|    1|     ap_fifo|                      num_padd_ops_out|       pointer|
-|num_padd_ops_out_write   |  out|    1|     ap_fifo|                      num_padd_ops_out|       pointer|
-+-------------------------+-----+-----+------------+--------------------------------------+--------------+
++-------------------------+-----+-----+------------+-------------------------------------+--------------+
+|        RTL Ports        | Dir | Bits|  Protocol  |            Source Object            |    C Type    |
++-------------------------+-----+-----+------------+-------------------------------------+--------------+
+|ap_clk                   |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|ap_rst                   |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|ap_start                 |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|start_full_n             |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|ap_done                  |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|ap_continue              |   in|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|ap_idle                  |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|ap_ready                 |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|start_out                |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|start_write              |  out|    1|  ap_ctrl_hs|  bucket_unit_sr_Block_.split28_proc9|  return value|
+|num_padd_ops             |   in|   13|     ap_none|                         num_padd_ops|        scalar|
+|B_i_address0             |  out|    5|   ap_memory|                                  B_i|         array|
+|B_i_ce0                  |  out|    1|   ap_memory|                                  B_i|         array|
+|B_i_we0                  |  out|    1|   ap_memory|                                  B_i|         array|
+|B_i_d0                   |  out|   32|   ap_memory|                                  B_i|         array|
+|B_i_address1             |  out|    5|   ap_memory|                                  B_i|         array|
+|B_i_ce1                  |  out|    1|   ap_memory|                                  B_i|         array|
+|B_i_we1                  |  out|    1|   ap_memory|                                  B_i|         array|
+|B_i_d1                   |  out|   32|   ap_memory|                                  B_i|         array|
+|BFIFO_1176_dout          |   in|   43|     ap_fifo|                           BFIFO_1176|       pointer|
+|BFIFO_1176_empty_n       |   in|    1|     ap_fifo|                           BFIFO_1176|       pointer|
+|BFIFO_1176_read          |  out|    1|     ap_fifo|                           BFIFO_1176|       pointer|
+|count_B_address0         |  out|    4|   ap_memory|                              count_B|         array|
+|count_B_ce0              |  out|    1|   ap_memory|                              count_B|         array|
+|count_B_q0               |   in|   13|   ap_memory|                              count_B|         array|
+|BFIFO_2_dout             |   in|   43|     ap_fifo|                              BFIFO_2|       pointer|
+|BFIFO_2_empty_n          |   in|    1|     ap_fifo|                              BFIFO_2|       pointer|
+|BFIFO_2_read             |  out|    1|     ap_fifo|                              BFIFO_2|       pointer|
+|CFIFO_din                |  out|   82|     ap_fifo|                                CFIFO|       pointer|
+|CFIFO_full_n             |   in|    1|     ap_fifo|                                CFIFO|       pointer|
+|CFIFO_write              |  out|    1|     ap_fifo|                                CFIFO|       pointer|
+|num_padd_ops_out_din     |  out|   13|     ap_fifo|                     num_padd_ops_out|       pointer|
+|num_padd_ops_out_full_n  |   in|    1|     ap_fifo|                     num_padd_ops_out|       pointer|
+|num_padd_ops_out_write   |  out|    1|     ap_fifo|                     num_padd_ops_out|       pointer|
++-------------------------+-----+-----+------------+-------------------------------------+--------------+
 

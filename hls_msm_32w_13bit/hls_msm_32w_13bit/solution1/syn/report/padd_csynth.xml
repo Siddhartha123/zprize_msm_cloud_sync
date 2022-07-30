@@ -8,7 +8,7 @@
 <unit>ns</unit>
 <ProductFamily>virtexuplus</ProductFamily>
 <Part>xcvu9p-flga2104-2-i</Part>
-<TopModelName>pdouble</TopModelName>
+<TopModelName>padd</TopModelName>
 <TargetClockPeriod>4.00</TargetClockPeriod>
 <ClockUncertainty>1.08</ClockUncertainty>
 <TargetInitiationInterval>1</TargetInitiationInterval>
@@ -19,18 +19,18 @@
 <PipelineType>yes</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>2.814</EstimatedClockPeriod>
+<EstimatedClockPeriod>2.833</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>22</Best-caseLatency>
-<Average-caseLatency>22</Average-caseLatency>
-<Worst-caseLatency>22</Worst-caseLatency>
-<Best-caseRealTimeLatency>88.000 ns</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>88.000 ns</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>88.000 ns</Worst-caseRealTimeLatency>
+<Best-caseLatency>31</Best-caseLatency>
+<Average-caseLatency>31</Average-caseLatency>
+<Worst-caseLatency>31</Worst-caseLatency>
+<Best-caseRealTimeLatency>0.124 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>0.124 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>0.124 us</Worst-caseRealTimeLatency>
 <PipelineInitiationInterval>1</PipelineInitiationInterval>
-<PipelineDepth>23</PipelineDepth>
+<PipelineDepth>32</PipelineDepth>
 <Interval-min>1</Interval-min>
 <Interval-max>1</Interval-max>
 </SummaryOfOverallLatency>
@@ -38,9 +38,9 @@
 
 <AreaEstimates>
 <Resources>
-<DSP>7</DSP>
-<FF>1217</FF>
-<LUT>3069</LUT>
+<DSP>23</DSP>
+<FF>4648</FF>
+<LUT>10174</LUT>
 <BRAM_18K>0</BRAM_18K>
 <URAM>0</URAM>
 </Resources>
@@ -56,7 +56,7 @@
 <InterfaceSummary>
 <RtlPorts>
 <name>ap_clk</name>
-<Object>pdouble</Object>
+<Object>padd</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -67,7 +67,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_rst</name>
-<Object>pdouble</Object>
+<Object>padd</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -78,7 +78,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_return_0</name>
-<Object>pdouble</Object>
+<Object>padd</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -89,7 +89,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_return_1</name>
-<Object>pdouble</Object>
+<Object>padd</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -100,7 +100,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_return_2</name>
-<Object>pdouble</Object>
+<Object>padd</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -111,7 +111,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_ce</name>
-<Object>pdouble</Object>
+<Object>padd</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -121,8 +121,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_x</name>
-<Object>p_x</Object>
+<name>p1_x</name>
+<Object>p1_x</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -132,8 +132,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_y</name>
-<Object>p_y</Object>
+<name>p1_y</name>
+<Object>p1_y</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>
@@ -143,8 +143,41 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>p_z</name>
-<Object>p_z</Object>
+<name>p1_z</name>
+<Object>p1_z</Object>
+<Type>scalar</Type>
+<Scope></Scope>
+<IOProtocol>ap_none</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>13</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>p2_x</name>
+<Object>p2_x</Object>
+<Type>scalar</Type>
+<Scope></Scope>
+<IOProtocol>ap_none</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>13</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>p2_y</name>
+<Object>p2_y</Object>
+<Type>scalar</Type>
+<Scope></Scope>
+<IOProtocol>ap_none</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>13</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>p2_z</name>
+<Object>p2_z</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

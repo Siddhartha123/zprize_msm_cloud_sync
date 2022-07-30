@@ -7,7 +7,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
-entity msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg is
+entity msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0_shiftReg is
     generic (
         DATA_WIDTH : integer := 1;
         ADDR_WIDTH : integer := 1;
@@ -18,9 +18,9 @@ entity msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg 
         ce : in std_logic;
         a : in std_logic_vector(ADDR_WIDTH-1 downto 0);
         q : out std_logic_vector(DATA_WIDTH-1 downto 0));
-end msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg;
+end msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0_shiftReg;
 
-architecture rtl of msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg is
+architecture rtl of msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0_shiftReg is
 --constant DEPTH_WIDTH: integer := 16;
 type SRL_ARRAY is array (0 to DEPTH-1) of std_logic_vector(DATA_WIDTH-1 downto 0);
 signal SRL_SIG : SRL_ARRAY;
@@ -44,7 +44,7 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 
-entity msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0 is 
+entity msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0 is 
     generic (
         MEM_STYLE  : string := "shiftreg"; 
         DATA_WIDTH : integer := 1;
@@ -63,9 +63,9 @@ entity msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0 is
         if_din : IN STD_LOGIC_VECTOR(DATA_WIDTH - 1 downto 0));
 end entity;
 
-architecture rtl of msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0 is
+architecture rtl of msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0 is
 
-    component msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg is
+    component msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0_shiftReg is
     generic (
         DATA_WIDTH : integer := 1;
         ADDR_WIDTH : integer := 1;
@@ -121,7 +121,7 @@ begin
     shiftReg_addr <= (others => '0') when mOutPtr(ADDR_WIDTH) = '1' else mOutPtr(ADDR_WIDTH-1 downto 0);
     shiftReg_ce <= (if_write and if_write_ce) and internal_full_n;
 
-    U_msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg : msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc8_U0_shiftReg
+    U_msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0_shiftReg : msm_arr_start_for_bucket_unit_sr_Loop_VITIS_LOOP_327_5_proc10_U0_shiftReg
     generic map (
         DATA_WIDTH => DATA_WIDTH,
         ADDR_WIDTH => ADDR_WIDTH,

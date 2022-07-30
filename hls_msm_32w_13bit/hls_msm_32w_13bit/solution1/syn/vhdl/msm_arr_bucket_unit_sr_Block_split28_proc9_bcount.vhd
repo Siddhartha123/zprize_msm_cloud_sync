@@ -7,9 +7,9 @@ library ieee;
 use ieee.std_logic_1164.all; 
 use ieee.std_logic_unsigned.all;
 
-entity msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V_ram is 
+entity msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram is 
     generic(
-            DWIDTH     : integer := 13; 
+            DWIDTH     : integer := 32; 
             AWIDTH     : integer := 4; 
             MEM_SIZE    : integer := 16
     ); 
@@ -19,16 +19,12 @@ entity msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V_ram is
           d0        : in std_logic_vector(DWIDTH-1 downto 0); 
           we0       : in std_logic; 
           q0        : out std_logic_vector(DWIDTH-1 downto 0);
-          addr1     : in std_logic_vector(AWIDTH-1 downto 0); 
-          ce1       : in std_logic; 
-          d1        : in std_logic_vector(DWIDTH-1 downto 0); 
-          we1       : in std_logic; 
           clk        : in std_logic 
     ); 
 end entity; 
 
 
-architecture rtl of msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V_ram is 
+architecture rtl of msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram is 
 
 signal addr0_tmp : std_logic_vector(AWIDTH-1 downto 0); 
 type mem_array is array (0 to MEM_SIZE-1) of std_logic_vector (DWIDTH-1 downto 0); 
@@ -63,26 +59,14 @@ begin
 end process;
 
 
-p_memory_access_1: process (clk)  
-begin 
-    if (clk'event and clk = '1') then
-        if (ce1 = '1') then 
-            if (we1 = '1') then 
-                ram(CONV_INTEGER(addr1)) := d1; 
-            end if;
-        end if;
-    end if;
-end process;
-
-
 end rtl;
 
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V is
+entity msm_arr_bucket_unit_sr_Block_split28_proc9_bcount is
     generic (
-        DataWidth : INTEGER := 13;
+        DataWidth : INTEGER := 32;
         AddressRange : INTEGER := 16;
         AddressWidth : INTEGER := 4);
     port (
@@ -92,43 +76,31 @@ entity msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V is
         ce0 : IN STD_LOGIC;
         we0 : IN STD_LOGIC;
         d0 : IN STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0);
-        q0 : OUT STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0);
-        address1 : IN STD_LOGIC_VECTOR(AddressWidth - 1 DOWNTO 0);
-        ce1 : IN STD_LOGIC;
-        we1 : IN STD_LOGIC;
-        d1 : IN STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0));
+        q0 : OUT STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0));
 end entity;
 
-architecture arch of msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V is
-    component msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V_ram is
+architecture arch of msm_arr_bucket_unit_sr_Block_split28_proc9_bcount is
+    component msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram is
         port (
             clk : IN STD_LOGIC;
             addr0 : IN STD_LOGIC_VECTOR;
             ce0 : IN STD_LOGIC;
             we0 : IN STD_LOGIC;
             d0 : IN STD_LOGIC_VECTOR;
-            q0 : OUT STD_LOGIC_VECTOR;
-            addr1 : IN STD_LOGIC_VECTOR;
-            ce1 : IN STD_LOGIC;
-            we1 : IN STD_LOGIC;
-            d1 : IN STD_LOGIC_VECTOR);
+            q0 : OUT STD_LOGIC_VECTOR);
     end component;
 
 
 
 begin
-    msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V_ram_U :  component msm_arr_bucket_unit_sr_Block_split153_proc7_padd_count_V_ram
+    msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram_U :  component msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram
     port map (
         clk => clk,
         addr0 => address0,
         ce0 => ce0,
         we0 => we0,
         d0 => d0,
-        q0 => q0,
-        addr1 => address1,
-        ce1 => ce1,
-        we1 => we1,
-        d1 => d1);
+        q0 => q0);
 
 end architecture;
 
