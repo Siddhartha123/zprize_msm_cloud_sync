@@ -1,0 +1,170 @@
+
+
+================================================================
+== Vitis HLS Report for 'bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6'
+================================================================
+* Date:           Tue Aug  2 13:37:11 2022
+
+* Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)
+* Project:        hls_msm_32w_13bit
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu9p-flga2104-2-i
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.00 ns|  1.815 ns|     1.08 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+-----------+-----+------+---------+
+    |  Latency (cycles) |  Latency (absolute)  |  Interval  | Pipeline|
+    |   min   |   max   |    min   |    max    | min |  max |   Type  |
+    +---------+---------+----------+-----------+-----+------+---------+
+    |        2|     8194|  8.000 ns|  32.776 us|    2|  8194|     none|
+    +---------+---------+----------+-----------+-----+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+----------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip   |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  |   Count  | Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+----------+----------+
+        |- VITIS_LOOP_226_5  |        0|     8192|         3|          1|          1|  0 ~ 8191|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+----------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|      104|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       83|    -|
+|Register             |        -|     -|       78|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|       78|      187|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1440|  2280|   788160|   394080|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4320|  6840|  2364480|  1182240|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |i_3_fu_108_p2                     |         +|   0|  0|  20|          13|           1|
+    |v2_V_6_fu_185_p2                  |         +|   0|  0|  20|          13|          13|
+    |v2_V_7_fu_169_p2                  |         +|   0|  0|  20|          13|          13|
+    |v2_V_fu_195_p2                    |         +|   0|  0|  20|          13|          13|
+    |ap_block_state3_pp0_stage0_iter1  |       and|   0|  0|   2|           1|           1|
+    |ap_block_state4_pp0_stage0_iter2  |       and|   0|  0|   2|           1|           1|
+    |icmp_ln878_fu_114_p2              |      icmp|   0|  0|  12|          13|          13|
+    |ap_block_pp0_stage0_01001         |        or|   0|  0|   2|           1|           1|
+    |ap_block_state1                   |        or|   0|  0|   2|           1|           1|
+    |ap_enable_pp0                     |       xor|   0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1           |       xor|   0|  0|   2|           2|           1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |Total                             |          |   0|  0| 104|          72|          60|
+    +----------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |BFIFO_2_blk_n            |   9|          2|    1|          2|
+    |CFIFO_blk_n              |   9|          2|    1|          2|
+    |ap_NS_fsm                |  20|          4|    1|          4|
+    |ap_done                  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter2  |   9|          2|    1|          2|
+    |i_reg_97                 |   9|          2|   13|         26|
+    |num_padd_ops_blk_n       |   9|          2|    1|          2|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    |  83|         18|   20|         42|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------+----+----+-----+-----------+
+    |               Name               | FF | LUT| Bits| Const Bits|
+    +----------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                         |   3|   0|    3|          0|
+    |ap_done_reg                       |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2           |   1|   0|    1|          0|
+    |i_reg_97                          |  13|   0|   13|          0|
+    |icmp_ln878_reg_220                |   1|   0|    1|          0|
+    |icmp_ln878_reg_220_pp0_iter1_reg  |   1|   0|    1|          0|
+    |num_padd_ops_read_reg_210         |  13|   0|   13|          0|
+    |tmpVal1_V_reg_224                 |   4|   0|    4|          0|
+    |v2_V_6_reg_234                    |  13|   0|   13|          0|
+    |v2_V_7_reg_229                    |  13|   0|   13|          0|
+    |v2_V_reg_239                      |  13|   0|   13|          0|
+    +----------------------------------+----+----+-----+-----------+
+    |Total                             |  78|   0|   78|          0|
+    +----------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------+-----+-----+------------+-------------------------------------------------+--------------+
+|       RTL Ports      | Dir | Bits|  Protocol  |                  Source Object                  |    C Type    |
++----------------------+-----+-----+------------+-------------------------------------------------+--------------+
+|ap_clk                |   in|    1|  ap_ctrl_hs|  bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6|  return value|
+|ap_rst                |   in|    1|  ap_ctrl_hs|  bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6|  return value|
+|ap_start              |   in|    1|  ap_ctrl_hs|  bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6|  return value|
+|ap_done               |  out|    1|  ap_ctrl_hs|  bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6|  return value|
+|ap_continue           |   in|    1|  ap_ctrl_hs|  bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6|  return value|
+|ap_idle               |  out|    1|  ap_ctrl_hs|  bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6|  return value|
+|ap_ready              |  out|    1|  ap_ctrl_hs|  bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6|  return value|
+|num_padd_ops_dout     |   in|   13|     ap_fifo|                                     num_padd_ops|       pointer|
+|num_padd_ops_empty_n  |   in|    1|     ap_fifo|                                     num_padd_ops|       pointer|
+|num_padd_ops_read     |  out|    1|     ap_fifo|                                     num_padd_ops|       pointer|
+|CFIFO_dout            |   in|   82|     ap_fifo|                                            CFIFO|       pointer|
+|CFIFO_empty_n         |   in|    1|     ap_fifo|                                            CFIFO|       pointer|
+|CFIFO_read            |  out|    1|     ap_fifo|                                            CFIFO|       pointer|
+|BFIFO_2_din           |  out|   43|     ap_fifo|                                          BFIFO_2|       pointer|
+|BFIFO_2_full_n        |   in|    1|     ap_fifo|                                          BFIFO_2|       pointer|
+|BFIFO_2_write         |  out|    1|     ap_fifo|                                          BFIFO_2|       pointer|
++----------------------+-----+-----+------------+-------------------------------------------------+--------------+
+

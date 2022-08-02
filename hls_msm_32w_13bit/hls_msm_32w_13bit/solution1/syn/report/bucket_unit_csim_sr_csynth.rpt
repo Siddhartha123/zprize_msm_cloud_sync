@@ -1,0 +1,163 @@
+
+
+================================================================
+== Vitis HLS Report for 'bucket_unit_csim_sr'
+================================================================
+* Date:           Tue Aug  2 13:37:12 2022
+
+* Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)
+* Project:        hls_msm_32w_13bit
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu9p-flga2104-2-i
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.00 ns|  3.127 ns|     1.08 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|  dataflow|
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------------------------------------+-------------------------------------------------+---------+---------+----------+-----------+-----+------+---------+
+        |                                                    |                                                 |  Latency (cycles) |  Latency (absolute)  |  Interval  | Pipeline|
+        |                      Instance                      |                      Module                     |   min   |   max   |    min   |    max    | min |  max |   Type  |
+        +----------------------------------------------------+-------------------------------------------------+---------+---------+----------+-----------+-----+------+---------+
+        |bucket_unit_csim_sr_Block_split24_proc5_U0          |bucket_unit_csim_sr_Block_split24_proc5          |        ?|        ?|         ?|          ?|    ?|     ?|     none|
+        |bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0  |bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6  |        2|     8194|  8.000 ns|  32.776 us|    2|  8194|     none|
+        +----------------------------------------------------+-------------------------------------------------+---------+---------+----------+-----------+-----+------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        6|    -|
+|FIFO                 |        0|     -|      449|      378|    -|
+|Instance             |        0|     -|      989|     2110|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|        -|    -|
+|Register             |        -|     -|        -|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|     1438|     2494|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1440|  2280|   788160|   394080|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4320|  6840|  2364480|  1182240|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------------------------------+-------------------------------------------------+---------+----+-----+------+-----+
+    |                      Instance                      |                      Module                     | BRAM_18K| DSP|  FF |  LUT | URAM|
+    +----------------------------------------------------+-------------------------------------------------+---------+----+-----+------+-----+
+    |bucket_unit_csim_sr_Block_split24_proc5_U0          |bucket_unit_csim_sr_Block_split24_proc5          |        0|   0|  911|  1923|    0|
+    |bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0  |bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6  |        0|   0|   78|   187|    0|
+    +----------------------------------------------------+-------------------------------------------------+---------+----+-----+------+-----+
+    |Total                                               |                                                 |        0|   0|  989|  2110|    0|
+    +----------------------------------------------------+-------------------------------------------------+---------+----+-----+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +------------------+---------+-----+----+-----+------+-----+---------+
+    |       Name       | BRAM_18K|  FF | LUT| URAM| Depth| Bits| Size:D*B|
+    +------------------+---------+-----+----+-----+------+-----+---------+
+    |BFIFO_2_U         |        0|    7|   0|    -|    15|   43|      645|
+    |CFIFO_U           |        0|  406|   0|    -|    48|   82|     3936|
+    |num_padd_ops_c_U  |        0|   36|   0|    -|     2|   13|       26|
+    +------------------+---------+-----+----+-----+------+-----+---------+
+    |Total             |        0|  449|   0|    0|    65|  138|     4607|
+    +------------------+---------+-----+----+-----+------+-----+---------+
+
+    * Expression: 
+    +------------------+----------+----+---+----+------------+------------+
+    |   Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------+----------+----+---+----+------------+------------+
+    |ap_idle           |       and|   0|  0|   2|           1|           1|
+    |ap_sync_continue  |       and|   0|  0|   2|           1|           1|
+    |ap_sync_done      |       and|   0|  0|   2|           1|           1|
+    +------------------+----------+----+---+----+------------+------------+
+    |Total             |          |   0|  0|   6|           3|           3|
+    +------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+------------+---------------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  |    Source Object    |    C Type    |
++---------------------+-----+-----+------------+---------------------+--------------+
+|BFIFO_1176_dout      |   in|   43|     ap_fifo|           BFIFO_1176|       pointer|
+|BFIFO_1176_empty_n   |   in|    1|     ap_fifo|           BFIFO_1176|       pointer|
+|BFIFO_1176_read      |  out|    1|     ap_fifo|           BFIFO_1176|       pointer|
+|B_i_address0         |  out|    5|   ap_memory|                  B_i|         array|
+|B_i_ce0              |  out|    1|   ap_memory|                  B_i|         array|
+|B_i_d0               |  out|   32|   ap_memory|                  B_i|         array|
+|B_i_q0               |   in|   32|   ap_memory|                  B_i|         array|
+|B_i_we0              |  out|    1|   ap_memory|                  B_i|         array|
+|B_i_address1         |  out|    5|   ap_memory|                  B_i|         array|
+|B_i_ce1              |  out|    1|   ap_memory|                  B_i|         array|
+|B_i_d1               |  out|   32|   ap_memory|                  B_i|         array|
+|B_i_q1               |   in|   32|   ap_memory|                  B_i|         array|
+|B_i_we1              |  out|    1|   ap_memory|                  B_i|         array|
+|num_padd_ops         |   in|   13|     ap_none|         num_padd_ops|        scalar|
+|num_padd_ops_ap_vld  |   in|    1|     ap_none|         num_padd_ops|        scalar|
+|count_B_address0     |  out|    4|   ap_memory|              count_B|         array|
+|count_B_ce0          |  out|    1|   ap_memory|              count_B|         array|
+|count_B_d0           |  out|   13|   ap_memory|              count_B|         array|
+|count_B_q0           |   in|   13|   ap_memory|              count_B|         array|
+|count_B_we0          |  out|    1|   ap_memory|              count_B|         array|
+|count_B_address1     |  out|    4|   ap_memory|              count_B|         array|
+|count_B_ce1          |  out|    1|   ap_memory|              count_B|         array|
+|count_B_d1           |  out|   13|   ap_memory|              count_B|         array|
+|count_B_q1           |   in|   13|   ap_memory|              count_B|         array|
+|count_B_we1          |  out|    1|   ap_memory|              count_B|         array|
+|ap_clk               |   in|    1|  ap_ctrl_hs|  bucket_unit_csim_sr|  return value|
+|ap_rst               |   in|    1|  ap_ctrl_hs|  bucket_unit_csim_sr|  return value|
+|ap_start             |   in|    1|  ap_ctrl_hs|  bucket_unit_csim_sr|  return value|
+|ap_done              |  out|    1|  ap_ctrl_hs|  bucket_unit_csim_sr|  return value|
+|ap_ready             |  out|    1|  ap_ctrl_hs|  bucket_unit_csim_sr|  return value|
+|ap_idle              |  out|    1|  ap_ctrl_hs|  bucket_unit_csim_sr|  return value|
+|ap_continue          |   in|    1|  ap_ctrl_hs|  bucket_unit_csim_sr|  return value|
++---------------------+-----+-----+------------+---------------------+--------------+
+

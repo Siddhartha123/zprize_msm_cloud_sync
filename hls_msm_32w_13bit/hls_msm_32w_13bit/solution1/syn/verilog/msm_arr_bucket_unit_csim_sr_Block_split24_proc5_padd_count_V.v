@@ -3,7 +3,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // ==============================================================
 `timescale 1 ns / 1 ps
-module msm_arr_bucket_unit_sr_Block_split28_proc9_padd_count_V_ram (addr0, ce0, d0, we0, q0, addr1, ce1, d1, we1,  clk);
+module msm_arr_bucket_unit_csim_sr_Block_split24_proc5_padd_count_V_ram (addr0, ce0, d0, we0, q0, addr1, ce1, d1, we1,  clk);
 
 parameter DWIDTH = 13;
 parameter AWIDTH = 4;
@@ -47,7 +47,7 @@ end
 endmodule
 
 `timescale 1 ns / 1 ps
-module msm_arr_bucket_unit_sr_Block_split28_proc9_padd_count_V(
+module msm_arr_bucket_unit_csim_sr_Block_split24_proc5_padd_count_V(
     reset,
     clk,
     address0,
@@ -77,7 +77,7 @@ input[DataWidth - 1:0] d1;
 
 
 
-msm_arr_bucket_unit_sr_Block_split28_proc9_padd_count_V_ram msm_arr_bucket_unit_sr_Block_split28_proc9_padd_count_V_ram_U(
+msm_arr_bucket_unit_csim_sr_Block_split24_proc5_padd_count_V_ram msm_arr_bucket_unit_csim_sr_Block_split24_proc5_padd_count_V_ram_U(
     .clk( clk ),
     .addr0( address0 ),
     .ce0( ce0 ),

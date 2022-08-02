@@ -7,9 +7,9 @@ library ieee;
 use ieee.std_logic_1164.all; 
 use ieee.std_logic_unsigned.all;
 
-entity msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram is 
+entity msm_arr_bucket_unit_csim_sr_Block_split24_proc5_B_V_1_ram is 
     generic(
-            DWIDTH     : integer := 32; 
+            DWIDTH     : integer := 39; 
             AWIDTH     : integer := 4; 
             MEM_SIZE    : integer := 16
     ); 
@@ -24,11 +24,11 @@ entity msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram is
 end entity; 
 
 
-architecture rtl of msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram is 
+architecture rtl of msm_arr_bucket_unit_csim_sr_Block_split24_proc5_B_V_1_ram is 
 
 signal addr0_tmp : std_logic_vector(AWIDTH-1 downto 0); 
 type mem_array is array (0 to MEM_SIZE-1) of std_logic_vector (DWIDTH-1 downto 0); 
-shared variable ram : mem_array;
+shared variable ram0 : mem_array;
 
 
 begin 
@@ -50,9 +50,9 @@ p_memory_access_0: process (clk)
 begin 
     if (clk'event and clk = '1') then
         if (ce0 = '1') then 
-            q0 <= ram(CONV_INTEGER(addr0_tmp));
+            q0 <= ram0(CONV_INTEGER(addr0_tmp));
             if (we0 = '1') then 
-                ram(CONV_INTEGER(addr0_tmp)) := d0; 
+                ram0(CONV_INTEGER(addr0_tmp)) := d0; 
             end if;
         end if;
     end if;
@@ -64,9 +64,9 @@ end rtl;
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity msm_arr_bucket_unit_sr_Block_split28_proc9_bcount is
+entity msm_arr_bucket_unit_csim_sr_Block_split24_proc5_B_V_1 is
     generic (
-        DataWidth : INTEGER := 32;
+        DataWidth : INTEGER := 39;
         AddressRange : INTEGER := 16;
         AddressWidth : INTEGER := 4);
     port (
@@ -79,8 +79,8 @@ entity msm_arr_bucket_unit_sr_Block_split28_proc9_bcount is
         q0 : OUT STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0));
 end entity;
 
-architecture arch of msm_arr_bucket_unit_sr_Block_split28_proc9_bcount is
-    component msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram is
+architecture arch of msm_arr_bucket_unit_csim_sr_Block_split24_proc5_B_V_1 is
+    component msm_arr_bucket_unit_csim_sr_Block_split24_proc5_B_V_1_ram is
         port (
             clk : IN STD_LOGIC;
             addr0 : IN STD_LOGIC_VECTOR;
@@ -93,7 +93,7 @@ architecture arch of msm_arr_bucket_unit_sr_Block_split28_proc9_bcount is
 
 
 begin
-    msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram_U :  component msm_arr_bucket_unit_sr_Block_split28_proc9_bcount_ram
+    msm_arr_bucket_unit_csim_sr_Block_split24_proc5_B_V_1_ram_U :  component msm_arr_bucket_unit_csim_sr_Block_split24_proc5_B_V_1_ram
     port map (
         clk => clk,
         addr0 => address0,
