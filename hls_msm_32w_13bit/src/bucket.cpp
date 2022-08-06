@@ -220,20 +220,27 @@ void bucket_unit_csim_sr(coeff_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_
   }
 
     // ---- Padd operations ----
+    point_add_unit(CFIFO, BFIFO_2);
+}
+
+void point_add_unit(hls::stream<dbl_bn_coord_k_t> &CFIFO, hls::stream<bn_coord_k_t> &BFIFO_2){
+    #pragma HLS pipeline enable_flush
+
+    int loop_3_iter = 0;
     bn128_p sum(0, 1, 0);
     coeff_t p1_x, p1_y, p1_z, p2_x, p2_y, p2_z;
-    // if (loop_3_iter < num_padd_ops && !CFIFO.empty())
-    for(int i=0;i<num_padd_ops;i++) {
-        #pragma HLS pipeline enable_flush
+    for(int i=0;i<123;i++) {
       (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO.read();
       std::cout << "[padd_" << loop_3_iter << "] " << p1_x << " " << p1_y << " "
                 << p1_z << " " << p2_x << " " << p2_y << " " << p2_z << "\n";
       bn128_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-      sum = padd(a, b);
+      // sum = padd(a, b);
+      sum.x = p1_x + p2_x;
+      sum.y = p1_y + p2_y;
+      sum.z = p1_z + p2_z;
       BFIFO_2.write((nibble_K, sum.x, sum.y, sum.z));
       loop_3_iter++;
     }
-  
 }
 
 void bucket_unit_sr(coeff_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1,

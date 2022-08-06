@@ -5,5 +5,5 @@
 
 void bucket_unit(coeff_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[30], coeff_t count_B[16]);
 void bucket_unit_csim(coeff_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[30], coeff_t count_B[16]);
-
+void point_add_unit(hls::stream<dbl_bn_coord_k_t> &CFIFO, hls::stream<bn_coord_k_t> &BFIFO_2);
 #endif
