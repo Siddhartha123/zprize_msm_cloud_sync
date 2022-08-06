@@ -99,41 +99,35 @@ wire   [42:0] bucket_unit_csim_sr_Block_split24_proc5_U0_BFIFO_2_din;
 wire    bucket_unit_csim_sr_Block_split24_proc5_U0_BFIFO_2_write;
 wire   [81:0] bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_din;
 wire    bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_write;
-wire   [12:0] bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_din;
-wire    bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_write;
 wire    ap_sync_continue;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_start;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_done;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_continue;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_idle;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_ready;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_num_padd_ops_read;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_CFIFO_read;
-wire   [42:0] bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_din;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_write;
+wire    point_add_unit_U0_ap_start;
+wire    point_add_unit_U0_ap_done;
+wire    point_add_unit_U0_ap_continue;
+wire    point_add_unit_U0_ap_idle;
+wire    point_add_unit_U0_ap_ready;
+wire   [42:0] point_add_unit_U0_BFIFO_2_din;
+wire    point_add_unit_U0_BFIFO_2_write;
+wire    point_add_unit_U0_CFIFO_read;
 wire    BFIFO_2_full_n;
 wire   [42:0] BFIFO_2_dout;
 wire    BFIFO_2_empty_n;
 wire    CFIFO_full_n;
 wire   [81:0] CFIFO_dout;
 wire    CFIFO_empty_n;
-wire    num_padd_ops_c_full_n;
-wire   [12:0] num_padd_ops_c_dout;
-wire    num_padd_ops_c_empty_n;
 wire    ap_sync_done;
 wire    ap_sync_ready;
-wire   [0:0] start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_din;
-wire    start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_full_n;
-wire   [0:0] start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_dout;
-wire    start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_empty_n;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_start_full_n;
-wire    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_start_write;
+wire   [0:0] start_for_point_add_unit_U0_din;
+wire    start_for_point_add_unit_U0_full_n;
+wire   [0:0] start_for_point_add_unit_U0_dout;
+wire    start_for_point_add_unit_U0_empty_n;
+wire    point_add_unit_U0_start_full_n;
+wire    point_add_unit_U0_start_write;
 
 msm_arr_bucket_unit_csim_sr_Block_split24_proc5 bucket_unit_csim_sr_Block_split24_proc5_U0(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
     .ap_start(bucket_unit_csim_sr_Block_split24_proc5_U0_ap_start),
-    .start_full_n(start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_full_n),
+    .start_full_n(start_for_point_add_unit_U0_full_n),
     .ap_done(bucket_unit_csim_sr_Block_split24_proc5_U0_ap_done),
     .ap_continue(bucket_unit_csim_sr_Block_split24_proc5_U0_ap_continue),
     .ap_idle(bucket_unit_csim_sr_Block_split24_proc5_U0_ap_idle),
@@ -163,29 +157,23 @@ msm_arr_bucket_unit_csim_sr_Block_split24_proc5 bucket_unit_csim_sr_Block_split2
     .BFIFO_2_write(bucket_unit_csim_sr_Block_split24_proc5_U0_BFIFO_2_write),
     .CFIFO_din(bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_din),
     .CFIFO_full_n(CFIFO_full_n),
-    .CFIFO_write(bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_write),
-    .num_padd_ops_out_din(bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_din),
-    .num_padd_ops_out_full_n(num_padd_ops_c_full_n),
-    .num_padd_ops_out_write(bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_write)
+    .CFIFO_write(bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_write)
 );
 
-msm_arr_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6 bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0(
+msm_arr_point_add_unit point_add_unit_U0(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_start),
-    .ap_done(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_done),
-    .ap_continue(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_continue),
-    .ap_idle(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_idle),
-    .ap_ready(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_ready),
-    .num_padd_ops_dout(num_padd_ops_c_dout),
-    .num_padd_ops_empty_n(num_padd_ops_c_empty_n),
-    .num_padd_ops_read(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_num_padd_ops_read),
+    .ap_start(point_add_unit_U0_ap_start),
+    .ap_done(point_add_unit_U0_ap_done),
+    .ap_continue(point_add_unit_U0_ap_continue),
+    .ap_idle(point_add_unit_U0_ap_idle),
+    .ap_ready(point_add_unit_U0_ap_ready),
+    .BFIFO_2_din(point_add_unit_U0_BFIFO_2_din),
+    .BFIFO_2_full_n(BFIFO_2_full_n),
+    .BFIFO_2_write(point_add_unit_U0_BFIFO_2_write),
     .CFIFO_dout(CFIFO_dout),
     .CFIFO_empty_n(CFIFO_empty_n),
-    .CFIFO_read(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_CFIFO_read),
-    .BFIFO_2_din(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_din),
-    .BFIFO_2_full_n(BFIFO_2_full_n),
-    .BFIFO_2_write(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_write)
+    .CFIFO_read(point_add_unit_U0_CFIFO_read)
 );
 
 msm_arr_fifo_w43_d15_S BFIFO_2_U(
@@ -193,9 +181,9 @@ msm_arr_fifo_w43_d15_S BFIFO_2_U(
     .reset(ap_rst),
     .if_read_ce(1'b1),
     .if_write_ce(1'b1),
-    .if_din(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_din),
+    .if_din(point_add_unit_U0_BFIFO_2_din),
     .if_full_n(BFIFO_2_full_n),
-    .if_write(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_write),
+    .if_write(point_add_unit_U0_BFIFO_2_write),
     .if_dout(BFIFO_2_dout),
     .if_empty_n(BFIFO_2_empty_n),
     .if_read(bucket_unit_csim_sr_Block_split24_proc5_U0_BFIFO_2_read)
@@ -211,33 +199,20 @@ msm_arr_fifo_w82_d48_A CFIFO_U(
     .if_write(bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_write),
     .if_dout(CFIFO_dout),
     .if_empty_n(CFIFO_empty_n),
-    .if_read(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_CFIFO_read)
+    .if_read(point_add_unit_U0_CFIFO_read)
 );
 
-msm_arr_fifo_w13_d2_S num_padd_ops_c_U(
+msm_arr_start_for_point_add_unit_U0 start_for_point_add_unit_U0_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
     .if_write_ce(1'b1),
-    .if_din(bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_din),
-    .if_full_n(num_padd_ops_c_full_n),
-    .if_write(bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_write),
-    .if_dout(num_padd_ops_c_dout),
-    .if_empty_n(num_padd_ops_c_empty_n),
-    .if_read(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_num_padd_ops_read)
-);
-
-msm_arr_start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0 start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .if_read_ce(1'b1),
-    .if_write_ce(1'b1),
-    .if_din(start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_din),
-    .if_full_n(start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_full_n),
+    .if_din(start_for_point_add_unit_U0_din),
+    .if_full_n(start_for_point_add_unit_U0_full_n),
     .if_write(bucket_unit_csim_sr_Block_split24_proc5_U0_start_write),
-    .if_dout(start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_dout),
-    .if_empty_n(start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_empty_n),
-    .if_read(bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_ready)
+    .if_dout(start_for_point_add_unit_U0_dout),
+    .if_empty_n(start_for_point_add_unit_U0_empty_n),
+    .if_read(point_add_unit_U0_ap_ready)
 );
 
 assign BFIFO_1176_read = bucket_unit_csim_sr_Block_split24_proc5_U0_BFIFO_1176_read;
@@ -260,27 +235,19 @@ assign B_i_we1 = bucket_unit_csim_sr_Block_split24_proc5_U0_B_i_we1;
 
 assign ap_done = ap_sync_done;
 
-assign ap_idle = (bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_idle & bucket_unit_csim_sr_Block_split24_proc5_U0_ap_idle);
+assign ap_idle = (point_add_unit_U0_ap_idle & bucket_unit_csim_sr_Block_split24_proc5_U0_ap_idle);
 
 assign ap_ready = bucket_unit_csim_sr_Block_split24_proc5_U0_ap_ready;
 
 assign ap_sync_continue = (ap_sync_done & ap_continue);
 
-assign ap_sync_done = (bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_done & bucket_unit_csim_sr_Block_split24_proc5_U0_ap_done);
+assign ap_sync_done = (point_add_unit_U0_ap_done & bucket_unit_csim_sr_Block_split24_proc5_U0_ap_done);
 
 assign ap_sync_ready = bucket_unit_csim_sr_Block_split24_proc5_U0_ap_ready;
 
 assign bucket_unit_csim_sr_Block_split24_proc5_U0_ap_continue = ap_sync_continue;
 
 assign bucket_unit_csim_sr_Block_split24_proc5_U0_ap_start = ap_start;
-
-assign bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_continue = ap_sync_continue;
-
-assign bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_start = start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_empty_n;
-
-assign bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_start_full_n = 1'b1;
-
-assign bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_start_write = 1'b0;
 
 assign count_B_address0 = bucket_unit_csim_sr_Block_split24_proc5_U0_count_B_address0;
 
@@ -298,6 +265,14 @@ assign count_B_we0 = 1'b0;
 
 assign count_B_we1 = 1'b0;
 
-assign start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_din = 1'b1;
+assign point_add_unit_U0_ap_continue = ap_sync_continue;
+
+assign point_add_unit_U0_ap_start = start_for_point_add_unit_U0_empty_n;
+
+assign point_add_unit_U0_start_full_n = 1'b1;
+
+assign point_add_unit_U0_start_write = 1'b0;
+
+assign start_for_point_add_unit_U0_din = 1'b1;
 
 endmodule //msm_arr_bucket_unit_csim_sr

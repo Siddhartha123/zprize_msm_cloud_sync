@@ -78,35 +78,29 @@ attribute shreg_extract : string;
     signal bucket_unit_csim_sr_Block_split24_proc5_U0_BFIFO_2_write : STD_LOGIC;
     signal bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_din : STD_LOGIC_VECTOR (81 downto 0);
     signal bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_write : STD_LOGIC;
-    signal bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_din : STD_LOGIC_VECTOR (12 downto 0);
-    signal bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_write : STD_LOGIC;
     signal ap_sync_continue : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_start : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_done : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_continue : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_idle : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_ready : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_num_padd_ops_read : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_CFIFO_read : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_din : STD_LOGIC_VECTOR (42 downto 0);
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_write : STD_LOGIC;
+    signal point_add_unit_U0_ap_start : STD_LOGIC;
+    signal point_add_unit_U0_ap_done : STD_LOGIC;
+    signal point_add_unit_U0_ap_continue : STD_LOGIC;
+    signal point_add_unit_U0_ap_idle : STD_LOGIC;
+    signal point_add_unit_U0_ap_ready : STD_LOGIC;
+    signal point_add_unit_U0_BFIFO_2_din : STD_LOGIC_VECTOR (42 downto 0);
+    signal point_add_unit_U0_BFIFO_2_write : STD_LOGIC;
+    signal point_add_unit_U0_CFIFO_read : STD_LOGIC;
     signal BFIFO_2_full_n : STD_LOGIC;
     signal BFIFO_2_dout : STD_LOGIC_VECTOR (42 downto 0);
     signal BFIFO_2_empty_n : STD_LOGIC;
     signal CFIFO_full_n : STD_LOGIC;
     signal CFIFO_dout : STD_LOGIC_VECTOR (81 downto 0);
     signal CFIFO_empty_n : STD_LOGIC;
-    signal num_padd_ops_c_full_n : STD_LOGIC;
-    signal num_padd_ops_c_dout : STD_LOGIC_VECTOR (12 downto 0);
-    signal num_padd_ops_c_empty_n : STD_LOGIC;
     signal ap_sync_done : STD_LOGIC;
     signal ap_sync_ready : STD_LOGIC;
-    signal start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_din : STD_LOGIC_VECTOR (0 downto 0);
-    signal start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_full_n : STD_LOGIC;
-    signal start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_dout : STD_LOGIC_VECTOR (0 downto 0);
-    signal start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_empty_n : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_start_full_n : STD_LOGIC;
-    signal bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_start_write : STD_LOGIC;
+    signal start_for_point_add_unit_U0_din : STD_LOGIC_VECTOR (0 downto 0);
+    signal start_for_point_add_unit_U0_full_n : STD_LOGIC;
+    signal start_for_point_add_unit_U0_dout : STD_LOGIC_VECTOR (0 downto 0);
+    signal start_for_point_add_unit_U0_empty_n : STD_LOGIC;
+    signal point_add_unit_U0_start_full_n : STD_LOGIC;
+    signal point_add_unit_U0_start_write : STD_LOGIC;
 
     component msm_arr_bucket_unit_csim_sr_Block_split24_proc5 IS
     port (
@@ -143,14 +137,11 @@ attribute shreg_extract : string;
         BFIFO_2_write : OUT STD_LOGIC;
         CFIFO_din : OUT STD_LOGIC_VECTOR (81 downto 0);
         CFIFO_full_n : IN STD_LOGIC;
-        CFIFO_write : OUT STD_LOGIC;
-        num_padd_ops_out_din : OUT STD_LOGIC_VECTOR (12 downto 0);
-        num_padd_ops_out_full_n : IN STD_LOGIC;
-        num_padd_ops_out_write : OUT STD_LOGIC );
+        CFIFO_write : OUT STD_LOGIC );
     end component;
 
 
-    component msm_arr_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6 IS
+    component msm_arr_point_add_unit IS
     port (
         ap_clk : IN STD_LOGIC;
         ap_rst : IN STD_LOGIC;
@@ -159,15 +150,12 @@ attribute shreg_extract : string;
         ap_continue : IN STD_LOGIC;
         ap_idle : OUT STD_LOGIC;
         ap_ready : OUT STD_LOGIC;
-        num_padd_ops_dout : IN STD_LOGIC_VECTOR (12 downto 0);
-        num_padd_ops_empty_n : IN STD_LOGIC;
-        num_padd_ops_read : OUT STD_LOGIC;
-        CFIFO_dout : IN STD_LOGIC_VECTOR (81 downto 0);
-        CFIFO_empty_n : IN STD_LOGIC;
-        CFIFO_read : OUT STD_LOGIC;
         BFIFO_2_din : OUT STD_LOGIC_VECTOR (42 downto 0);
         BFIFO_2_full_n : IN STD_LOGIC;
-        BFIFO_2_write : OUT STD_LOGIC );
+        BFIFO_2_write : OUT STD_LOGIC;
+        CFIFO_dout : IN STD_LOGIC_VECTOR (81 downto 0);
+        CFIFO_empty_n : IN STD_LOGIC;
+        CFIFO_read : OUT STD_LOGIC );
     end component;
 
 
@@ -201,22 +189,7 @@ attribute shreg_extract : string;
     end component;
 
 
-    component msm_arr_fifo_w13_d2_S IS
-    port (
-        clk : IN STD_LOGIC;
-        reset : IN STD_LOGIC;
-        if_read_ce : IN STD_LOGIC;
-        if_write_ce : IN STD_LOGIC;
-        if_din : IN STD_LOGIC_VECTOR (12 downto 0);
-        if_full_n : OUT STD_LOGIC;
-        if_write : IN STD_LOGIC;
-        if_dout : OUT STD_LOGIC_VECTOR (12 downto 0);
-        if_empty_n : OUT STD_LOGIC;
-        if_read : IN STD_LOGIC );
-    end component;
-
-
-    component msm_arr_start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0 IS
+    component msm_arr_start_for_point_add_unit_U0 IS
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
@@ -238,7 +211,7 @@ begin
         ap_clk => ap_clk,
         ap_rst => ap_rst,
         ap_start => bucket_unit_csim_sr_Block_split24_proc5_U0_ap_start,
-        start_full_n => start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_full_n,
+        start_full_n => start_for_point_add_unit_U0_full_n,
         ap_done => bucket_unit_csim_sr_Block_split24_proc5_U0_ap_done,
         ap_continue => bucket_unit_csim_sr_Block_split24_proc5_U0_ap_continue,
         ap_idle => bucket_unit_csim_sr_Block_split24_proc5_U0_ap_idle,
@@ -268,29 +241,23 @@ begin
         BFIFO_2_write => bucket_unit_csim_sr_Block_split24_proc5_U0_BFIFO_2_write,
         CFIFO_din => bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_din,
         CFIFO_full_n => CFIFO_full_n,
-        CFIFO_write => bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_write,
-        num_padd_ops_out_din => bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_din,
-        num_padd_ops_out_full_n => num_padd_ops_c_full_n,
-        num_padd_ops_out_write => bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_write);
+        CFIFO_write => bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_write);
 
-    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0 : component msm_arr_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6
+    point_add_unit_U0 : component msm_arr_point_add_unit
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst,
-        ap_start => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_start,
-        ap_done => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_done,
-        ap_continue => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_continue,
-        ap_idle => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_idle,
-        ap_ready => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_ready,
-        num_padd_ops_dout => num_padd_ops_c_dout,
-        num_padd_ops_empty_n => num_padd_ops_c_empty_n,
-        num_padd_ops_read => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_num_padd_ops_read,
+        ap_start => point_add_unit_U0_ap_start,
+        ap_done => point_add_unit_U0_ap_done,
+        ap_continue => point_add_unit_U0_ap_continue,
+        ap_idle => point_add_unit_U0_ap_idle,
+        ap_ready => point_add_unit_U0_ap_ready,
+        BFIFO_2_din => point_add_unit_U0_BFIFO_2_din,
+        BFIFO_2_full_n => BFIFO_2_full_n,
+        BFIFO_2_write => point_add_unit_U0_BFIFO_2_write,
         CFIFO_dout => CFIFO_dout,
         CFIFO_empty_n => CFIFO_empty_n,
-        CFIFO_read => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_CFIFO_read,
-        BFIFO_2_din => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_din,
-        BFIFO_2_full_n => BFIFO_2_full_n,
-        BFIFO_2_write => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_write);
+        CFIFO_read => point_add_unit_U0_CFIFO_read);
 
     BFIFO_2_U : component msm_arr_fifo_w43_d15_S
     port map (
@@ -298,9 +265,9 @@ begin
         reset => ap_rst,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
-        if_din => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_din,
+        if_din => point_add_unit_U0_BFIFO_2_din,
         if_full_n => BFIFO_2_full_n,
-        if_write => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_BFIFO_2_write,
+        if_write => point_add_unit_U0_BFIFO_2_write,
         if_dout => BFIFO_2_dout,
         if_empty_n => BFIFO_2_empty_n,
         if_read => bucket_unit_csim_sr_Block_split24_proc5_U0_BFIFO_2_read);
@@ -316,33 +283,20 @@ begin
         if_write => bucket_unit_csim_sr_Block_split24_proc5_U0_CFIFO_write,
         if_dout => CFIFO_dout,
         if_empty_n => CFIFO_empty_n,
-        if_read => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_CFIFO_read);
+        if_read => point_add_unit_U0_CFIFO_read);
 
-    num_padd_ops_c_U : component msm_arr_fifo_w13_d2_S
+    start_for_point_add_unit_U0_U : component msm_arr_start_for_point_add_unit_U0
     port map (
         clk => ap_clk,
         reset => ap_rst,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
-        if_din => bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_din,
-        if_full_n => num_padd_ops_c_full_n,
-        if_write => bucket_unit_csim_sr_Block_split24_proc5_U0_num_padd_ops_out_write,
-        if_dout => num_padd_ops_c_dout,
-        if_empty_n => num_padd_ops_c_empty_n,
-        if_read => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_num_padd_ops_read);
-
-    start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_U : component msm_arr_start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0
-    port map (
-        clk => ap_clk,
-        reset => ap_rst,
-        if_read_ce => ap_const_logic_1,
-        if_write_ce => ap_const_logic_1,
-        if_din => start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_din,
-        if_full_n => start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_full_n,
+        if_din => start_for_point_add_unit_U0_din,
+        if_full_n => start_for_point_add_unit_U0_full_n,
         if_write => bucket_unit_csim_sr_Block_split24_proc5_U0_start_write,
-        if_dout => start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_dout,
-        if_empty_n => start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_empty_n,
-        if_read => bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_ready);
+        if_dout => start_for_point_add_unit_U0_dout,
+        if_empty_n => start_for_point_add_unit_U0_empty_n,
+        if_read => point_add_unit_U0_ap_ready);
 
 
 
@@ -357,17 +311,13 @@ begin
     B_i_we0 <= bucket_unit_csim_sr_Block_split24_proc5_U0_B_i_we0;
     B_i_we1 <= bucket_unit_csim_sr_Block_split24_proc5_U0_B_i_we1;
     ap_done <= ap_sync_done;
-    ap_idle <= (bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_idle and bucket_unit_csim_sr_Block_split24_proc5_U0_ap_idle);
+    ap_idle <= (point_add_unit_U0_ap_idle and bucket_unit_csim_sr_Block_split24_proc5_U0_ap_idle);
     ap_ready <= bucket_unit_csim_sr_Block_split24_proc5_U0_ap_ready;
     ap_sync_continue <= (ap_sync_done and ap_continue);
-    ap_sync_done <= (bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_done and bucket_unit_csim_sr_Block_split24_proc5_U0_ap_done);
+    ap_sync_done <= (point_add_unit_U0_ap_done and bucket_unit_csim_sr_Block_split24_proc5_U0_ap_done);
     ap_sync_ready <= bucket_unit_csim_sr_Block_split24_proc5_U0_ap_ready;
     bucket_unit_csim_sr_Block_split24_proc5_U0_ap_continue <= ap_sync_continue;
     bucket_unit_csim_sr_Block_split24_proc5_U0_ap_start <= ap_start;
-    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_continue <= ap_sync_continue;
-    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_ap_start <= start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_empty_n;
-    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_start_full_n <= ap_const_logic_1;
-    bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_start_write <= ap_const_logic_0;
     count_B_address0 <= bucket_unit_csim_sr_Block_split24_proc5_U0_count_B_address0;
     count_B_address1 <= ap_const_lv4_0;
     count_B_ce0 <= bucket_unit_csim_sr_Block_split24_proc5_U0_count_B_ce0;
@@ -376,5 +326,9 @@ begin
     count_B_d1 <= ap_const_lv13_0;
     count_B_we0 <= ap_const_logic_0;
     count_B_we1 <= ap_const_logic_0;
-    start_for_bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6_U0_din <= (0=>ap_const_logic_1, others=>'-');
+    point_add_unit_U0_ap_continue <= ap_sync_continue;
+    point_add_unit_U0_ap_start <= start_for_point_add_unit_U0_empty_n;
+    point_add_unit_U0_start_full_n <= ap_const_logic_1;
+    point_add_unit_U0_start_write <= ap_const_logic_0;
+    start_for_point_add_unit_U0_din <= (0=>ap_const_logic_1, others=>'-');
 end behav;

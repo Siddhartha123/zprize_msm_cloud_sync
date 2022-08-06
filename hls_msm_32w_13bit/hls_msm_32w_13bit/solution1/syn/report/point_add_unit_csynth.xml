@@ -8,59 +8,38 @@
 <unit>ns</unit>
 <ProductFamily>virtexuplus</ProductFamily>
 <Part>xcvu9p-flga2104-2-i</Part>
-<TopModelName>bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6</TopModelName>
+<TopModelName>point_add_unit</TopModelName>
 <TargetClockPeriod>4.00</TargetClockPeriod>
 <ClockUncertainty>1.08</ClockUncertainty>
+<TargetInitiationInterval>4294967295</TargetInitiationInterval>
 <FlowTarget>vivado</FlowTarget>
 </UserAssignments>
 
 <PerformanceEstimates>
-<PipelineType>none</PipelineType>
+<PipelineType>yes(flp)</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
 <EstimatedClockPeriod>1.815</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>2</Best-caseLatency>
-<Average-caseLatency>undef</Average-caseLatency>
-<Worst-caseLatency>8194</Worst-caseLatency>
-<Best-caseRealTimeLatency>8.000 ns</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>32.776 us</Worst-caseRealTimeLatency>
-<Interval-min>2</Interval-min>
-<Interval-max>8194</Interval-max>
+<Best-caseLatency>123</Best-caseLatency>
+<Average-caseLatency>123</Average-caseLatency>
+<Worst-caseLatency>123</Worst-caseLatency>
+<Best-caseRealTimeLatency>0.492 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>0.492 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>0.492 us</Worst-caseRealTimeLatency>
+<PipelineInitiationInterval>123</PipelineInitiationInterval>
+<PipelineDepth>124</PipelineDepth>
+<Interval-min>123</Interval-min>
+<Interval-max>123</Interval-max>
 </SummaryOfOverallLatency>
-<SummaryOfLoopLatency>
-<VITIS_LOOP_226_5>
-<TripCount>
-<range>
-<min>0</min>
-<max>8191</max>
-</range>
-</TripCount>
-<Latency>
-<range>
-<min>0</min>
-<max>8192</max>
-</range>
-</Latency>
-<AbsoluteTimeLatency>
-<range>
-<min>0</min>
-<max>32768</max>
-</range>
-</AbsoluteTimeLatency>
-<PipelineII>1</PipelineII>
-<PipelineDepth>3</PipelineDepth>
-</VITIS_LOOP_226_5>
-</SummaryOfLoopLatency>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
-<FF>78</FF>
-<LUT>187</LUT>
+<FF>1755</FF>
+<LUT>3833</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP>0</DSP>
 <URAM>0</URAM>
@@ -77,7 +56,7 @@
 <InterfaceSummary>
 <RtlPorts>
 <name>ap_clk</name>
-<Object>bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6</Object>
+<Object>point_add_unit</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -88,7 +67,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_rst</name>
-<Object>bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6</Object>
+<Object>point_add_unit</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -99,7 +78,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_start</name>
-<Object>bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6</Object>
+<Object>point_add_unit</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -110,7 +89,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_done</name>
-<Object>bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6</Object>
+<Object>point_add_unit</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -121,7 +100,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_continue</name>
-<Object>bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6</Object>
+<Object>point_add_unit</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -132,7 +111,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_idle</name>
-<Object>bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6</Object>
+<Object>point_add_unit</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -143,7 +122,7 @@
 </RtlPorts>
 <RtlPorts>
 <name>ap_ready</name>
-<Object>bucket_unit_csim_sr_Loop_VITIS_LOOP_226_5_proc6</Object>
+<Object>point_add_unit</Object>
 <Type>return value</Type>
 <Scope></Scope>
 <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -153,19 +132,19 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>num_padd_ops_dout</name>
-<Object>num_padd_ops</Object>
+<name>BFIFO_2_din</name>
+<Object>BFIFO_2</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
 <IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>13</Bits>
+<Dir>out</Dir>
+<Bits>43</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>num_padd_ops_empty_n</name>
-<Object>num_padd_ops</Object>
+<name>BFIFO_2_full_n</name>
+<Object>BFIFO_2</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -175,8 +154,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>num_padd_ops_read</name>
-<Object>num_padd_ops</Object>
+<name>BFIFO_2_write</name>
+<Object>BFIFO_2</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -210,39 +189,6 @@
 <RtlPorts>
 <name>CFIFO_read</name>
 <Object>CFIFO</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>ap_fifo</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>control</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>BFIFO_2_din</name>
-<Object>BFIFO_2</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>ap_fifo</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>out</Dir>
-<Bits>43</Bits>
-<Attribute>control</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>BFIFO_2_full_n</name>
-<Object>BFIFO_2</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>ap_fifo</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
-<Bits>1</Bits>
-<Attribute>control</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>BFIFO_2_write</name>
-<Object>BFIFO_2</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
