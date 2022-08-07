@@ -11,7 +11,7 @@
 <TopModelName>padd</TopModelName>
 <TargetClockPeriod>4.00</TargetClockPeriod>
 <ClockUncertainty>1.08</ClockUncertainty>
-<TargetInitiationInterval>1</TargetInitiationInterval>
+<TargetInitiationInterval>4294967295</TargetInitiationInterval>
 <FlowTarget>vivado</FlowTarget>
 </UserAssignments>
 
