@@ -15,7 +15,7 @@
         <PipelineType>none</PipelineType>
         <SummaryOfTimingAnalysis>
             <unit>ns</unit>
-            <EstimatedClockPeriod>3.127</EstimatedClockPeriod>
+            <EstimatedClockPeriod>2.833</EstimatedClockPeriod>
         </SummaryOfTimingAnalysis>
         <SummaryOfOverallLatency>
             <unit>clock cycles</unit>
@@ -55,9 +55,9 @@
     <AreaEstimates>
         <Resources>
             <BRAM_18K>4</BRAM_18K>
-            <FF>3417</FF>
-            <LUT>6795</LUT>
-            <DSP>0</DSP>
+            <DSP>23</DSP>
+            <FF>8416</FF>
+            <LUT>13887</LUT>
             <URAM>0</URAM>
         </Resources>
         <AvailableResources>
@@ -381,22 +381,44 @@
             <ModuleName>msm_arr</ModuleName>
             <InstancesList>
                 <Instance>
-                    <InstName>grp_bucket_unit_csim_sr_fu_430</InstName>
-                    <ModuleName>bucket_unit_csim_sr</ModuleName>
+                    <InstName>grp_bucket_unit_fu_432</InstName>
+                    <ModuleName>bucket_unit</ModuleName>
                     <IsCompInst>true</IsCompInst>
-                    <ID>430</ID>
+                    <ID>432</ID>
                     <InstancesList>
                         <Instance>
-                            <InstName>point_add_unit_U0</InstName>
-                            <ModuleName>point_add_unit</ModuleName>
+                            <InstName>bucket_unit_Loop_VITIS_LOOP_440_3_proc17_U0</InstName>
+                            <ModuleName>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</ModuleName>
                             <IsCompInst>true</IsCompInst>
-                            <ID>58</ID>
+                            <ID>182</ID>
+                            <InstancesList>
+                                <Instance>
+                                    <InstName>grp_padd_fu_110</InstName>
+                                    <ModuleName>padd</ModuleName>
+                                    <IsCompInst>true</IsCompInst>
+                                    <ID>110</ID>
+                                    <InstancesList>
+                                        <Instance>
+                                            <InstName>grp_pdouble_fu_102</InstName>
+                                            <ModuleName>pdouble</ModuleName>
+                                            <IsCompInst>true</IsCompInst>
+                                            <ID>102</ID>
+                                        </Instance>
+                                    </InstancesList>
+                                </Instance>
+                            </InstancesList>
                         </Instance>
                         <Instance>
-                            <InstName>bucket_unit_csim_sr_Block_split24_proc5_U0</InstName>
-                            <ModuleName>bucket_unit_csim_sr_Block_split24_proc5</ModuleName>
+                            <InstName>bucket_unit_Loop_VITIS_LOOP_430_2_proc16_U0</InstName>
+                            <ModuleName>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</ModuleName>
                             <IsCompInst>true</IsCompInst>
-                            <ID>64</ID>
+                            <ID>189</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>bucket_unit_Loop_1_proc15_U0</InstName>
+                            <ModuleName>bucket_unit_Loop_1_proc15</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>213</ID>
                         </Instance>
                     </InstancesList>
                 </Instance>
@@ -405,12 +427,12 @@
     </RTLDesignHierarchy>
     <ModuleInformation>
         <Module>
-            <Name>bucket_unit_csim_sr_Block_split24_proc5</Name>
+            <Name>bucket_unit_Loop_1_proc15</Name>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>4.00</TargetClockPeriod>
                     <ClockUncertainty>1.08</ClockUncertainty>
-                    <EstimatedClockPeriod>3.127</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.789</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -429,24 +451,16 @@
                         <Latency>16</Latency>
                         <AbsoluteTimeLatency>64.000 ns</AbsoluteTimeLatency>
                         <PipelineII>1</PipelineII>
-                        <PipelineDepth>1</PipelineDepth>
+                        <PipelineDepth>2</PipelineDepth>
                     </Loop1>
-                    <Loop2>
-                        <Name>Loop 2</Name>
-                        <TripCount>16</TripCount>
-                        <Latency>16</Latency>
-                        <AbsoluteTimeLatency>64.000 ns</AbsoluteTimeLatency>
-                        <PipelineII>1</PipelineII>
-                        <PipelineDepth>1</PipelineDepth>
-                    </Loop2>
-                    <VITIS_LOOP_142_1>
-                        <Name>VITIS_LOOP_142_1</Name>
+                    <VITIS_LOOP_384_1>
+                        <Name>VITIS_LOOP_384_1</Name>
                         <TripCount>undef</TripCount>
                         <Latency>undef</Latency>
                         <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                        <PipelineII>20</PipelineII>
-                        <PipelineDepth>22</PipelineDepth>
-                    </VITIS_LOOP_142_1>
+                        <PipelineII>2</PipelineII>
+                        <PipelineDepth>4</PipelineDepth>
+                    </VITIS_LOOP_384_1>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
@@ -454,10 +468,10 @@
                     <BRAM_18K>0</BRAM_18K>
                     <AVAIL_BRAM>4320</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
-                    <FF>911</FF>
+                    <FF>264</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>1914</LUT>
+                    <LUT>858</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <DSP>0</DSP>
@@ -471,7 +485,7 @@
             <InterfaceSummary>
                 <RtlPorts>
                     <name>ap_clk</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -482,7 +496,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_rst</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -493,7 +507,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_start</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -504,7 +518,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>start_full_n</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -515,7 +529,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_done</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -526,7 +540,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_continue</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -537,7 +551,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_idle</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -548,7 +562,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_ready</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -559,7 +573,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>start_out</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -570,7 +584,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>start_write</name>
-                    <Object>bucket_unit_csim_sr_Block_.split24_proc5</Object>
+                    <Object>bucket_unit_Loop_1_proc15</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -778,19 +792,19 @@
                     <Attribute>control</Attribute>
                 </RtlPorts>
                 <RtlPorts>
-                    <name>BFIFO_2_din</name>
-                    <Object>BFIFO_2</Object>
+                    <name>B_0_din</name>
+                    <Object>B_0</Object>
                     <Type>pointer</Type>
                     <Scope/>
                     <IOProtocol>ap_fifo</IOProtocol>
                     <IOConfig/>
                     <Dir>out</Dir>
-                    <Bits>43</Bits>
+                    <Bits>39</Bits>
                     <Attribute>control</Attribute>
                 </RtlPorts>
                 <RtlPorts>
-                    <name>BFIFO_2_full_n</name>
-                    <Object>BFIFO_2</Object>
+                    <name>B_0_full_n</name>
+                    <Object>B_0</Object>
                     <Type>pointer</Type>
                     <Scope/>
                     <IOProtocol>ap_fifo</IOProtocol>
@@ -800,8 +814,768 @@
                     <Attribute>control</Attribute>
                 </RtlPorts>
                 <RtlPorts>
-                    <name>BFIFO_2_write</name>
-                    <Object>BFIFO_2</Object>
+                    <name>B_0_write</name>
+                    <Object>B_0</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_1_din</name>
+                    <Object>B_1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_1_full_n</name>
+                    <Object>B_1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_1_write</name>
+                    <Object>B_1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_2_din</name>
+                    <Object>B_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_2_full_n</name>
+                    <Object>B_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_2_write</name>
+                    <Object>B_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_3_din</name>
+                    <Object>B_3</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_3_full_n</name>
+                    <Object>B_3</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_3_write</name>
+                    <Object>B_3</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_4_din</name>
+                    <Object>B_4</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_4_full_n</name>
+                    <Object>B_4</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_4_write</name>
+                    <Object>B_4</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_5_din</name>
+                    <Object>B_5</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_5_full_n</name>
+                    <Object>B_5</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_5_write</name>
+                    <Object>B_5</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_6_din</name>
+                    <Object>B_6</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_6_full_n</name>
+                    <Object>B_6</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_6_write</name>
+                    <Object>B_6</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_7_din</name>
+                    <Object>B_7</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_7_full_n</name>
+                    <Object>B_7</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_7_write</name>
+                    <Object>B_7</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_8_din</name>
+                    <Object>B_8</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_8_full_n</name>
+                    <Object>B_8</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_8_write</name>
+                    <Object>B_8</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_9_din</name>
+                    <Object>B_9</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_9_full_n</name>
+                    <Object>B_9</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_9_write</name>
+                    <Object>B_9</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_10_din</name>
+                    <Object>B_10</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_10_full_n</name>
+                    <Object>B_10</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_10_write</name>
+                    <Object>B_10</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_11_din</name>
+                    <Object>B_11</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_11_full_n</name>
+                    <Object>B_11</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_11_write</name>
+                    <Object>B_11</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_12_din</name>
+                    <Object>B_12</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_12_full_n</name>
+                    <Object>B_12</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_12_write</name>
+                    <Object>B_12</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_13_din</name>
+                    <Object>B_13</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_13_full_n</name>
+                    <Object>B_13</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_13_write</name>
+                    <Object>B_13</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_14_din</name>
+                    <Object>B_14</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_14_full_n</name>
+                    <Object>B_14</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_14_write</name>
+                    <Object>B_14</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_15_din</name>
+                    <Object>B_15</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_15_full_n</name>
+                    <Object>B_15</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_15_write</name>
+                    <Object>B_15</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>OVFIFO_din</name>
+                    <Object>OVFIFO</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>43</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>OVFIFO_full_n</name>
+                    <Object>OVFIFO</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>OVFIFO_write</name>
+                    <Object>OVFIFO</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_out_din</name>
+                    <Object>num_padd_ops_out</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_out_full_n</name>
+                    <Object>num_padd_ops_out</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_out_write</name>
+                    <Object>num_padd_ops_out</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+            </InterfaceSummary>
+        </Module>
+        <Module>
+            <Name>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>4.00</TargetClockPeriod>
+                    <ClockUncertainty>1.08</ClockUncertainty>
+                    <EstimatedClockPeriod>2.692</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>2</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>8195</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>8.000 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>32.780 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>2 ~ 8195</PipelineInitiationInterval>
+                    <PipelineType>none</PipelineType>
+                </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <VITIS_LOOP_430_2>
+                        <Name>VITIS_LOOP_430_2</Name>
+                        <TripCount>
+                            <range>
+                                <min>0</min>
+                                <max>8191</max>
+                            </range>
+                        </TripCount>
+                        <Latency>0 ~ 8193</Latency>
+                        <AbsoluteTimeLatency>0 ns ~ 32.772 us</AbsoluteTimeLatency>
+                        <PipelineII>1</PipelineII>
+                        <PipelineDepth>4</PipelineDepth>
+                    </VITIS_LOOP_430_2>
+                </SummaryOfLoopLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <FF>311</FF>
+                    <AVAIL_FF>2364480</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>434</LUT>
+                    <AVAIL_LUT>1182240</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>4320</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>960</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <InterfaceSummary>
+                <RtlPorts>
+                    <name>ap_clk</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_rst</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_start</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>start_full_n</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_done</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_continue</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_idle</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_ready</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>start_out</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>start_write</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_430_2_proc16</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_dout</name>
+                    <Object>num_padd_ops</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_empty_n</name>
+                    <Object>num_padd_ops</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_read</name>
+                    <Object>num_padd_ops</Object>
                     <Type>pointer</Type>
                     <Scope/>
                     <IOProtocol>ap_fifo</IOProtocol>
@@ -843,43 +1617,637 @@
                     <Bits>1</Bits>
                     <Attribute>control</Attribute>
                 </RtlPorts>
+                <RtlPorts>
+                    <name>B_0_dout</name>
+                    <Object>B_0</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_0_empty_n</name>
+                    <Object>B_0</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_0_read</name>
+                    <Object>B_0</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>OVFIFO_dout</name>
+                    <Object>OVFIFO</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>43</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>OVFIFO_empty_n</name>
+                    <Object>OVFIFO</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>OVFIFO_read</name>
+                    <Object>OVFIFO</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_1_dout</name>
+                    <Object>B_1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_1_empty_n</name>
+                    <Object>B_1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_1_read</name>
+                    <Object>B_1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_2_dout</name>
+                    <Object>B_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_2_empty_n</name>
+                    <Object>B_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_2_read</name>
+                    <Object>B_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_3_dout</name>
+                    <Object>B_3</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_3_empty_n</name>
+                    <Object>B_3</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_3_read</name>
+                    <Object>B_3</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_4_dout</name>
+                    <Object>B_4</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_4_empty_n</name>
+                    <Object>B_4</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_4_read</name>
+                    <Object>B_4</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_5_dout</name>
+                    <Object>B_5</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_5_empty_n</name>
+                    <Object>B_5</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_5_read</name>
+                    <Object>B_5</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_6_dout</name>
+                    <Object>B_6</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_6_empty_n</name>
+                    <Object>B_6</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_6_read</name>
+                    <Object>B_6</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_7_dout</name>
+                    <Object>B_7</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_7_empty_n</name>
+                    <Object>B_7</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_7_read</name>
+                    <Object>B_7</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_8_dout</name>
+                    <Object>B_8</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_8_empty_n</name>
+                    <Object>B_8</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_8_read</name>
+                    <Object>B_8</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_9_dout</name>
+                    <Object>B_9</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_9_empty_n</name>
+                    <Object>B_9</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_9_read</name>
+                    <Object>B_9</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_10_dout</name>
+                    <Object>B_10</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_10_empty_n</name>
+                    <Object>B_10</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_10_read</name>
+                    <Object>B_10</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_11_dout</name>
+                    <Object>B_11</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_11_empty_n</name>
+                    <Object>B_11</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_11_read</name>
+                    <Object>B_11</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_12_dout</name>
+                    <Object>B_12</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_12_empty_n</name>
+                    <Object>B_12</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_12_read</name>
+                    <Object>B_12</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_13_dout</name>
+                    <Object>B_13</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_13_empty_n</name>
+                    <Object>B_13</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_13_read</name>
+                    <Object>B_13</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_14_dout</name>
+                    <Object>B_14</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_14_empty_n</name>
+                    <Object>B_14</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_14_read</name>
+                    <Object>B_14</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_15_dout</name>
+                    <Object>B_15</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>39</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_15_empty_n</name>
+                    <Object>B_15</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>B_15_read</name>
+                    <Object>B_15</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_out_din</name>
+                    <Object>num_padd_ops_out</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_out_full_n</name>
+                    <Object>num_padd_ops_out</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>num_padd_ops_out_write</name>
+                    <Object>num_padd_ops_out</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
             </InterfaceSummary>
         </Module>
         <Module>
-            <Name>point_add_unit</Name>
+            <Name>pdouble</Name>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>4.00</TargetClockPeriod>
                     <ClockUncertainty>1.08</ClockUncertainty>
-                    <TargetInitiationInterval>4294967295</TargetInitiationInterval>
-                    <EstimatedClockPeriod>1.815</EstimatedClockPeriod>
+                    <TargetInitiationInterval>1</TargetInitiationInterval>
+                    <EstimatedClockPeriod>2.814</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
-                    <Best-caseLatency>123</Best-caseLatency>
-                    <Average-caseLatency>123</Average-caseLatency>
-                    <Worst-caseLatency>123</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>0.492 us</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>0.492 us</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>0.492 us</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>123</PipelineInitiationInterval>
-                    <PipelineDepth>124</PipelineDepth>
-                    <PipelineType>yes(flp)</PipelineType>
+                    <Best-caseLatency>22</Best-caseLatency>
+                    <Average-caseLatency>22</Average-caseLatency>
+                    <Worst-caseLatency>22</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>88.000 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>88.000 ns</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>88.000 ns</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>1</PipelineInitiationInterval>
+                    <PipelineDepth>23</PipelineDepth>
+                    <PipelineType>yes</PipelineType>
                 </SummaryOfOverallLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>1755</FF>
+                    <DSP>7</DSP>
+                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>1217</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>3833</LUT>
+                    <LUT>3069</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
                     <AVAIL_BRAM>4320</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
-                    <DSP>0</DSP>
-                    <AVAIL_DSP>6840</AVAIL_DSP>
-                    <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
                     <AVAIL_URAM>960</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
@@ -888,7 +2256,7 @@
             <InterfaceSummary>
                 <RtlPorts>
                     <name>ap_clk</name>
-                    <Object>point_add_unit</Object>
+                    <Object>pdouble</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -899,7 +2267,337 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_rst</name>
-                    <Object>point_add_unit</Object>
+                    <Object>pdouble</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_0</name>
+                    <Object>pdouble</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_1</name>
+                    <Object>pdouble</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_2</name>
+                    <Object>pdouble</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_ce</name>
+                    <Object>pdouble</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p_x</name>
+                    <Object>p_x</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p_y</name>
+                    <Object>p_y</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p_z</name>
+                    <Object>p_z</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+            </InterfaceSummary>
+        </Module>
+        <Module>
+            <Name>padd</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>4.00</TargetClockPeriod>
+                    <ClockUncertainty>1.08</ClockUncertainty>
+                    <TargetInitiationInterval>1</TargetInitiationInterval>
+                    <EstimatedClockPeriod>2.833</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>31</Best-caseLatency>
+                    <Average-caseLatency>31</Average-caseLatency>
+                    <Worst-caseLatency>31</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>0.124 us</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>0.124 us</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>0.124 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>1</PipelineInitiationInterval>
+                    <PipelineDepth>32</PipelineDepth>
+                    <PipelineType>yes</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <DSP>23</DSP>
+                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>4648</FF>
+                    <AVAIL_FF>2364480</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>10174</LUT>
+                    <AVAIL_LUT>1182240</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>4320</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>960</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <InterfaceSummary>
+                <RtlPorts>
+                    <name>ap_clk</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_rst</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_0</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_1</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_return_2</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_ce</name>
+                    <Object>padd</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p1_x</name>
+                    <Object>p1_x</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p1_y</name>
+                    <Object>p1_y</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p1_z</name>
+                    <Object>p1_z</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p2_x</name>
+                    <Object>p2_x</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p2_y</name>
+                    <Object>p2_y</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>p2_z</name>
+                    <Object>p2_z</Object>
+                    <Type>scalar</Type>
+                    <Scope/>
+                    <IOProtocol>ap_none</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
+                    <Attribute>data</Attribute>
+                </RtlPorts>
+            </InterfaceSummary>
+        </Module>
+        <Module>
+            <Name>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>4.00</TargetClockPeriod>
+                    <ClockUncertainty>1.08</ClockUncertainty>
+                    <EstimatedClockPeriod>2.833</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>2</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>8226</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>8.000 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>32.904 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>2 ~ 8226</PipelineInitiationInterval>
+                    <PipelineType>none</PipelineType>
+                </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <VITIS_LOOP_440_3>
+                        <Name>VITIS_LOOP_440_3</Name>
+                        <TripCount>
+                            <range>
+                                <min>0</min>
+                                <max>8191</max>
+                            </range>
+                        </TripCount>
+                        <Latency>0 ~ 8224</Latency>
+                        <AbsoluteTimeLatency>0 ns ~ 32.896 us</AbsoluteTimeLatency>
+                        <PipelineII>1</PipelineII>
+                        <PipelineDepth>35</PipelineDepth>
+                    </VITIS_LOOP_440_3>
+                </SummaryOfLoopLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <DSP>23</DSP>
+                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>4885</FF>
+                    <AVAIL_FF>2364480</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>10365</LUT>
+                    <AVAIL_LUT>1182240</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>4320</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>960</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <InterfaceSummary>
+                <RtlPorts>
+                    <name>ap_clk</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</Object>
+                    <Type>return value</Type>
+                    <Scope/>
+                    <IOProtocol>ap_ctrl_hs</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>ap_rst</name>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -910,7 +2608,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_start</name>
-                    <Object>point_add_unit</Object>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -921,7 +2619,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_done</name>
-                    <Object>point_add_unit</Object>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -932,7 +2630,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_continue</name>
-                    <Object>point_add_unit</Object>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -943,7 +2641,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_idle</name>
-                    <Object>point_add_unit</Object>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -954,7 +2652,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_ready</name>
-                    <Object>point_add_unit</Object>
+                    <Object>bucket_unit_Loop_VITIS_LOOP_440_3_proc17</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -964,19 +2662,19 @@
                     <Attribute>control</Attribute>
                 </RtlPorts>
                 <RtlPorts>
-                    <name>BFIFO_2_din</name>
-                    <Object>BFIFO_2</Object>
+                    <name>num_padd_ops_dout</name>
+                    <Object>num_padd_ops</Object>
                     <Type>pointer</Type>
                     <Scope/>
                     <IOProtocol>ap_fifo</IOProtocol>
                     <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>43</Bits>
+                    <Dir>in</Dir>
+                    <Bits>13</Bits>
                     <Attribute>control</Attribute>
                 </RtlPorts>
                 <RtlPorts>
-                    <name>BFIFO_2_full_n</name>
-                    <Object>BFIFO_2</Object>
+                    <name>num_padd_ops_empty_n</name>
+                    <Object>num_padd_ops</Object>
                     <Type>pointer</Type>
                     <Scope/>
                     <IOProtocol>ap_fifo</IOProtocol>
@@ -986,8 +2684,8 @@
                     <Attribute>control</Attribute>
                 </RtlPorts>
                 <RtlPorts>
-                    <name>BFIFO_2_write</name>
-                    <Object>BFIFO_2</Object>
+                    <name>num_padd_ops_read</name>
+                    <Object>num_padd_ops</Object>
                     <Type>pointer</Type>
                     <Scope/>
                     <IOProtocol>ap_fifo</IOProtocol>
@@ -1029,15 +2727,48 @@
                     <Bits>1</Bits>
                     <Attribute>control</Attribute>
                 </RtlPorts>
+                <RtlPorts>
+                    <name>BFIFO_2_din</name>
+                    <Object>BFIFO_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>43</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>BFIFO_2_full_n</name>
+                    <Object>BFIFO_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>BFIFO_2_write</name>
+                    <Object>BFIFO_2</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>ap_fifo</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>control</Attribute>
+                </RtlPorts>
             </InterfaceSummary>
         </Module>
         <Module>
-            <Name>bucket_unit_csim_sr</Name>
+            <Name>bucket_unit</Name>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>4.00</TargetClockPeriod>
                     <ClockUncertainty>1.08</ClockUncertainty>
-                    <EstimatedClockPeriod>3.127</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.833</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -1056,15 +2787,15 @@
                     <BRAM_18K>0</BRAM_18K>
                     <AVAIL_BRAM>4320</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
-                    <FF>3079</FF>
+                    <DSP>23</DSP>
+                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>8078</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>6108</LUT>
+                    <LUT>13200</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
-                    <UTIL_LUT>~0</UTIL_LUT>
-                    <DSP>0</DSP>
-                    <AVAIL_DSP>6840</AVAIL_DSP>
-                    <UTIL_DSP>0</UTIL_DSP>
+                    <UTIL_LUT>1</UTIL_LUT>
                     <URAM>0</URAM>
                     <AVAIL_URAM>960</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
@@ -1348,7 +3079,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_clk</name>
-                    <Object>bucket_unit_csim_sr</Object>
+                    <Object>bucket_unit</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1359,7 +3090,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_rst</name>
-                    <Object>bucket_unit_csim_sr</Object>
+                    <Object>bucket_unit</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1370,7 +3101,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_start</name>
-                    <Object>bucket_unit_csim_sr</Object>
+                    <Object>bucket_unit</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1381,7 +3112,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_done</name>
-                    <Object>bucket_unit_csim_sr</Object>
+                    <Object>bucket_unit</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1392,7 +3123,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_ready</name>
-                    <Object>bucket_unit_csim_sr</Object>
+                    <Object>bucket_unit</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1403,7 +3134,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_idle</name>
-                    <Object>bucket_unit_csim_sr</Object>
+                    <Object>bucket_unit</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1414,7 +3145,7 @@
                 </RtlPorts>
                 <RtlPorts>
                     <name>ap_continue</name>
-                    <Object>bucket_unit_csim_sr</Object>
+                    <Object>bucket_unit</Object>
                     <Type>return value</Type>
                     <Scope/>
                     <IOProtocol>ap_ctrl_hs</IOProtocol>
@@ -1431,7 +3162,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>4.00</TargetClockPeriod>
                     <ClockUncertainty>1.08</ClockUncertainty>
-                    <EstimatedClockPeriod>3.127</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.833</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -1475,15 +3206,15 @@
                     <BRAM_18K>4</BRAM_18K>
                     <AVAIL_BRAM>4320</AVAIL_BRAM>
                     <UTIL_BRAM>~0</UTIL_BRAM>
-                    <FF>3417</FF>
+                    <DSP>23</DSP>
+                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>8416</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>6795</LUT>
+                    <LUT>13887</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
-                    <UTIL_LUT>~0</UTIL_LUT>
-                    <DSP>0</DSP>
-                    <AVAIL_DSP>6840</AVAIL_DSP>
-                    <UTIL_DSP>0</UTIL_DSP>
+                    <UTIL_LUT>1</UTIL_LUT>
                     <URAM>0</URAM>
                     <AVAIL_URAM>960</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
@@ -1802,7 +3533,262 @@
     <FIFOInformation>
         <FIFOInst>
             <Name>BFIFO_2_U</Name>
-            <ParentInst>grp_bucket_unit_csim_sr_fu_430</ParentInst>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>15</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_0_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_1_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_2_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_3_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_4_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_5_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_6_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_7_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_8_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_9_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_10_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_11_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_12_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_13_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_14_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>B_15_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>1</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>OVFIFO_U</Name>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
             <StaticDepth>15</StaticDepth>
             <RuntimeDepth>mOutPtr</RuntimeDepth>
             <InterfaceList>
@@ -1817,8 +3803,8 @@
         </FIFOInst>
         <FIFOInst>
             <Name>CFIFO_U</Name>
-            <ParentInst>grp_bucket_unit_csim_sr_fu_430</ParentInst>
-            <StaticDepth>48</StaticDepth>
+            <ParentInst>grp_bucket_unit_fu_432</ParentInst>
+            <StaticDepth>32</StaticDepth>
             <RuntimeDepth>mOutPtr</RuntimeDepth>
             <InterfaceList>
                 <Interface>clk</Interface>
@@ -2116,9 +4102,10 @@
             <item name="Burst Missed">
                 <table>
                     <keys size="4">Variable, Problem, Resolution, Location</keys>
-                    <column name="">Cannot analyze the loop bounds of 'VITIS_LOOP_142_1', 214-252, src/bucket.cpp:142:21</column>
-                    <column name="">Skip burst inference for loop 'anonymous'. It may be exposed into dataflow region, , src/bucket.cpp:141:7</column>
-                    <column name="">Skip burst inference for loop 'anonymous'. It may be exposed into dataflow region, , src/bucket.cpp:140:7</column>
+                    <column name="">Skip burst inference for loop 'VITIS_LOOP_440_3'. It may be exposed into dataflow region, , src/bucket.cpp:440:21</column>
+                    <column name="">Skip burst inference for loop 'VITIS_LOOP_430_2'. It may be exposed into dataflow region, , src/bucket.cpp:430:21</column>
+                    <column name="">Cannot analyze the loop bounds of 'VITIS_LOOP_384_1', 214-252, src/bucket.cpp:384:21</column>
+                    <column name="">Skip burst inference for loop 'anonymous'. It may be exposed into dataflow region, , src/bucket.cpp:350:8</column>
                 </table>
             </item>
         </section>
