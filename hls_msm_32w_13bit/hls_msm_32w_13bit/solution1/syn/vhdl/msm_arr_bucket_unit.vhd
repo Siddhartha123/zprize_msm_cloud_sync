@@ -453,7 +453,7 @@ attribute shreg_extract : string;
     end component;
 
 
-    component msm_arr_fifo_w82_d32_A IS
+    component msm_arr_fifo_w82_d48_A IS
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
@@ -924,7 +924,7 @@ begin
         if_empty_n => num_padd_ops_c_empty_n,
         if_read => bucket_unit_Loop_VITIS_LOOP_430_2_proc16_U0_num_padd_ops_read);
 
-    CFIFO_U : component msm_arr_fifo_w82_d32_A
+    CFIFO_U : component msm_arr_fifo_w82_d48_A
     port map (
         clk => ap_clk,
         reset => ap_rst,

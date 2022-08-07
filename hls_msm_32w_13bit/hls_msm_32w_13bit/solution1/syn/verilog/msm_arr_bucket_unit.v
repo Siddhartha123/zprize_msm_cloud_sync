@@ -670,7 +670,7 @@ msm_arr_fifo_w13_d2_S num_padd_ops_c_U(
     .if_read(bucket_unit_Loop_VITIS_LOOP_430_2_proc16_U0_num_padd_ops_read)
 );
 
-msm_arr_fifo_w82_d32_A CFIFO_U(
+msm_arr_fifo_w82_d48_A CFIFO_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),

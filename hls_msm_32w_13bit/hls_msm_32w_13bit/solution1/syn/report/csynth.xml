@@ -56,8 +56,8 @@
         <Resources>
             <BRAM_18K>4</BRAM_18K>
             <DSP>23</DSP>
-            <FF>8416</FF>
-            <LUT>13887</LUT>
+            <FF>8418</FF>
+            <LUT>13965</LUT>
             <URAM>0</URAM>
         </Resources>
         <AvailableResources>
@@ -2790,10 +2790,10 @@
                     <DSP>23</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
                     <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>8078</FF>
+                    <FF>8080</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>13200</LUT>
+                    <LUT>13278</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
                     <UTIL_LUT>1</UTIL_LUT>
                     <URAM>0</URAM>
@@ -3209,10 +3209,10 @@
                     <DSP>23</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
                     <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>8416</FF>
+                    <FF>8418</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>13887</LUT>
+                    <LUT>13965</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
                     <UTIL_LUT>1</UTIL_LUT>
                     <URAM>0</URAM>
@@ -3804,7 +3804,7 @@
         <FIFOInst>
             <Name>CFIFO_U</Name>
             <ParentInst>grp_bucket_unit_fu_432</ParentInst>
-            <StaticDepth>32</StaticDepth>
+            <StaticDepth>48</StaticDepth>
             <RuntimeDepth>mOutPtr</RuntimeDepth>
             <InterfaceList>
                 <Interface>clk</Interface>
