@@ -393,10 +393,10 @@
                             <ID>182</ID>
                             <InstancesList>
                                 <Instance>
-                                    <InstName>grp_padd_fu_110</InstName>
+                                    <InstName>grp_padd_fu_112</InstName>
                                     <ModuleName>padd</ModuleName>
                                     <IsCompInst>true</IsCompInst>
-                                    <ID>110</ID>
+                                    <ID>112</ID>
                                     <InstancesList>
                                         <Instance>
                                             <InstName>grp_pdouble_fu_102</InstName>
