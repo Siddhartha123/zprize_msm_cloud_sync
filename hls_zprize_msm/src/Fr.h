@@ -12,9 +12,13 @@ Library for scalar field
 
 #include "hls_stream.h"
 
-typedef ap_uint<13> fr_t;
-typedef ap_uint<14> fr_ov_t;
-typedef ap_uint<26> double_fr_t;
+// typedef ap_uint<13> fr_t;
+// typedef ap_uint<14> fr_ov_t;
+// typedef ap_uint<26> double_fr_t;
+
+typedef ap_uint<253> fr_t;
+typedef ap_uint<254> fr_ov_t;
+typedef ap_uint<506> double_fr_t;
 
 fr_t add_r(fr_t x, fr_t y);
 fr_t sub_r(fr_t x, fr_t y);

@@ -15,33 +15,36 @@ module test_case_mem(
         B_i_V_address0, B_i_V_ce0, B_i_V_d0, B_i_V_q0, B_i_V_we0, B_i_V_address1, B_i_V_ce1, B_i_V_d1, B_i_V_q1, B_i_V_we1
 );
     
-parameter AWIDTH = 7;
-parameter MEM_SIZE = 128;
+parameter EC_BASE_FIELD_WIDTH = 377;
+parameter EC_SCALAR_FIELD_WIDTH = 256; 
+parameter ADDR_WIDTH = 4;
+parameter MEM_SIZE = 16;
 
-    reg [12:0] mem[0:255];
-    reg [12:0] P_arr_x_V[0:MEM_SIZE-1], P_arr_y_V[0:MEM_SIZE-1], P_arr_z_V[0:MEM_SIZE-1], K_arr_V[0:MEM_SIZE-1];
+    reg [EC_BASE_FIELD_WIDTH-1:0] mem[0:255];
+    reg [EC_BASE_FIELD_WIDTH-1:0] P_arr_x_V[0:MEM_SIZE-1], P_arr_y_V[0:MEM_SIZE-1], P_arr_z_V[0:MEM_SIZE-1];
+    reg [EC_SCALAR_FIELD_WIDTH-1:0] K_arr_V[0:MEM_SIZE-1];
     reg [31:0] B_i_V[31:0];
     input wire ap_clk, ap_rst;
 
-    output reg [12:0] P_arr_x_V_q0, P_arr_x_V_q1;
-    input wire [12:0] P_arr_x_V_d0, P_arr_x_V_d1;
+    output reg [EC_BASE_FIELD_WIDTH-1:0] P_arr_x_V_q0, P_arr_x_V_q1;
+    input wire [EC_BASE_FIELD_WIDTH-1:0] P_arr_x_V_d0, P_arr_x_V_d1;
     input wire P_arr_x_V_ce0, P_arr_x_V_ce1, P_arr_x_V_we0, P_arr_x_V_we1;
-    input wire [AWIDTH-1:0] P_arr_x_V_address0, P_arr_x_V_address1;
+    input wire [ADDR_WIDTH-1:0] P_arr_x_V_address0, P_arr_x_V_address1;
     
-    output reg [12:0] P_arr_y_V_q0, P_arr_y_V_q1;
-    input wire [12:0] P_arr_y_V_d0, P_arr_y_V_d1;
+    output reg [EC_BASE_FIELD_WIDTH-1:0] P_arr_y_V_q0, P_arr_y_V_q1;
+    input wire [EC_BASE_FIELD_WIDTH-1:0] P_arr_y_V_d0, P_arr_y_V_d1;
     input wire P_arr_y_V_ce0, P_arr_y_V_ce1, P_arr_y_V_we0, P_arr_y_V_we1;
-    input wire [AWIDTH-1:0] P_arr_y_V_address0, P_arr_y_V_address1;
+    input wire [ADDR_WIDTH-1:0] P_arr_y_V_address0, P_arr_y_V_address1;
     
-    output reg [12:0] P_arr_z_V_q0, P_arr_z_V_q1;
-    input wire [12:0] P_arr_z_V_d0, P_arr_z_V_d1;
+    output reg [EC_BASE_FIELD_WIDTH-1:0] P_arr_z_V_q0, P_arr_z_V_q1;
+    input wire [EC_BASE_FIELD_WIDTH-1:0] P_arr_z_V_d0, P_arr_z_V_d1;
     input wire P_arr_z_V_ce0, P_arr_z_V_ce1, P_arr_z_V_we0, P_arr_z_V_we1;
-    input wire [AWIDTH-1:0] P_arr_z_V_address0, P_arr_z_V_address1;
+    input wire [ADDR_WIDTH-1:0] P_arr_z_V_address0, P_arr_z_V_address1;
     
-    output reg [12:0] K_arr_V_q0, K_arr_V_q1;
-    input wire [12:0] K_arr_V_d0, K_arr_V_d1;
+    output reg [EC_SCALAR_FIELD_WIDTH-1:0] K_arr_V_q0, K_arr_V_q1;
+    input wire [EC_SCALAR_FIELD_WIDTH-1:0] K_arr_V_d0, K_arr_V_d1;
     input wire K_arr_V_ce0, K_arr_V_ce1, K_arr_V_we0, K_arr_V_we1;
-    input wire [AWIDTH-1:0] K_arr_V_address0, K_arr_V_address1;
+    input wire [ADDR_WIDTH-1:0] K_arr_V_address0, K_arr_V_address1;
 
     input wire [4:0] B_i_V_address0, B_i_V_address1;
     input wire B_i_V_ce0, B_i_V_ce1, B_i_V_we0, B_i_V_we1;

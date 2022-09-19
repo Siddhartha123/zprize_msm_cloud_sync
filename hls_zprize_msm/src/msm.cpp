@@ -6,8 +6,10 @@ void bucket_unit(N_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[3
     bool fill_B[16] = {true, true, true, true, true, true, true, true,
                        true, true, true, true, true, true, true, true};
     hls::stream<bls12_377_coord_t> B[16];
-    // TODO: cosider increasing the bucket depths, since fill_B logic is independently handling the point routing logic
-    // OR, use bucket empty condition to route points between bucket and ovfifo. BUT beware of the deadlock condition if there is a point in ovfifo but no point in the corresponding bucket.
+    // TODO: cosider increasing the bucket depths, since fill_B logic is independently handling the
+    // point routing logic OR, use bucket empty condition to route points between bucket and ovfifo.
+    // BUT beware of the deadlock condition if there is a point in ovfifo but no point in the
+    // corresponding bucket.
 #pragma HLS STREAM variable = B[0] depth = 1
 #pragma HLS STREAM variable = B[1] depth = 1
 #pragma HLS STREAM variable = B[2] depth = 1
@@ -35,7 +37,7 @@ void bucket_unit(N_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[3
     fp_t count_BF1 = 0, count_BF2 = 0;
 #pragma HLS STREAM variable = BFIFO_2 depth = 15
 #pragma HLS STREAM variable = OVFIFO depth = 15
-#pragma HLS STREAM variable = CFIFO depth = 96
+#pragma HLS STREAM variable = CFIFO depth = 15
 #pragma HLS dataflow
     bn_coord_k_t data;
     bool valid_data = false;
@@ -46,9 +48,9 @@ void bucket_unit(N_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[3
             count_BF1 += 1;
             valid_data = true;
             // take care of single entry buckets i.e. count_B==1
-            if (count_B[data(42, 39)] == 1) {
-                B_i[2 * (data(42, 39) - 1)] = data(38, 13);
-                B_i[2 * (data(42, 39) - 1) + 1] = data(12, 0);
+            if (count_B[data(NIBBLE_RANGE)] == 1) {
+                B_i[2 * (data(NIBBLE_RANGE) - 1)] = data(38, 13);
+                B_i[2 * (data(NIBBLE_RANGE) - 1) + 1] = data(12, 0);
                 valid_data = false;
             }
         } else if (count_BF2 < num_padd_ops && !BFIFO_2.empty()) {
@@ -58,17 +60,17 @@ void bucket_unit(N_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[3
             // Check for last bucket element here.
             // update padd count here
             // if last element, put in B_i and change valid to false
-            padd_count[data(42, 39)] += 1;
-            if (padd_count[data(42, 39)] == count_B[data(42, 39)] - 1) {
-                B_i[2 * (data(42, 39) - 1)] = data(38, 13);
-                B_i[2 * (data(42, 39) - 1) + 1] = data(12, 0);
+            padd_count[data(NIBBLE_RANGE)] += 1;
+            if (padd_count[data(NIBBLE_RANGE)] == count_B[data(NIBBLE_RANGE)] - 1) {
+                B_i[2 * (data(NIBBLE_RANGE) - 1)] = data(38, 13);
+                B_i[2 * (data(NIBBLE_RANGE) - 1) + 1] = data(12, 0);
                 valid_data = false;
             }
         } else
             valid_data = false;
 
         if (valid_data) {
-            nibble_K = data(42, 39);
+            nibble_K = data(NIBBLE_RANGE);
             if (nibble_K != 0) {
                 if (fill_B[nibble_K])
                     B[nibble_K].write(data(38, 0));
@@ -88,7 +90,7 @@ void bucket_unit(N_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[3
 bucket_unit_label0:
     for (int i = 0; i < num_padd_ops; i++) {
         data = OVFIFO.read();
-        nibble_K = data(42, 39);
+        nibble_K = data(NIBBLE_RANGE);
         result = B[nibble_K].read();
         CFIFO.write((nibble_K, result, data(38, 0)));
     }
@@ -109,7 +111,7 @@ bucket_unit_label1:
 void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NUM_POINTS],
              fp_t K_arr[NUM_POINTS], u32 B_i[30]) {
     hls::stream<bn_coord_k_t> BFIFO_1("Bucket fifo 1");
-#pragma HLS STREAM variable = BFIFO_1 depth = 128
+#pragma HLS STREAM variable = BFIFO_1 depth = 16
 
     bls12_377_coord_t GBUFF_P[NUM_POINTS];
     fp_t GBUFF_K[NUM_POINTS];

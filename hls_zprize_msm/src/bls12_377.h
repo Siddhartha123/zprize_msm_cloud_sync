@@ -15,7 +15,7 @@ struct bls12_377_p {
     }
 };
 
-typedef ap_uint<39> bls12_377_coord_t;
+typedef ap_uint<1131> bls12_377_coord_t;
 
 extern bls12_377_p zero;
 

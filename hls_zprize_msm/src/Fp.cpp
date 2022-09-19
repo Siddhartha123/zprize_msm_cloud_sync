@@ -7,18 +7,18 @@ Library for base field
 
 fp_t p("1AE3A4617C510EAC63B05C06CA1493B1A22D9F300F5138F1EF3622FBA094800170B5D44300000008508C00000000001", 16);
 
-// fp_t mod(double_fp_t A) { return (fp_t)(A % p); }
+fp_t mod_p(double_fp_t A) { return (fp_t)(A % p); }
 
-fp_t mod_p(double_fp_t A) {
-#pragma HLS inline
-    double_fp_t t = (A >> 13) + (A >> 17) + (A >> 21);
-    double_fp_t tp = (t << 13) + t - (t << 9);
-    double_fp_t y = A - tp;
-    if (y >= p) y = y - p;
-    if (y >= p) y = y - p;
-    if (y >= p) y = y - p;
-    return (fp_t)y;
-}
+// fp_t mod_p(double_fp_t A) {
+// #pragma HLS inline
+//     double_fp_t t = (A >> 13) + (A >> 17) + (A >> 21);
+//     double_fp_t tp = (t << 13) + t - (t << 9);
+//     double_fp_t y = A - tp;
+//     if (y >= p) y = y - p;
+//     if (y >= p) y = y - p;
+//     if (y >= p) y = y - p;
+//     return (fp_t)y;
+// }
 
 // modular addition (x + y) mod p
 fp_t add_p(fp_t x, fp_t y) {

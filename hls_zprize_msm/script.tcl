@@ -21,7 +21,7 @@ add_files -tb src/Fp.h -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-p
 open_solution "solution1" -flow_target vivado
 set_part {xc7a200t-ffg1156-2}
 create_clock -period 4 -name default
-source "./solution1/directives.tcl"
+source "directives.tcl"
 # csim_design
  csynth_design
 # cosim_design

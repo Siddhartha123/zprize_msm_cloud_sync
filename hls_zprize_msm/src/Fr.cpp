@@ -7,18 +7,18 @@ Library for scalar field
 
 fr_t q("7681", 10);
 
-// fr_t mod_r(double_fr_t A) { return (fr_t)(A % q); }
+fr_t mod_r(double_fr_t A) { return (fr_t)(A % q); }
 
-fr_t mod_r(double_fr_t A) {
-#pragma HLS inline
-    double_fr_t t = (A >> 13) + (A >> 17) + (A >> 21);
-    double_fr_t tq = (t << 13) + t - (t << 9);
-    double_fr_t y = A - tq;
-    if (y >= q) y = y - q;
-    if (y >= q) y = y - q;
-    if (y >= q) y = y - q;
-    return (fr_t) y;
-}
+// fr_t mod_r(double_fr_t A) {
+// #pragma HLS inline
+//     double_fr_t t = (A >> 13) + (A >> 17) + (A >> 21);
+//     double_fr_t tq = (t << 13) + t - (t << 9);
+//     double_fr_t y = A - tq;
+//     if (y >= q) y = y - q;
+//     if (y >= q) y = y - q;
+//     if (y >= q) y = y - q;
+//     return (fr_t) y;
+// }
 
 // modular addition (x + y) mod q
 fr_t add_r(fr_t x, fr_t y) {

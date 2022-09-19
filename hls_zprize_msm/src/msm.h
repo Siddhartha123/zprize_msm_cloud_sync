@@ -8,13 +8,13 @@
 #include "bls12_377.h"
 #include "hls_stream.h"
 
-#define NUM_POINTS 128
+#define NUM_POINTS 16
 
 /*
 N_t is used to hold numbers of the order of the MSM size.
 e.g. count variables, num_padd_ops etc. are of the order of the MSM problem size.
 */
-typedef ap_uint<7> N_t;
+typedef ap_uint<4> N_t;
 
 struct fp_t_stream {
     fp_t value;
@@ -61,10 +61,11 @@ struct bucket {
     bool empty() { return !valid; }
 };
 
-typedef ap_uint<bls12_377_coord_t::width + 4> bn_coord_k_t;
-typedef ap_uint<82> dbl_bn_coord_k_t;
+#define NIBBLE_RANGE bn_coord_k_t::width - 1, bn_coord_k_t::width - 5
 
-#define BDEPTH 8
+typedef ap_uint<bls12_377_coord_t::width + 4> bn_coord_k_t;
+typedef ap_uint<2 * bls12_377_coord_t::width + 4> dbl_bn_coord_k_t;
+
 void bucket_unit(N_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[30],
                  N_t count_B[16]);
 
