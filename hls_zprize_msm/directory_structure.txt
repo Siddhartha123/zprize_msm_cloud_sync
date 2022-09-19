@@ -1,0 +1,24 @@
+Directory structure-
+
+    src/ - contains vitis HLS source code for MSM unit
+        Fp.cpp, Fp.h - functions for algebra on Fp
+        Fr.cpp, Fr.h - functions for algebra on Fr
+            Field algebra:
+            1. modular addition/subtraction
+            2. modular multiplication
+        
+        bls12_377.cpp, bls12_377.h - functions for arithmetic on points of BLS12-377  
+        curve arithmetic:
+            1. point doubling
+            2. point addition
+            3. scalar multiplication ?
+            
+        Algorithms - multiscalar multiplication
+            msm.cpp, msm.h - top level function for MSM
+            bucket.cpp - bucket unit and surrounding logic
+    
+    tester/ - contains sample testcases for MSM
+        testcase_1, testcase_2 - 13-bit field (for initial testing)
+        testcase_3 - full-scale testcase (generated from arkworks implementation - Varun)
+        
+        
