@@ -2,7 +2,10 @@
 
 
 
-module test_case_mem(
+module test_case_mem #(parameter EC_BASE_FIELD_WIDTH = 377,
+        EC_SCALAR_FIELD_WIDTH = 253, 
+        ADDR_WIDTH = 4,
+        MEM_SIZE = 16) (
         ap_clk, ap_rst, debug, 
         P_arr_x_V_address0, P_arr_x_V_ce0, P_arr_x_V_d0, P_arr_x_V_q0, P_arr_x_V_we0,
         P_arr_x_V_address1, P_arr_x_V_ce1, P_arr_x_V_d1, P_arr_x_V_q1, P_arr_x_V_we1,
@@ -15,10 +18,7 @@ module test_case_mem(
         B_i_V_address0, B_i_V_ce0, B_i_V_d0, B_i_V_q0, B_i_V_we0, B_i_V_address1, B_i_V_ce1, B_i_V_d1, B_i_V_q1, B_i_V_we1
 );
     
-parameter EC_BASE_FIELD_WIDTH = 377;
-parameter EC_SCALAR_FIELD_WIDTH = 256; 
-parameter ADDR_WIDTH = 4;
-parameter MEM_SIZE = 16;
+
 
     reg [EC_BASE_FIELD_WIDTH-1:0] mem[0:255];
     reg [EC_BASE_FIELD_WIDTH-1:0] P_arr_x_V[0:MEM_SIZE-1], P_arr_y_V[0:MEM_SIZE-1], P_arr_z_V[0:MEM_SIZE-1];
@@ -56,10 +56,10 @@ parameter MEM_SIZE = 16;
     reg [7:0] counter;
 
     initial begin
-        $readmemh("/home/sid/Documents/zprize/msm_cloud_sync/hls_msm_32w_13bit/tester/testcase_1/P_arr_x_V.txt",P_arr_x_V);
-        $readmemh("/home/sid/Documents/zprize/msm_cloud_sync/hls_msm_32w_13bit/tester/testcase_1/P_arr_y_V.txt",P_arr_y_V);
-        $readmemh("/home/sid/Documents/zprize/msm_cloud_sync/hls_msm_32w_13bit/tester/testcase_1/P_arr_z_V.txt",P_arr_z_V);
-        $readmemh("/home/sid/Documents/zprize/msm_cloud_sync/hls_msm_32w_13bit/tester/testcase_1/K_arr_V.txt",K_arr_V);
+        $readmemh("/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_3/P_arr_x_V.txt",P_arr_x_V);
+        $readmemh("/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_3/P_arr_y_V.txt",P_arr_y_V);
+        $readmemh("/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_3/P_arr_z_V.txt",P_arr_z_V);
+        $readmemh("/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_3/K_arr_V.txt",K_arr_V);
     end
     
     // test vector memory spaces

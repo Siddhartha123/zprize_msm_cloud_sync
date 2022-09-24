@@ -3,7 +3,7 @@
 module sys_test();
 
 parameter EC_BASE_FIELD_WIDTH = 377;
-parameter EC_SCALAR_FIELD_WIDTH = 256; 
+parameter EC_SCALAR_FIELD_WIDTH = 253; 
 parameter ADDR_WIDTH = 4;
 parameter MEM_SIZE = 16;
 parameter CLK_PERIOD = 3.5;
@@ -76,27 +76,42 @@ ap_local_block, ap_local_deadlock, ap_clk, ap_rst, ap_start, ap_done, ap_idle, a
         .ap_ready(ap_ready),
         .P_arr_x_address0(P_arr_x_address0),
         .P_arr_x_ce0(P_arr_x_ce0),
+        .P_arr_x_we0(P_arr_x_we0),
         .P_arr_x_q0(P_arr_x_q0),
+        .P_arr_x_d0(P_arr_x_d0),
         .P_arr_y_address0(P_arr_y_address0),
         .P_arr_y_ce0(P_arr_y_ce0),
+        .P_arr_y_we0(P_arr_y_we0),
         .P_arr_y_q0(P_arr_y_q0),
+        .P_arr_y_d0(P_arr_y_d0),
         .P_arr_z_address0(P_arr_z_address0),
         .P_arr_z_ce0(P_arr_z_ce0),
+        .P_arr_z_we0(P_arr_z_we0),
         .P_arr_z_q0(P_arr_z_q0),
+        .P_arr_z_d0(P_arr_z_d0),
         .K_arr_address0(K_arr_address0),
         .K_arr_ce0(K_arr_ce0),
+        .K_arr_we0(K_arr_we0),
         .K_arr_q0(K_arr_q0),
+        .K_arr_d0(K_arr_d0),
+        .K_arr_address1(K_arr_address1),
+        .K_arr_ce1(K_arr_ce1),
+        .K_arr_we1(K_arr_we1),
+        .K_arr_q1(K_arr_q1),
+        .K_arr_d1(K_arr_d1),
         .B_i_address0(B_i_address0),
         .B_i_ce0(B_i_ce0),
         .B_i_we0(B_i_we0),
+        .B_i_q0(B_i_q0),
         .B_i_d0(B_i_d0),
         .B_i_address1(B_i_address1),
         .B_i_ce1(B_i_ce1),
         .B_i_we1(B_i_we1),
+        .B_i_q1(B_i_q1), 
         .B_i_d1(B_i_d1)
     );
 
-    test_case_mem test_case_mem_0 #(parameter EC_BASE_FIELD_WIDTH = 377, parameter EC_SCALAR_FIELD_WIDTH = 256, parameter ADDR_WIDTH = 4, parameter MEM_SIZE = 16,) (
+    test_case_mem  #( .EC_BASE_FIELD_WIDTH(EC_BASE_FIELD_WIDTH), .EC_SCALAR_FIELD_WIDTH(EC_SCALAR_FIELD_WIDTH), .ADDR_WIDTH(ADDR_WIDTH), .MEM_SIZE(MEM_SIZE)) test_case_mem_0 (
         ap_clk, ap_rst, debug, 
         P_arr_x_address0, P_arr_x_ce0, P_arr_x_d0, P_arr_x_q0, P_arr_x_we0,
         P_arr_x_address1, P_arr_x_ce1, P_arr_x_d1, P_arr_x_q1, P_arr_x_we1,
