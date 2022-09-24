@@ -61,6 +61,8 @@ struct bucket {
     bool empty() { return !valid; }
 };
 
+#define CHUNK_SIZE 4
+#define NUM_CHUNKS 16
 #define NIBBLE_RANGE bn_coord_k_t::width - 1, bn_coord_k_t::width - 5
 
 typedef ap_uint<bls12_377_coord_t::width + 4> bn_coord_k_t;

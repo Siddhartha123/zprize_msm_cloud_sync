@@ -161,4 +161,24 @@ void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NU
         G_k = padd(G_k, s);
     }
     */
+
+    // Algorithm Loop 3: Combining G_k's
+    bls12_377_p G(0, 1, 0), G_itr(0, 1, 0);
+    G = bls12_377_p(GBUFF_P[NUM_CHUNKS - 1]);
+    for (int k = NUM_CHUNKS - 2; k > 0; k--) {
+        G_itr = G;
+        for (int k = 0; k < CHUNK_SIZE; k++) {
+#pragma HLS pipeline
+            G_itr = pdouble(G_itr);
+        }
+        G = padd(G_itr, bls12_377_p(GBUFF_P[k]));
+    }
+
+    P_arr_x[0] = G.x;
+    P_arr_y[0] = G.y;
+    P_arr_z[0] = G.z;
+
+    std::cout << "[Result] " << P_arr_x[0] << " " << P_arr_y[0] << " " << P_arr_z[0] << "\n";
+
+    return;
 }
