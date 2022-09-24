@@ -4,6 +4,9 @@
 #include <iostream>
 
 #include "Fp.h"
+#include "Fr.h"
+
+typedef ap_uint<1131> bls12_377_coord_t;
 
 struct bls12_377_p {
     fp_t x, y, z;
@@ -13,9 +16,15 @@ struct bls12_377_p {
         y = b;
         z = c;
     }
+
+    bls12_377_p(bls12_377_coord_t a) {
+        x = a(1130, 753);
+        y = a(752, 377);
+        z = a(376, 0);
+    }
+
 };
 
-typedef ap_uint<1131> bls12_377_coord_t;
 
 extern bls12_377_p zero;
 
