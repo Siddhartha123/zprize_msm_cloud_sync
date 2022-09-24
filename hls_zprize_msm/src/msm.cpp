@@ -109,19 +109,17 @@ bucket_unit_label1:
 }
 
 void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NUM_POINTS],
-             fp_t K_arr[NUM_POINTS], u32 B_i[30]) {
+             fr_t K_arr[NUM_POINTS], u32 B_i[30]) {
     hls::stream<bn_coord_k_t> BFIFO_1("Bucket fifo 1");
 #pragma HLS STREAM variable = BFIFO_1 depth = 16
 
     bls12_377_coord_t GBUFF_P[NUM_POINTS];
-    fp_t GBUFF_K[NUM_POINTS];
+    fr_t GBUFF_K[NUM_POINTS];
     N_t count_B[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     ap_uint<4> nibble_K;
     N_t num_padd_ops = 0;
     int ni = 0;
 
-    // store incoming stream data in on-chip global buffer
-    // incoming stream {P_x, P_y} and {P_z, k}
     for (int i = 0; i < NUM_POINTS; i++) {
 #pragma HLS pipeline II = 1
         GBUFF_P[i] = (P_arr_x[i], P_arr_y[i], P_arr_z[i]);
@@ -151,8 +149,6 @@ void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NU
     std::cout << "\nexpected number of padd ops = " << num_padd_ops << "\n";
 
     bucket_unit(num_padd_ops, BFIFO_1, B_i, count_B);
-
-    // TODO: Once bucket unit is done, stream out contents of B_i
 
     /*
     // Combining the bucket partial sums

@@ -70,7 +70,7 @@ void bucket_unit(N_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[3
                  N_t count_B[16]);
 
 void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NUM_POINTS],
-             fp_t K_arr[NUM_POINTS], u32 B_i[30]);
+             fr_t K_arr[NUM_POINTS], u32 B_i[30]);
 bls12_377_p msm_reference(hls::stream<fp_t_stream> &K, hls::stream<bls12_377_p_stream> &P);
 
 extern bls12_377_p P_arr[];
