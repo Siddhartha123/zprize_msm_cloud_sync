@@ -6,7 +6,8 @@
 open_project hls_zprize_msm
 set_top msm_arr
 add_files src/msm.h
-add_files src/msm.cpp
+# add_files src/msm.cpp
+add_files src/msm_dataflow.cpp
 add_files src/bls12_377.h
 add_files src/bls12_377.cpp
 add_files src/Fr.h
@@ -20,9 +21,10 @@ add_files -tb src/Fr.h -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-p
 add_files -tb src/Fp.h -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
 open_solution "solution1" -flow_target vivado
 set_part {xc7a200t-ffg1156-2}
+# set_part {xcvu9p-flga2104-2-i}
 create_clock -period 4 -name default
 source "directives.tcl"
 # csim_design
- csynth_design
+csynth_design
 # cosim_design
 # export_design -format ip_catalog
