@@ -14,7 +14,7 @@
 N_t is used to hold numbers of the order of the MSM size.
 e.g. count variables, num_padd_ops etc. are of the order of the MSM problem size.
 */
-typedef ap_uint<4> N_t;
+typedef ap_uint<26> N_t;
 
 struct fp_t_stream {
     fp_t value;
@@ -63,13 +63,14 @@ struct bucket {
 
 #define CHUNK_SIZE 4
 #define NUM_CHUNKS 16
-#define NIBBLE_RANGE bn_coord_k_t::width - 1, bn_coord_k_t::width - 5
+#define NIBBLE_RANGE bls12_377_coord_k_t::width - 1, bls12_377_coord_k_t::width - 4
 
-typedef ap_uint<bls12_377_coord_t::width + 4> bn_coord_k_t;
-typedef ap_uint<2 * bls12_377_coord_t::width + 4> dbl_bn_coord_k_t;
+typedef ap_uint<bls12_377_coord_t::width + 4> bls12_377_coord_k_t;
+typedef ap_uint<2 * bls12_377_coord_t::width + 4> dbl_bls12_377_coord_k_t;
 
-void bucket_unit(N_t num_padd_ops, hls::stream<bn_coord_k_t> &BFIFO_1, u32 B_i[30],
-                 N_t count_B[16]);
+void bucket_unit(hls::stream<bls12_377_coord_k_t> &BFIFO_1,
+                 hls::stream<bls12_377_coord_k_t> &padd_output_fifo,
+                 N_t count_B[16], hls::stream<dbl_bls12_377_coord_k_t> &CFIFO, bls12_377_coord_t B_i[16]);
 
 void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NUM_POINTS],
              fr_t K_arr[NUM_POINTS], u32 B_i[30]);

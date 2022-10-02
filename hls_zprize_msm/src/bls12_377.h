@@ -11,6 +11,12 @@ typedef ap_uint<1131> bls12_377_coord_t;
 struct bls12_377_p {
     fp_t x, y, z;
 
+    bls12_377_p() {
+        x = 0;
+        y = 1;
+        z = 0;
+    }
+
     bls12_377_p(fp_t a, fp_t b, fp_t c) {
         x = a;
         y = b;
@@ -22,9 +28,7 @@ struct bls12_377_p {
         y = a(752, 377);
         z = a(376, 0);
     }
-
 };
-
 
 extern bls12_377_p zero;
 

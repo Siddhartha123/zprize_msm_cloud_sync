@@ -29,6 +29,7 @@ double_fp_t mul_m(fp_t x) {
 }
 
 fp_t mod_p(double_fp_t A) {
+    // TODO: use mul_m and mul_p instead of * operator
     ap_uint<fp_t::width + 2> Al = A(377 + 2, 0);
     fp_t Ah = A(377 * 2 - 1, 377);
     fp_t l1_hat = (Ah * m) >> 377;
