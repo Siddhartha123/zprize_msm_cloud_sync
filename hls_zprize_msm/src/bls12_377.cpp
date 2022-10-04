@@ -19,55 +19,55 @@ bls12_377_p padd(bls12_377_p p1, bls12_377_p p2) {
     fp_t Z1Z1, Z2Z2, U1, U2, t0, S1, t1, S2, H, t2, I, J, t3, r, V, t4, t5;
     fp_t t6, t7, t8, t9, t10, t11, t12, t13, t14;
     bls12_377_p result(0, 1, 0);
-    // bls12_377_p double_p1 = pdouble(p1);
+    bls12_377_p double_p1 = pdouble(p1);
 
-    // Z1Z1 = square_p(z1);
-    // Z2Z2 = square_p(z2);
-    // U1 = mul_p(x1, Z2Z2);
-    // U2 = mul_p(x2, Z1Z1);
-    // t0 = mul_p(z2, Z2Z2);
-    // S1 = mul_p(y1, t0);
-    // t1 = mul_p(z1, Z1Z1);
-    // S2 = mul_p(y2, t1);
-    // H = sub_p(U2, U1);
-    // t3 = sub_p(S2, S1);
+    Z1Z1 = square_p(z1);
+    Z2Z2 = square_p(z2);
+    U1 = mul_p(x1, Z2Z2);
+    U2 = mul_p(x2, Z1Z1);
+    t0 = mul_p(z2, Z2Z2);
+    S1 = mul_p(y1, t0);
+    t1 = mul_p(z1, Z1Z1);
+    S2 = mul_p(y2, t1);
+    H = sub_p(U2, U1);
+    t3 = sub_p(S2, S1);
 
-    // t2 = add_p(H, H);
-    // I = square_p(t2);
-    // J = mul_p(H, I);
-    // r = add_p(t3, t3);
-    // V = mul_p(U1, I);
-    // t4 = square_p(r);
-    // t5 = add_p(V, V);
-    // t6 = sub_p(t4, J);
-    // x = sub_p(t6, t5);
-    // t7 = sub_p(V, x);
-    // t8 = mul_p(S1, J);
-    // t9 = add_p(t8, t8);
-    // t10 = mul_p(r, t7);
-    // y = sub_p(t10, t9);
-    // t11 = add_p(z1, z2);
-    // t12 = square_p(t11);
-    // t13 = sub_p(t12, Z1Z1);
-    // t14 = sub_p(t13, Z2Z2);
-    // z = mul_p(t14, H);
-    // bls12_377_p sum(x, y, z);
+    t2 = add_p(H, H);
+    I = square_p(t2);
+    J = mul_p(H, I);
+    r = add_p(t3, t3);
+    V = mul_p(U1, I);
+    t4 = square_p(r);
+    t5 = add_p(V, V);
+    t6 = sub_p(t4, J);
+    x = sub_p(t6, t5);
+    t7 = sub_p(V, x);
+    t8 = mul_p(S1, J);
+    t9 = add_p(t8, t8);
+    t10 = mul_p(r, t7);
+    y = sub_p(t10, t9);
+    t11 = add_p(z1, z2);
+    t12 = square_p(t11);
+    t13 = sub_p(t12, Z1Z1);
+    t14 = sub_p(t13, Z2Z2);
+    z = mul_p(t14, H);
+    bls12_377_p sum(x, y, z);
 
-    // if (p1.z == 0)
-    //     result = p2;
-    // else if (p2.z == 0)
-    //     result = p1;
-    // else if (H == 0 && t3 == 0)
-    //     result = double_p1;
-    // else if (H == 0 && t3 != 0)
-    //     result = zero;
-    // else
-    //     result = sum;
+    if (p1.z == 0)
+        result = p2;
+    else if (p2.z == 0)
+        result = p1;
+    else if (H == 0 && t3 == 0)
+        result = double_p1;
+    else if (H == 0 && t3 != 0)
+        result = zero;
+    else
+        result = sum;
 
     // delay();
-    result.x = add_p(x1, x2);
-    result.y = add_p(y1, y2);
-    result.z = add_p(z1, z2);
+    // result.x = add_p(x1, x2);
+    // result.y = add_p(y1, y2);
+    // result.z = add_p(z1, z2);
 
     return result;
 }

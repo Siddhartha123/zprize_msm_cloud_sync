@@ -101,7 +101,7 @@ void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NU
     bls12_377_coord_t GBUFF_P[NUM_POINTS];
     fr_t GBUFF_K[NUM_POINTS];
     bls12_377_coord_t GBUFF_P2D[NUM_CHUNKS][16];
-#pragma HLS array_partition variable = GBUFF_P2D type = cyclic factor = 4 dim = 1
+#pragma HLS array_partition variable = GBUFF_P2D type = cyclic factor = 16 dim = 1
     /*
      * Loop 0: Populating global buffers
      */
@@ -151,28 +151,19 @@ void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NU
 #pragma HLS STREAM variable = CFIFO[1] depth = 15
 
     N_t ni = 0;
-// for (N_t ni = 0; ni < 16; ni = ni + 1) {
 msm_arr_dataflow_0:
     for (int i = 0; i < NUM_POINTS; i++) {
-        nibble_K = GBUFF_K[i](((ni + 1) << 2) - 1, (ni) << 2);
-        BFIFO[ni].write((nibble_K, GBUFF_P[i]));
-        nibble_K = GBUFF_K[i](((ni + 1) << 2) - 1, (ni) << 2);
-        BFIFO[ni + 1].write((nibble_K, GBUFF_P[i]));
-        nibble_K = GBUFF_K[i](((ni + 1) << 2) - 1, (ni) << 2);
-        BFIFO[ni + 2].write((nibble_K, GBUFF_P[i]));
+        for (N_t ni = 0; ni < 16; ni = ni + 1) {
+            nibble_K = GBUFF_K[i](((0 + 1) << 2) - 1, (0) << 2);
+            BFIFO[ni].write((nibble_K, GBUFF_P[i]));
+        }
     }
-    // }
 
-    // for (N_t ni = 0; ni < 16; ni = ni + 1)
-    bucket_process(cnt_bucket_chunks[ni], num_padd_ops[ni], BFIFO[ni], padd_output_fifo[ni],
-                   GBUFF_P2D[ni], CFIFO[ni]);
-    bucket_process(cnt_bucket_chunks[ni + 1], num_padd_ops[ni + 1], BFIFO[ni + 1],
-                   padd_output_fifo[ni + 1], GBUFF_P2D[ni + 1], CFIFO[ni + 1]);
-    bucket_process(cnt_bucket_chunks[2], num_padd_ops[2], BFIFO[2], padd_output_fifo[2],
-                   GBUFF_P2D[2], CFIFO[2]);
-
-    // TODO: scheduler process: arbitration between CFIFO's and pass to padd unit, add metadata
-    // before sending to padd unit.
+    for (N_t ni = 0; ni < 16; ni = ni + 1) {
+#pragma HLS unroll
+        bucket_process(cnt_bucket_chunks[ni], num_padd_ops[ni], BFIFO[ni], padd_output_fifo[ni],
+                       GBUFF_P2D[ni], CFIFO[ni]);
+    }
 
     // ---- Padd operations ----
     fp_t iter_padd_ops = 0;
@@ -185,28 +176,123 @@ msm_arr_dataflow_4:
     while (!padd_done) {
 #pragma HLS allocation function instances = padd limit = 1
 
+        N_t k;
+
         if (padd_count[0] < num_padd_ops[0] && !CFIFO[0].empty()) {
+            k = 0;
             (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[0].read();
             bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
             sum = padd(a, b);
             padd_count[0] = padd_count[0] + 1;
             padd_output_fifo[0].write((nibble_K, sum.x, sum.y, sum.z));
         } else if (padd_count[1] < num_padd_ops[1] && !CFIFO[1].empty()) {
+            k = 1;
             (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[1].read();
             bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
             sum = padd(a, b);
             padd_count[1] = padd_count[1] + 1;
             padd_output_fifo[1].write((nibble_K, sum.x, sum.y, sum.z));
         } else if (padd_count[2] < num_padd_ops[2] && !CFIFO[2].empty()) {
+            k = 2;
             (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[2].read();
             bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
             sum = padd(a, b);
             padd_count[2] = padd_count[2] + 1;
             padd_output_fifo[2].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[3] < num_padd_ops[3] && !CFIFO[3].empty()) {
+            k = 3;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[3].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[3] = padd_count[3] + 1;
+            padd_output_fifo[3].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[4] < num_padd_ops[4] && !CFIFO[4].empty()) {
+            k = 4;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[4].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[4] = padd_count[4] + 1;
+            padd_output_fifo[4].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[5] < num_padd_ops[5] && !CFIFO[5].empty()) {
+            k = 5;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[5].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[5] = padd_count[5] + 1;
+            padd_output_fifo[5].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[6] < num_padd_ops[6] && !CFIFO[6].empty()) {
+            k = 6;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[6].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[6] = padd_count[6] + 1;
+            padd_output_fifo[6].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[7] < num_padd_ops[7] && !CFIFO[7].empty()) {
+            k = 7;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[7].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[7] = padd_count[7] + 1;
+            padd_output_fifo[7].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[8] < num_padd_ops[8] && !CFIFO[8].empty()) {
+            k = 8;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[8].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[8] = padd_count[8] + 1;
+            padd_output_fifo[8].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[9] < num_padd_ops[9] && !CFIFO[9].empty()) {
+            k = 9;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[9].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[9] = padd_count[9] + 1;
+            padd_output_fifo[9].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[10] < num_padd_ops[10] && !CFIFO[10].empty()) {
+            k = 10;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[10].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[10] = padd_count[10] + 1;
+            padd_output_fifo[10].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[11] < num_padd_ops[11] && !CFIFO[11].empty()) {
+            k = 11;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[11].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[11] = padd_count[11] + 1;
+            padd_output_fifo[11].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[12] < num_padd_ops[12] && !CFIFO[12].empty()) {
+            k = 12;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[12].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[12] = padd_count[12] + 1;
+            padd_output_fifo[12].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[13] < num_padd_ops[13] && !CFIFO[13].empty()) {
+            k = 13;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[13].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[13] = padd_count[13] + 1;
+            padd_output_fifo[13].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[14] < num_padd_ops[14] && !CFIFO[14].empty()) {
+            k = 14;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[14].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[14] = padd_count[14] + 1;
+            padd_output_fifo[14].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[15] < num_padd_ops[15] && !CFIFO[15].empty()) {
+            k = 15;
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[15].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[15] = padd_count[15] + 1;
+            padd_output_fifo[15].write((nibble_K, sum.x, sum.y, sum.z));
         } else
             padd_done = (padd_count[0] == num_padd_ops[0]) && (padd_count[1] == num_padd_ops[1]);
     }
-    // TODO: routing required for padd output to respective bucket process
 
     // -----------------------------------------------------------------------
 
