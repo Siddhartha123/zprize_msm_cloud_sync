@@ -101,7 +101,7 @@ void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NU
     bls12_377_coord_t GBUFF_P[NUM_POINTS];
     fr_t GBUFF_K[NUM_POINTS];
     bls12_377_coord_t GBUFF_P2D[NUM_CHUNKS][16];
-#pragma HLS array_partition variable = GBUFF_P2D type = cyclic factor = 2 dim = 1
+#pragma HLS array_partition variable = GBUFF_P2D type = cyclic factor = 4 dim = 1
     /*
      * Loop 0: Populating global buffers
      */
@@ -139,36 +139,37 @@ void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NU
     };
     N_t num_padd_ops[16] = {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7};
 
-    hls::stream<bls12_377_coord_k_t> BFIFO_0("Bucket fifo for chunk position 1"),
-        BFIFO_1("Bucket fifo for chunk position 2");
-    hls::stream<bls12_377_coord_k_t> padd_output_fifo_0("PADD output fifo chunk 1"),
-        padd_output_fifo_1("PADD output fifo chunk 1");
-#pragma HLS STREAM variable = padd_output_fifo_0 depth = 15
-#pragma HLS STREAM variable = padd_output_fifo_1 depth = 15
+    hls::stream<bls12_377_coord_k_t> BFIFO[16];  // Bucket fifos for each chunk position
+    hls::stream<bls12_377_coord_k_t> padd_output_fifo[16];
+#pragma HLS STREAM variable = padd_output_fifo[0] depth = 15
+#pragma HLS STREAM variable = padd_output_fifo[1] depth = 15
 
-#pragma HLS STREAM variable = BFIFO_0 depth = 5
-#pragma HLS STREAM variable = BFIFO_1 depth = 5
-    hls::stream<dbl_bls12_377_coord_k_t> CFIFO_0("central fifo for chunk 1"),
-        CFIFO_1("central fifo for chunk 1");  // PADD FIFOS
-#pragma HLS STREAM variable = CFIFO_0 depth = 15
-#pragma HLS STREAM variable = CFIFO_1 depth = 15
+#pragma HLS STREAM variable = BFIFO[0] depth = 5
+#pragma HLS STREAM variable = BFIFO[1] depth = 5
+    hls::stream<dbl_bls12_377_coord_k_t> CFIFO[16];  // PADD FIFOS
+#pragma HLS STREAM variable = CFIFO[0] depth = 15
+#pragma HLS STREAM variable = CFIFO[1] depth = 15
 
     N_t ni = 0;
 // for (N_t ni = 0; ni < 16; ni = ni + 1) {
 msm_arr_dataflow_0:
     for (int i = 0; i < NUM_POINTS; i++) {
         nibble_K = GBUFF_K[i](((ni + 1) << 2) - 1, (ni) << 2);
-        BFIFO_0.write((nibble_K, GBUFF_P[i]));
+        BFIFO[ni].write((nibble_K, GBUFF_P[i]));
         nibble_K = GBUFF_K[i](((ni + 1) << 2) - 1, (ni) << 2);
-        BFIFO_1.write((nibble_K, GBUFF_P[i]));
+        BFIFO[ni + 1].write((nibble_K, GBUFF_P[i]));
+        nibble_K = GBUFF_K[i](((ni + 1) << 2) - 1, (ni) << 2);
+        BFIFO[ni + 2].write((nibble_K, GBUFF_P[i]));
     }
     // }
 
     // for (N_t ni = 0; ni < 16; ni = ni + 1)
-    bucket_process(cnt_bucket_chunks[ni], num_padd_ops[ni], BFIFO_0, padd_output_fifo_0,
-                   GBUFF_P2D[0], CFIFO_0);
-    bucket_process(cnt_bucket_chunks[ni + 1], num_padd_ops[ni + 1], BFIFO_1, padd_output_fifo_1,
-                   GBUFF_P2D[1], CFIFO_1);
+    bucket_process(cnt_bucket_chunks[ni], num_padd_ops[ni], BFIFO[ni], padd_output_fifo[ni],
+                   GBUFF_P2D[ni], CFIFO[ni]);
+    bucket_process(cnt_bucket_chunks[ni + 1], num_padd_ops[ni + 1], BFIFO[ni + 1],
+                   padd_output_fifo[ni + 1], GBUFF_P2D[ni + 1], CFIFO[ni + 1]);
+    bucket_process(cnt_bucket_chunks[2], num_padd_ops[2], BFIFO[2], padd_output_fifo[2],
+                   GBUFF_P2D[2], CFIFO[2]);
 
     // TODO: scheduler process: arbitration between CFIFO's and pass to padd unit, add metadata
     // before sending to padd unit.
@@ -181,31 +182,29 @@ msm_arr_dataflow_0:
     N_t padd_count[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 msm_arr_dataflow_4:
-    // for (N_t i = 0; i < num_padd_ops[0]; i++) {
-    //     (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO.read();
-    //     bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-    //     sum = padd(a, b);
-    //     iter_padd_ops++;
-    //     padd_output_fifo_0.write((nibble_K, sum.x, sum.y, sum.z));
-    // }
-
     while (!padd_done) {
 #pragma HLS allocation function instances = padd limit = 1
-        if (padd_count[0] < num_padd_ops[0] && !CFIFO_0.empty()) {
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO_0.read();
+
+        if (padd_count[0] < num_padd_ops[0] && !CFIFO[0].empty()) {
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[0].read();
             bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
             sum = padd(a, b);
             padd_count[0] = padd_count[0] + 1;
-            padd_output_fifo_0.write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[1] < num_padd_ops[1] && !CFIFO_1.empty()) {
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO_1.read();
+            padd_output_fifo[0].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[1] < num_padd_ops[1] && !CFIFO[1].empty()) {
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[1].read();
             bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
             sum = padd(a, b);
             padd_count[1] = padd_count[1] + 1;
-            padd_output_fifo_1.write((nibble_K, sum.x, sum.y, sum.z));
-        } else {
+            padd_output_fifo[1].write((nibble_K, sum.x, sum.y, sum.z));
+        } else if (padd_count[2] < num_padd_ops[2] && !CFIFO[2].empty()) {
+            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[2].read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_count[2] = padd_count[2] + 1;
+            padd_output_fifo[2].write((nibble_K, sum.x, sum.y, sum.z));
+        } else
             padd_done = (padd_count[0] == num_padd_ops[0]) && (padd_count[1] == num_padd_ops[1]);
-        }
     }
     // TODO: routing required for padd output to respective bucket process
 
