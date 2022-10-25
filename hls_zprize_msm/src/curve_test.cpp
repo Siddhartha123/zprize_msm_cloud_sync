@@ -65,11 +65,74 @@ void bls12_377_test() {
     print_bigInt(p3);
 }
 
+void generate_padd_counts() {
+    FILE *pFile, *count_file;
+    char data[100];
+    ap_uint<NUM_CHUNKS * CHUNK_SIZE> K_arr[NUM_POINTS];
+    ap_uint<CHUNK_SIZE> nibble;
+
+    char path[] = "/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/input_test.txt";
+    pFile = fopen(path, "r");
+
+    char count_path[] =
+        "/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_8/count.txt";
+    count_file = fopen(count_path, "w");
+
+    std::cout << std::hex;
+    for (int i = 0; i < NUM_POINTS; i++) {
+        fscanf(pFile, "%s", &data);
+        fr_t x(data, 16);
+        K_arr[i] = x;
+        std::cout << K_arr[i] << "\n";
+    }
+
+    std::cout << std::hex;
+    int sum = 0;
+    for (int k = 0; k < NUM_CHUNKS; k++) {
+        int count_B[TWO_RAISED_CHUNK_SIZE];
+        //  = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        //                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        //                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        memset(count_B, 0, sizeof(count_B));
+        int num_padd_ops = 0;
+        for (int i = 0; i < NUM_POINTS; i++) {
+            nibble = K_arr[i](((k + 1) * 6) - 1, k * 6);
+            // std ::cout << "[debug]" << (unsigned int)nibble << "\n";
+            count_B[nibble] += 1;
+        }
+        // print count_B for current chunk position
+        // std::cout << "count_B[" << k << "] = ";
+        // std::cout << "{" << count_B[0];
+        for (int i = 0; i < TWO_RAISED_CHUNK_SIZE; i++) {
+            if (k == 42) std::cout << " " << count_B[i];
+            fprintf(count_file, "%x\n", count_B[i]);
+        }
+        // std::cout << "},\n";
+
+        // calculate num_padd_ops for current chunk position
+        for (int i = 1; i < TWO_RAISED_CHUNK_SIZE; i++) {
+            if (count_B[i] != 0) num_padd_ops += (count_B[i] - 1);
+        }
+        sum += num_padd_ops;
+        std::cout << num_padd_ops << "\n";
+        std::cout << "\n ";
+        // std::cout << "num_padd_ops[" << k << "] = " << num_padd_ops << "\n";
+    }
+
+    std::cout << std::hex << "sum = " << sum;
+}
+
 int main() {
-    bls12_377_test();
-    u32 B_i[30];
-    fp_t P_arr_x[NUM_POINTS], P_arr_y[NUM_POINTS], P_arr_z[NUM_POINTS];
-    fr_t K_arr[NUM_POINTS];
-    // msm_arr(P_arr_x, P_arr_y, P_arr_z, K_arr, B_i);
+    generate_padd_counts();
     return 0;
+
+    // bls12_377_test();
+    // u32 B_i[30];
+    // fp_t P_arr_x[NUM_POINTS], P_arr_y[NUM_POINTS], P_arr_z[NUM_POINTS];
+    // fr_t K_arr[NUM_POINTS];
+    // N_t total_num_padd_ops = 5;
+    // hls::stream<N_t> count_stream;
+    // bls12_377_p result =
+    //     msm_arr(P_arr_x, P_arr_y, P_arr_z, K_arr, count_stream, total_num_padd_ops);
+    // std::cout << result.x;
 }

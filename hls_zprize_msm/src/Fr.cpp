@@ -36,7 +36,7 @@ fr_t sub_r(fr_t x, fr_t y) {
 
 // modular multiplication (x * y) mod q
 fr_t mul_r(fr_t x, fr_t y) {
-#pragma HLS inline
+// #pragma HLS inline
     double_fr_t p = x * y;
     return mod_r(p);
 }

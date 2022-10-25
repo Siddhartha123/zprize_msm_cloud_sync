@@ -3,11 +3,12 @@
 ## Please DO NOT edit it.
 ## Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ############################################################
+# set_param general.maxThreads 2
 open_project hls_zprize_msm
 set_top msm_arr
 add_files src/msm.h
 # add_files src/msm.cpp
-add_files src/msm_dataflow.cpp
+add_files src/msm_dataflow_input_stream.cpp
 add_files src/bls12_377.h
 add_files src/bls12_377.cpp
 add_files src/Fr.h

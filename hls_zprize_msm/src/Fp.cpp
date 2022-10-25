@@ -16,24 +16,25 @@ fp_ov_t m(
 
 // fp_t mod_p(double_fp_t A) { return (fp_t)(A % p); }
 
-double_fp_t mul_p(fp_t x) {
-    return (x << 377) - (x << 374) - (x << 372) - (x << 369) + (x << 366) - (x << 363) +
-           (x << 361) + (x << 358) + (x << 355) - (x << 353) + (x << 349) - (x << 347) -
-           (x << 342) + (x << 338) + (x << 336) + (x << 332) + (x << 328) - (x << 324);
+double_fp_t mul_q(fp_t x) {
+    return ((((x << 377) - (x << 374)) - ((x << 372) + (x << 369))) +
+            (((x << 366) - (x << 363)) + ((x << 361) + (x << 358)))) +
+           ((((x << 355) - (x << 353)) + ((x << 349) - (x << 347) - (x << 342))) +
+            (((x << 338) + (x << 336)) + ((x << 332) + (x << 328)) - (x << 324)));
 }
 
 double_fp_t mul_m(fp_t x) {
-    return (x << 377) + (x << 375) - (x << 373) + (x << 368) + (x << 366) + (x << 364) +
-           (x << 359) + (x << 356) - (x << 354) + (x << 352) + (x << 348) - (x << 346) +
-           (x << 344) - (x << 342) + (x << 338) + (x << 331) - (x << 329);
+    return (((x << 377) + (x << 375)) - (x << 373) + ((x << 368) + (x << 366))) + (x << 364) +
+           (x << 359) + (((x << 356) - (x << 354)) + (x << 352) + ((x << 348) - (x << 346))) +
+           (((x << 344) - (x << 342)) + (x << 338) + ((x << 331) - (x << 329)));
 }
 
 fp_t mod_p(double_fp_t A) {
-    // TODO: use mul_m and mul_p instead of * operator
+#pragma HLS inline off
     ap_uint<fp_t::width + 2> Al = A(377 + 2, 0);
     fp_t Ah = A(377 * 2 - 1, 377);
-    fp_t l1_hat = (Ah * m) >> 377;
-    ap_uint<fp_t::width + 2> l1_hatp = (l1_hat * p)(377 + 1, 0);
+    fp_t l1_hat = mul_m(Ah) >> 377;
+    ap_uint<fp_t::width + 2> l1_hatp = mul_q(l1_hat)(377 + 1, 0);
     ap_uint<fp_t::width + 2> r = A - l1_hatp;
     if (r > p) r = r - p;
     if (r > p) r = r - p;
@@ -68,7 +69,7 @@ fp_t sub_p(fp_t x, fp_t y) {
 
 // modular multiplication (x * y) mod p
 fp_t mul_p(fp_t x, fp_t y) {
-#pragma HLS inline
+    // #pragma HLS inline
     double_fp_t p = x * y;
     return mod_p(p);
 }

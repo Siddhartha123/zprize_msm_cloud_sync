@@ -6,6 +6,8 @@
 #include "Fp.h"
 #include "Fr.h"
 
+// #define DATAPATH_SMALL
+
 typedef ap_uint<1131> bls12_377_coord_t;
 
 struct bls12_377_p {

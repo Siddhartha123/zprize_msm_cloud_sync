@@ -11,6 +11,7 @@ void delay() {
 bls12_377_p padd(bls12_377_p p1, bls12_377_p p2) {
 // #pragma HLS dataflow
 #pragma HLS inline OFF
+#pragma HLS allocation function instances = mul_p limit = 6
 
     fp_t x1 = p1.x, y1 = p1.y, z1 = p1.z;  // input point p1
     fp_t x2 = p2.x, y2 = p2.y, z2 = p2.z;  // input point p2
@@ -21,8 +22,8 @@ bls12_377_p padd(bls12_377_p p1, bls12_377_p p2) {
     bls12_377_p result(0, 1, 0);
     bls12_377_p double_p1 = pdouble(p1);
 
-    Z1Z1 = square_p(z1);
-    Z2Z2 = square_p(z2);
+    Z1Z1 = mul_p(z1, z1);
+    Z2Z2 = mul_p(z2, z2);
     U1 = mul_p(x1, Z2Z2);
     U2 = mul_p(x2, Z1Z1);
     t0 = mul_p(z2, Z2Z2);
@@ -33,11 +34,11 @@ bls12_377_p padd(bls12_377_p p1, bls12_377_p p2) {
     t3 = sub_p(S2, S1);
 
     t2 = add_p(H, H);
-    I = square_p(t2);
+    I = mul_p(t2, t2);
     J = mul_p(H, I);
     r = add_p(t3, t3);
     V = mul_p(U1, I);
-    t4 = square_p(r);
+    t4 = mul_p(r, r);
     t5 = add_p(V, V);
     t6 = sub_p(t4, J);
     x = sub_p(t6, t5);
@@ -47,7 +48,7 @@ bls12_377_p padd(bls12_377_p p1, bls12_377_p p2) {
     t10 = mul_p(r, t7);
     y = sub_p(t10, t9);
     t11 = add_p(z1, z2);
-    t12 = square_p(t11);
+    t12 = mul_p(t11, t11);
     t13 = sub_p(t12, Z1Z1);
     t14 = sub_p(t13, Z2Z2);
     z = mul_p(t14, H);
@@ -63,12 +64,48 @@ bls12_377_p padd(bls12_377_p p1, bls12_377_p p2) {
         result = zero;
     else
         result = sum;
+#ifdef DATAPATH_SMALL
+    result.x = add_p(x1, x2);
+    result.y = add_p(y1, y2);
+    result.z = add_p(z1, z2);
+#endif
+    return result;
+}
 
-    // delay();
-    // result.x = add_p(x1, x2);
-    // result.y = add_p(y1, y2);
-    // result.z = add_p(z1, z2);
+bls12_377_p pdouble(bls12_377_p p) {
+    fp_t x1 = p.x, y1 = p.y, z1 = p.z;  // input point
+    fp_t x2, y2, z2;                    // output point
+    fp_t A, B, C, D, E, F, t0, t1, t2, t3, t4, t5, t6, t7, t8;
+#pragma HLS allocation function instances = mul_p limit = 3
+    A = mul_p(x1, x1);
+    B = mul_p(y1, y1);
+    C = mul_p(B, B);
+    t0 = add_p(x1, B);
+    t1 = mul_p(t0, t0);
+    t2 = sub_p(t1, A);
+    t3 = sub_p(t2, C);
+    D = add_p(t3, t3);
+    E = add_p(A, A);
+    E = add_p(E, A);
+    F = mul_p(E, E);
+    t4 = add_p(D, D);
+    x2 = sub_p(F, t4);
+    t5 = sub_p(D, x2);
+    t6 = C;
+    t6 = add_p(t6, t6);
+    t6 = add_p(t6, t6);
+    t6 = add_p(t6, t6);
+    t7 = mul_p(E, t5);
+    t8 = mul_p(y1, z1);
+    y2 = sub_p(t7, t6);
+    z2 = add_p(t8, t8);
+    bls12_377_p result(x2, y2, z2);
 
+#ifdef DATAPATH_SMALL
+    result.x = x1;
+    result.y = y1;
+    result.z = z1;
+#endif
     return result;
 }
 
@@ -124,40 +161,11 @@ bls12_377_p padd_999(bls12_377_p p1, bls12_377_p p2) {
     y = add_p(s41d41, x1x2_3d32_3);
     z = add_p(s41d33, x1x2_3d31);
 
-    result.x = x;
-    result.y = y;
-    result.z = z;
-    return result;
-}
-
-bls12_377_p pdouble(bls12_377_p p) {
-    fp_t x1 = p.x, y1 = p.y, z1 = p.z;  // input point
-    fp_t x2, y2, z2;                    // output point
-    fp_t A, B, C, D, E, F, t0, t1, t2, t3, t4, t5, t6, t7, t8;
-
-    A = mul_p(x1, x1);
-    B = mul_p(y1, y1);
-    C = mul_p(B, B);
-    t0 = add_p(x1, B);
-    t1 = mul_p(t0, t0);
-    t2 = sub_p(t1, A);
-    t3 = sub_p(t2, C);
-    D = add_p(t3, t3);
-    E = add_p(A, A);
-    E = add_p(E, A);
-    F = mul_p(E, E);
-    t4 = add_p(D, D);
-    x2 = sub_p(F, t4);
-    t5 = sub_p(D, x2);
-    t6 = C;
-    t6 = add_p(t6, t6);
-    t6 = add_p(t6, t6);
-    t6 = add_p(t6, t6);
-    t7 = mul_p(E, t5);
-    t8 = mul_p(y1, z1);
-    y2 = sub_p(t7, t6);
-    z2 = add_p(t8, t8);
-    bls12_377_p result(x2, y2, z2);
+#ifdef DATAPATH_SMALL
+    result.x = add_p(x1, x2);
+    result.y = add_p(y1, y2);
+    result.z = add_p(z1, z2);
+#endif
     return result;
 }
 
