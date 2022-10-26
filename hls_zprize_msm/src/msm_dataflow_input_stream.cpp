@@ -29,7 +29,7 @@ void bucket_process(N_t count_B[TWO_RAISED_CHUNK_SIZE], N_t num_padd_ops,
 #pragma HLS STREAM variable = OVFIFO depth = 17
     // chunk_t nibble_K;
     // bucket-wise padd count
-    fp_t padd_count[TWO_RAISED_CHUNK_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    N_t padd_count[TWO_RAISED_CHUNK_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -110,7 +110,7 @@ void rem_bucket_process(N_t count_B[TWO_RAISED_CHUNK_SIZE], N_t num_padd_ops,
 #pragma HLS STREAM variable = OVFIFO depth = 17
     // chunk_t nibble_K;
     // bucket-wise padd count
-    fp_t padd_count[TWO_RAISED_REM_CHUNK_SIZE] = {0, 0};
+    N_t padd_count[TWO_RAISED_REM_CHUNK_SIZE] = {0, 0};
     while ((count_if < NUM_POINTS) || (count_padd_of < num_padd_ops)) {
         if (count_padd_of < num_padd_ops && !padd_output_fifo.empty()) {
             data = padd_output_fifo.read();
