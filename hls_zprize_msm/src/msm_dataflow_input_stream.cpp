@@ -1,5 +1,7 @@
 #include "msm.h"
 
+#define loop2and3_identifier 63
+
 void bucket_process(N_t count_B[TWO_RAISED_CHUNK_SIZE], N_t num_padd_ops,
                     hls::stream<bls12_377_coord_k_t> &BFIFO,
                     hls::stream<bls12_377_coord_k_t> &padd_output_fifo,
@@ -30,9 +32,9 @@ void bucket_process(N_t count_B[TWO_RAISED_CHUNK_SIZE], N_t num_padd_ops,
     // chunk_t nibble_K;
     // bucket-wise padd count
     N_t padd_count[TWO_RAISED_CHUNK_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     while ((count_if < NUM_POINTS) || (count_padd_of < num_padd_ops)) {
         if (count_padd_of < num_padd_ops && !padd_output_fifo.empty()) {
             data = padd_output_fifo.read();
@@ -176,26 +178,29 @@ msm_arr_dataflow_3:
  * result = sigma(2^kc*GBUFF_P[k])
  */
 
-bls12_377_p alg_loop_2and3(bls12_377_coord_t GBUFF_P2D[NUM_CHUNKS][TWO_RAISED_CHUNK_SIZE]) {
-#pragma HLS allocation function instances = padd limit = 1
+bls12_377_p alg_loop_2and3(bls12_377_coord_t GBUFF_P2D[NUM_CHUNKS][TWO_RAISED_CHUNK_SIZE],
+                           hls::stream<dbl_bls12_377_coord_t> &padd_input_loop_2and3_fifo,
+                           hls::stream<bls12_377_coord_t> &padd_output_loop_2and3_fifo) {
     bls12_377_p B_l(0, 1, 0);
     bls12_377_p s[NUM_CHUNKS];
     bls12_377_p G_k_arr[NUM_CHUNKS];
 msm_arr_dataflow_5:
     for (int l = TWO_RAISED_CHUNK_SIZE - 1; l > 0; l--) {
-#pragma HLS allocation function instances = padd limit = 1
     msm_arr_label0:
         for (int k = 0; k < NUM_CHUNKS; k++) {
 #pragma HLS unroll
 #pragma HLS dependence variable = s RAW false
             B_l = bls12_377_p(GBUFF_P2D[k][l]);
-            s[k] = padd(s[k], B_l);
+            padd_input_loop_2and3_fifo.write((s[k].x, s[k].y, s[k].z, B_l.x, B_l.y, B_l.z));
+            s[k] = bls12_377_p(padd_output_loop_2and3_fifo.read());
         }
     msm_arr_label1:
         for (int k = 0; k < NUM_CHUNKS; k++) {
 #pragma HLS unroll
 #pragma HLS dependence variable = G_k_arr RAW false
-            G_k_arr[k] = padd(G_k_arr[k], s[k]);
+            padd_input_loop_2and3_fifo.write(
+                (G_k_arr[k].x, G_k_arr[k].y, G_k_arr[k].z, s[k].x, s[k].y, s[k].z));
+            G_k_arr[k] = bls12_377_p(padd_output_loop_2and3_fifo.read());
         }
     }
 
@@ -208,7 +213,9 @@ msm_arr_dataflow_6:
 #pragma HLS pipeline off
             G_itr = pdouble(G_itr);
         }
-        G = padd(G_itr, bls12_377_p(G_k_arr[k]));
+        padd_input_loop_2and3_fifo.write(
+            (G_itr.x, G_itr.y, G_itr.z, G_k_arr[k].x, G_k_arr[k].y, G_k_arr[k].z));
+        G = bls12_377_p(padd_output_loop_2and3_fifo.read());
     }
 
     return G;
@@ -295,195 +302,210 @@ msm_arr_dataflow_0:
     fp_t p1_x, p1_y, p1_z, p2_x, p2_y, p2_z;
     bool padd_done = false, valid_data = false;
     N_t total_padd_count = 0;
-    hls::stream<dbl_bls12_377_coord_k_chunk_t> padd_input_fifo;
+    hls::stream<bls12_377_coord_t> padd_output_loop_2and3_fifo;
+    hls::stream<dbl_bls12_377_coord_k_chunk_t> padd_input_bucket_fifo;
+    hls::stream<dbl_bls12_377_coord_t> padd_input_loop_2and3_fifo;
     dbl_bls12_377_coord_k_t input_point_pair;
 
-#pragma HLS STREAM variable = padd_input_fifo depth = 64
+#pragma HLS STREAM variable = padd_input_bucket_fifo depth = 64
 msm_arr_dataflow_4:
     while (total_padd_count < total_num_padd_ops) {
         if (!CFIFO[0].empty()) {
             input_point_pair = CFIFO[0].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)0, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)0, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[1].empty()) {
             input_point_pair = CFIFO[1].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)1, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)1, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[2].empty()) {
             input_point_pair = CFIFO[2].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)2, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)2, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[3].empty()) {
             input_point_pair = CFIFO[3].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)3, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)3, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[4].empty()) {
             input_point_pair = CFIFO[4].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)4, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)4, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[5].empty()) {
             input_point_pair = CFIFO[5].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)5, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)5, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[6].empty()) {
             input_point_pair = CFIFO[6].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)6, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)6, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[7].empty()) {
             input_point_pair = CFIFO[7].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)7, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)7, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[8].empty()) {
             input_point_pair = CFIFO[8].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)8, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)8, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[9].empty()) {
             input_point_pair = CFIFO[9].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)9, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)9, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[10].empty()) {
             input_point_pair = CFIFO[10].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)10, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)10, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[11].empty()) {
             input_point_pair = CFIFO[11].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)11, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)11, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[12].empty()) {
             input_point_pair = CFIFO[12].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)12, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)12, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[13].empty()) {
             input_point_pair = CFIFO[13].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)13, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)13, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[14].empty()) {
             input_point_pair = CFIFO[14].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)14, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)14, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[15].empty()) {
             input_point_pair = CFIFO[15].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)15, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)15, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[16].empty()) {
             input_point_pair = CFIFO[16].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)16, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)16, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[17].empty()) {
             input_point_pair = CFIFO[17].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)17, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)17, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[18].empty()) {
             input_point_pair = CFIFO[18].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)18, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)18, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[19].empty()) {
             input_point_pair = CFIFO[19].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)19, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)19, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[20].empty()) {
             input_point_pair = CFIFO[20].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)20, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)20, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[21].empty()) {
             input_point_pair = CFIFO[21].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)21, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)21, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[22].empty()) {
             input_point_pair = CFIFO[22].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)22, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)22, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[23].empty()) {
             input_point_pair = CFIFO[23].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)23, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)23, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[24].empty()) {
             input_point_pair = CFIFO[24].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)24, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)24, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[25].empty()) {
             input_point_pair = CFIFO[25].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)25, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)25, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[26].empty()) {
             input_point_pair = CFIFO[26].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)26, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)26, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[27].empty()) {
             input_point_pair = CFIFO[27].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)27, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)27, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[28].empty()) {
             input_point_pair = CFIFO[28].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)28, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)28, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[29].empty()) {
             input_point_pair = CFIFO[29].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)29, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)29, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[30].empty()) {
             input_point_pair = CFIFO[30].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)30, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)30, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[31].empty()) {
             input_point_pair = CFIFO[31].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)31, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)31, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[32].empty()) {
             input_point_pair = CFIFO[32].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)32, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)32, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[33].empty()) {
             input_point_pair = CFIFO[33].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)33, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)33, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[34].empty()) {
             input_point_pair = CFIFO[34].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)34, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)34, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[35].empty()) {
             input_point_pair = CFIFO[35].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)35, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)35, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[36].empty()) {
             input_point_pair = CFIFO[36].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)36, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)36, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[37].empty()) {
             input_point_pair = CFIFO[37].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)37, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)37, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[38].empty()) {
             input_point_pair = CFIFO[38].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)38, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)38, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[39].empty()) {
             input_point_pair = CFIFO[39].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)39, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)39, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[40].empty()) {
             input_point_pair = CFIFO[40].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)40, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)40, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[41].empty()) {
             input_point_pair = CFIFO[41].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)41, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)41, input_point_pair));
             total_padd_count++;
         } else if (!CFIFO[42].empty()) {
             input_point_pair = CFIFO[42].read();
-            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)42, input_point_pair));
+            padd_input_bucket_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)42, input_point_pair));
             total_padd_count++;
         }
     }
 
     ap_uint<LOG_NUM_CHUNKS> chunk_num;
+    N_t itr_bucket = 0, itr_loop2_3 = 0;
 msm_arr_dataflow_padd:
-    for (int i = 0; i < total_num_padd_ops; i++) {
-        (chunk_num, nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = padd_input_fifo.read();
-        bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-        sum = padd(a, b);
-        padd_output_fifo[chunk_num].write((nibble_K, sum.x, sum.y, sum.z));
+    while (itr_bucket < total_num_padd_ops ||
+           itr_loop2_3 < (TWO_RAISED_CHUNK_SIZE - 1) * NUM_CHUNKS * 2 + NUM_CHUNKS - 2) {
+#pragma HLS allocation function instances = padd limit = 1
+        if (itr_bucket < total_num_padd_ops) {
+            (chunk_num, nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) =
+                padd_input_bucket_fifo.read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_output_fifo[chunk_num].write((nibble_K, sum.x, sum.y, sum.z));
+            itr_bucket++;
+        } else if (itr_loop2_3 < (TWO_RAISED_CHUNK_SIZE - 1) * NUM_CHUNKS * 2 + NUM_CHUNKS - 2) {
+            (p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = padd_input_loop_2and3_fifo.read();
+            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+            sum = padd(a, b);
+            padd_output_loop_2and3_fifo.write((sum.x, sum.y, sum.z));
+            itr_loop2_3++;
+        }
     }
 
-    return alg_loop_2and3(GBUFF_P2D);
+    return alg_loop_2and3(GBUFF_P2D, padd_input_loop_2and3_fifo, padd_output_loop_2and3_fifo);
 }

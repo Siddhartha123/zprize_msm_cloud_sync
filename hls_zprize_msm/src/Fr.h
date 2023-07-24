@@ -6,7 +6,7 @@ Library for scalar field
 #ifndef FR_H
 #define FR_H
 
-#define AP_INT_MAX_W 2048
+#define AP_INT_MAX_W 2500
 
 #include <ap_int.h>
 

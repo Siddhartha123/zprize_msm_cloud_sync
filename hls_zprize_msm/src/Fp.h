@@ -6,7 +6,7 @@ Library for base field
 #ifndef FP_H
 #define FP_H
 
-#define AP_INT_MAX_W 2048
+#define AP_INT_MAX_W 2500
 
 #include <ap_int.h>
 
@@ -15,6 +15,7 @@ Library for base field
 typedef ap_uint<377> fp_t;
 typedef ap_uint<378> fp_ov_t;
 typedef ap_uint<754> double_fp_t;
+typedef ap_uint<fp_t::width + 2> fp_ov2_t;
 
 // typedef ap_uint<13> fp_t;
 // typedef ap_uint<14> fp_ov_t;
@@ -24,6 +25,8 @@ fp_t add_p(fp_t x, fp_t y);
 fp_t sub_p(fp_t x, fp_t y);
 fp_t mod_p(double_fp_t A);
 fp_t mul_p(fp_t x, fp_t y);
+fp_ov2_t mul_q(fp_t x);
+double_fp_t mul_q_1(fp_t x);
 fp_t mul3_p(fp_t x);
 fp_t square_p(fp_t x);
 

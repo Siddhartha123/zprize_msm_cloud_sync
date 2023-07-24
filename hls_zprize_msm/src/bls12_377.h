@@ -9,6 +9,7 @@
 // #define DATAPATH_SMALL
 
 typedef ap_uint<1131> bls12_377_coord_t;
+typedef ap_uint<15> bls12_377_idx_t;
 
 struct bls12_377_p {
     fp_t x, y, z;

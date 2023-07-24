@@ -2,7 +2,7 @@
 
 #define loop2and3_identifier 63
 
-void bucket_process(N_t count_B[TWO_RAISED_CHUNK_SIZE], N_t num_padd_ops,
+void bucket_process_w_deadlock(N_t count_B[TWO_RAISED_CHUNK_SIZE], N_t num_padd_ops,
                     hls::stream<bls12_377_idx_k_t> &BFIFO,
                     hls::stream<bls12_377_idx_k_t> &padd_output_fifo,
                     bls12_377_idx_t GBUFF_P2D[TWO_RAISED_CHUNK_SIZE],
@@ -52,6 +52,7 @@ void bucket_process(N_t count_B[TWO_RAISED_CHUNK_SIZE], N_t num_padd_ops,
             data = BFIFO.read();
             count_if += 1;
             valid_data = true;
+            // TODO: if corresponding bucket already sent a pair to CFIFO then wait till it gets back
             // take care of single entry buckets i.e. count_B==1
             if (count_B[data(NIBBLE_RANGE_IDX)] == 1) {
                 GBUFF_P2D[data(NIBBLE_RANGE_IDX)] = data(bls12_377_idx_t::width - 1, 0);
@@ -165,43 +166,6 @@ msm_arr_dataflow_3:
         CFIFO.write((nibble_K, result, data(bls12_377_idx_t::width - 1, 0)));
     }
 }
-
-// ----------------------------------
-bls12_377_coord_t scratch_pad[SCRATCHPAD_SIZE];
-bool first_march = true;
-ap_uint<LOG_SCRATCHPAD_SIZE> free_addr;
-hls::stream<ap_uint<LOG_SCRATCHPAD_SIZE>> free_fifo;
-bls12_377_coord_t GBUFF_P[NUM_POINTS];
-
-bls12_377_coord_t load_point(N_t addr) {
-    if (addr(N_t::width - 1, N_t::width - 1) == 0)
-        return GBUFF_P[addr];
-    else {
-        free_fifo.write(addr(LOG_SCRATCHPAD_SIZE - 1, 0));
-        return scratch_pad[addr(LOG_SCRATCHPAD_SIZE - 1, 0)];
-    }
-}
-
-bls12_377_coord_t load_point_loop_2and3(N_t addr) {
-    free_fifo.write(addr(LOG_SCRATCHPAD_SIZE - 1, 0));
-    return scratch_pad[addr(LOG_SCRATCHPAD_SIZE - 1, 0)];
-}
-
-N_t store_point(bls12_377_p p) {
-    N_t addr;
-    if (first_march) {
-        scratch_pad[free_addr] = (p.x, p.y, p.z);
-        addr = free_addr;
-        free_addr++;
-        if (free_addr == SCRATCHPAD_SIZE - 1) first_march = false;
-    } else {
-        addr = free_fifo.read();
-        scratch_pad[addr] = (p.x, p.y, p.z);
-    }
-    return addr;
-}
-
-// ----------------------------------
 
 /*
  * Algorithm Loop 2: Combining the bucket partial sums
@@ -522,38 +486,36 @@ msm_arr_dataflow_4:
     }
 }
 
-void padd_unit(N_t total_num_padd_ops,
-               hls::stream<dbl_bls12_377_idx_k_chunk_t> &padd_input_bucket_fifo,
-               hls::stream<bls12_377_idx_k_t> padd_output_fifo[NUM_CHUNKS],
-               hls::stream<dbl_bls12_377_idx_t> &padd_input_loop_2and3_fifo,
-               hls::stream<bls12_377_idx_t> &padd_output_loop_2and3_fifo) {
-#pragma HLS dataflow
-    bls12_377_coord_t scratch_pad[SCRATCHPAD_SIZE];
+void padd_input_load_unit(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS],
+                          fp_t P_arr_z[NUM_POINTS], N_t total_num_padd_ops,
+                          bls12_377_coord_t scratch_pad[SCRATCHPAD_SIZE],
+                          hls::stream<ap_uint<LOG_SCRATCHPAD_SIZE>> &free_fifo,
+                          hls::stream<dbl_bls12_377_idx_k_chunk_t> &padd_input_bucket_fifo,
+                          hls::stream<dbl_bls12_377_idx_t> &padd_input_loop_2and3_fifo,
+                          hls::stream<dbl_bls12_377_coord_k_chunk_t> &padd_input_fifo) {
+#pragma HLS inline
     ap_uint<LOG_NUM_CHUNKS> chunk_num;
     ap_uint<CHUNK_SIZE> nibble_K;
     fp_t p1_x, p1_y, p1_z, p2_x, p2_y, p2_z;
-    bls12_377_p sum(0, 1, 0);
     N_t itr_bucket = 0, itr_loop2_3 = 0;
-    N_t p1_addr, p2_addr, sum_addr;
-
-    // TODO: separate bucket and loop2and3 processes and write to two queues
+    N_t p1_addr, p2_addr, point_addr;
+    // TODO: check if two loops can be separated - Alg loop 1 and loop 2and3
     while (itr_bucket < total_num_padd_ops ||
            itr_loop2_3 < (TWO_RAISED_CHUNK_SIZE - 1) * NUM_CHUNKS * 2 + NUM_CHUNKS - 2) {
 #pragma HLS dependence variable = scratch_pad RAW false
-#pragma HLS allocation function instances = padd limit = 1
         if (itr_bucket < total_num_padd_ops) {
 #pragma HLS dependence variable = scratch_pad RAW false
             (chunk_num, nibble_K, p1_addr, p2_addr) = padd_input_bucket_fifo.read();
 
             if (p1_addr(N_t::width - 1, N_t::width - 1) == 0)
-                (p1_x, p1_y, p1_z) = GBUFF_P[p1_addr];
+                (p1_x, p1_y, p1_z) = (P_arr_x[p1_addr], P_arr_y[p1_addr], P_arr_z[p1_addr]);
             else {
                 free_fifo.write(p1_addr(LOG_SCRATCHPAD_SIZE - 1, 0));
                 (p1_x, p1_y, p1_z) = scratch_pad[p1_addr(LOG_SCRATCHPAD_SIZE - 1, 0)];
             }
 
             if (p2_addr(N_t::width - 1, N_t::width - 1) == 0)
-                (p2_x, p2_y, p2_z) = GBUFF_P[p2_addr];
+                (p2_x, p2_y, p2_z) = (P_arr_x[p2_addr], P_arr_y[p2_addr], P_arr_z[p2_addr]);
             else {
                 free_fifo.write(p2_addr(LOG_SCRATCHPAD_SIZE - 1, 0));
                 (p2_x, p2_y, p2_z) = scratch_pad[p2_addr(LOG_SCRATCHPAD_SIZE - 1, 0)];
@@ -562,21 +524,8 @@ void padd_unit(N_t total_num_padd_ops,
             // (p2_x, p2_y, p2_z) = load_point(p2_addr);
             // NOTE: p1_addr, p2_addr can be locations from GBUFF_P as well as scratch pad, use MSB
             // of address to distinguish between both
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
 
-            if (first_march) {
-                scratch_pad[free_addr] = (sum.x, sum.y, sum.z);
-                sum_addr = free_addr;
-                free_addr++;
-                if (free_addr == SCRATCHPAD_SIZE - 1) first_march = false;
-            } else {
-                sum_addr = free_fifo.read();
-                scratch_pad[sum_addr] = (sum.x, sum.y, sum.z);
-            }
-            // sum_addr = store_point(sum);
-
-            padd_output_fifo[chunk_num].write((nibble_K, sum_addr));
+            padd_input_fifo.write((chunk_num, nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z));
             itr_bucket++;
         } else if (itr_loop2_3 < (TWO_RAISED_CHUNK_SIZE - 1) * NUM_CHUNKS * 2 + NUM_CHUNKS - 2) {
 #pragma HLS dependence variable = scratch_pad RAW false
@@ -587,37 +536,188 @@ void padd_unit(N_t total_num_padd_ops,
             free_fifo.write(p2_addr(LOG_SCRATCHPAD_SIZE - 1, 0));
             (p2_x, p2_y, p2_z) = scratch_pad[p2_addr(LOG_SCRATCHPAD_SIZE - 1, 0)];
             // (p2_x, p2_y, p2_z) = load_point_loop_2and3(p2_addr);
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
 
-            if (first_march) {
-                scratch_pad[free_addr] = (sum.x, sum.y, sum.z);
-                sum_addr = free_addr;
-                free_addr++;
-                if (free_addr == SCRATCHPAD_SIZE - 1) first_march = false;
-            } else {
-                sum_addr = free_fifo.read();
-                scratch_pad[sum_addr] = (sum.x, sum.y, sum.z);
-            }
-            // sum_addr = store_point(sum);
-
-            padd_output_loop_2and3_fifo.write(sum_addr);
+            padd_input_fifo.write(
+                (0x3f, (ap_uint<CHUNK_SIZE>)0, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z));
             itr_loop2_3++;
         }
     }
-    // TODO: if two processes can't write to same queue, read from both queues and write to
-    // padd_input with some metadata
+}
+
+void dataflow_padd_unit(N_t total_num_padd_ops,
+                        hls::stream<dbl_bls12_377_coord_k_chunk_t> &padd_input_fifo,
+                        hls::stream<bls12_377_coord_k_chunk_t> &padd_output_fifo) {
+    // #pragma HLS inline
+    ap_uint<LOG_NUM_CHUNKS> chunk_num;
+    ap_uint<CHUNK_SIZE> nibble_K;
+    fp_t p1_x, p1_y, p1_z, p2_x, p2_y, p2_z;
+    bls12_377_p sum(0, 1, 0);
+
+msm_arr_dataflow_padd:
+    for (int i = 0;
+         i < total_num_padd_ops + (TWO_RAISED_CHUNK_SIZE - 1) * NUM_CHUNKS * 2 + NUM_CHUNKS - 2;
+         i++) {
+#pragma HLS unroll
+        // TODO: read from padd_input queue
+        (chunk_num, nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = padd_input_fifo.read();
+        // TODO: perform padd
+        bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+        sum = padd(a, b);
+        // TODO: write to padd_output queue
+        padd_output_fifo.write((chunk_num, nibble_K, sum.x, sum.y, sum.z));
+    }
+}
+
+void dataflow_padd_unit_fixed(hls::stream<dbl_bls12_377_coord_k_chunk_t> &padd_input_fifo,
+                              hls::stream<bls12_377_coord_k_chunk_t> &padd_output_fifo) {
+    // #pragma HLS inline
+    ap_uint<LOG_NUM_CHUNKS> chunk_num;
+    ap_uint<CHUNK_SIZE> nibble_K;
+    fp_t p1_x, p1_y, p1_z, p2_x, p2_y, p2_z;
+    bls12_377_p sum(0, 1, 0);
+    N_t total_num_padd_ops = 1 << 14;
+    // TODO: post-hls: replace this with newly added port for total_num_padd_ops
 
 msm_arr_dataflow_padd:
     for (int i = 0;
          i < total_num_padd_ops + (TWO_RAISED_CHUNK_SIZE - 1) * NUM_CHUNKS * 2 + NUM_CHUNKS - 2;
          i++) {
         // TODO: read from padd_input queue
+        (chunk_num, nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = padd_input_fifo.read();
         // TODO: perform padd
+        bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+        sum = padd(a, b);
         // TODO: write to padd_output queue
+        padd_output_fifo.write((chunk_num, nibble_K, sum.x, sum.y, sum.z));
     }
+}
+
+void padd_output_store_unit(N_t total_num_padd_ops,
+                            hls::stream<bls12_377_coord_k_chunk_t> &padd_output_fifo,
+                            bls12_377_coord_t scratch_pad[SCRATCHPAD_SIZE],
+                            hls::stream<ap_uint<LOG_SCRATCHPAD_SIZE>> &free_fifo,
+                            hls::stream<bls12_377_idx_k_t> padd_output_bucket_fifo[NUM_CHUNKS],
+                            hls::stream<bls12_377_idx_t> &padd_output_loop_2and3_fifo) {
+#pragma HLS inline
+    fp_t sum_x, sum_y, sum_z;
+    ap_uint<LOG_NUM_CHUNKS> chunk_num;
+    ap_uint<CHUNK_SIZE> nibble_K;
+    N_t p1_addr, p2_addr, point_addr;
+    bool first_march = true;
+    N_t free_addr = 0;
+
+    for (int i = 0;
+         i < total_num_padd_ops + (TWO_RAISED_CHUNK_SIZE - 1) * NUM_CHUNKS * 2 + NUM_CHUNKS - 2;
+         i++) {
+        (chunk_num, nibble_K, sum_x, sum_y, sum_z) = padd_output_fifo.read();
+
+        if (first_march) {
+            scratch_pad[free_addr] = (sum_x, sum_y, sum_z);
+            point_addr = free_addr;
+            free_addr++;
+            if (free_addr == SCRATCHPAD_SIZE - 1) first_march = false;
+        } else {
+            point_addr = free_fifo.read();
+            scratch_pad[point_addr] = (sum_x, sum_y, sum_z);
+        }
+
+        // point_addr = store_point(bls12_377_p(sum_x, sum_y, sum_z));
+        if (chunk_num == 0x3f)
+            padd_output_loop_2and3_fifo.write(point_addr);
+        else
+            padd_output_bucket_fifo[chunk_num].write((nibble_K, point_addr));
+    }
+}
+
+void padd_output_store_unit2(hls::stream<bls12_377_coord_k_chunk_t> &padd_output_fifo,
+                             bls12_377_coord_t scratch_pad[SCRATCHPAD_SIZE],
+                             hls::stream<ap_uint<LOG_SCRATCHPAD_SIZE>> &free_fifo,
+                             hls::stream<bls12_377_idx_k_t> padd_output_bucket_fifo[NUM_CHUNKS],
+                             hls::stream<bls12_377_idx_t> &padd_output_loop_2and3_fifo) {
+#pragma HLS inline
+    fp_t sum_x, sum_y, sum_z;
+    ap_uint<LOG_NUM_CHUNKS> chunk_num;
+    ap_uint<CHUNK_SIZE> nibble_K;
+    N_t p1_addr, p2_addr, point_addr;
+    N_t store_count = 0;
+    N_t free_addr = 0;
+    // TODO: post-hls: replace this with newly added port for total_num_padd_ops
+    N_t total_num_padd_ops = 1 << 14;
+
+    for (int i = 0;
+         i < total_num_padd_ops + (TWO_RAISED_CHUNK_SIZE - 1) * NUM_CHUNKS * 2 + NUM_CHUNKS - 2;
+         i++) {
+        (chunk_num, nibble_K, sum_x, sum_y, sum_z) = padd_output_fifo.read();
+
+        if (store_count < SCRATCHPAD_SIZE) {
+            scratch_pad[store_count] = (sum_x, sum_y, sum_z);
+            point_addr = store_count;
+        } else {
+            point_addr = free_fifo.read();
+            scratch_pad[point_addr] = (sum_x, sum_y, sum_z);
+        }
+
+        store_count++;
+
+        // point_addr = store_point(bls12_377_p(sum_x, sum_y, sum_z));
+        if (chunk_num == 0x3f)
+            padd_output_loop_2and3_fifo.write(point_addr);
+        else
+            padd_output_bucket_fifo[chunk_num].write((nibble_K, point_addr));
+    }
+}
+
+void padd_unit(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NUM_POINTS],
+               N_t total_num_padd_ops,
+               hls::stream<dbl_bls12_377_idx_k_chunk_t> &padd_input_bucket_fifo,
+               hls::stream<bls12_377_idx_k_t> padd_output_bucket_fifo[NUM_CHUNKS],
+               hls::stream<dbl_bls12_377_idx_t> &padd_input_loop_2and3_fifo,
+               hls::stream<bls12_377_idx_t> &padd_output_loop_2and3_fifo) {
+    bls12_377_coord_t scratch_pad[SCRATCHPAD_SIZE];
+    hls::stream<ap_uint<LOG_SCRATCHPAD_SIZE>> free_fifo;
+    hls::stream<dbl_bls12_377_coord_k_chunk_t> padd_input_fifo;
+    hls::stream<bls12_377_coord_k_chunk_t> padd_output_fifo;
+#pragma HLS dataflow
+    // TODO: separate bucket and loop2and3 processes and write to two queues
+    padd_input_load_unit(P_arr_x, P_arr_y, P_arr_z, total_num_padd_ops, scratch_pad, free_fifo,
+                         padd_input_bucket_fifo, padd_input_loop_2and3_fifo, padd_input_fifo);
+
+    // TODO: if two processes can't write to same queue, read from both queues and write to
+    // padd_input with some metadata
+
+    dataflow_padd_unit(total_num_padd_ops, padd_input_fifo, padd_output_fifo);
 
     // TODO: route entries from padd_output to respective processes (bucket or loop_2and3)
+    padd_output_store_unit(total_num_padd_ops, padd_output_fifo, scratch_pad, free_fifo,
+                           padd_output_bucket_fifo, padd_output_loop_2and3_fifo);
+}
+
+void padd_unit2(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NUM_POINTS],
+                N_t total_num_padd_ops,
+                hls::stream<dbl_bls12_377_idx_k_chunk_t> &padd_input_bucket_fifo,
+                hls::stream<bls12_377_idx_k_t> padd_output_bucket_fifo[NUM_CHUNKS],
+                hls::stream<dbl_bls12_377_idx_t> &padd_input_loop_2and3_fifo,
+                hls::stream<bls12_377_idx_t> &padd_output_loop_2and3_fifo) {
+    bls12_377_coord_t scratch_pad[SCRATCHPAD_SIZE];
+    hls::stream<ap_uint<LOG_SCRATCHPAD_SIZE>> free_fifo;
+    hls::stream<dbl_bls12_377_coord_k_chunk_t> padd_input_fifo;
+    hls::stream<bls12_377_coord_k_chunk_t> padd_output_fifo;
+#pragma HLS dataflow
+#pragma HLS dependence variable = scratch_pad RAW false
+#pragma HLS bind_storage variable = scratch_pad type = RAM_T2P 
+    // TODO: separate bucket and loop2and3 processes and write to two queues
+    padd_input_load_unit(P_arr_x, P_arr_y, P_arr_z, total_num_padd_ops, scratch_pad, free_fifo,
+                         padd_input_bucket_fifo, padd_input_loop_2and3_fifo, padd_input_fifo);
+
+    // TODO: if two processes can't write to same queue, read from both queues and write to
+    // padd_input with some metadata
+    // TODO: post-hls: pass total_num_padd_ops in port list
+    dataflow_padd_unit_fixed(padd_input_fifo, padd_output_fifo);
+
+    // TODO: route entries from padd_output to respective processes (bucket or loop_2and3)
+    // TODO: post-hls: replace scratch_pad_dummy with scratch_pad
+    padd_output_store_unit2(padd_output_fifo, scratch_pad, free_fifo, padd_output_bucket_fifo,
+                            padd_output_loop_2and3_fifo);
 }
 
 void top(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NUM_POINTS],
@@ -630,17 +730,11 @@ void top(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NUM_PO
     hls::stream<dbl_bls12_377_idx_t> padd_input_loop_2and3_fifo;
     hls::stream<bls12_377_idx_t> padd_output_loop_2and3_fifo;
 
-    for (int i = 0; i < NUM_POINTS; i++) {
-#pragma HLS pipeline II = 1
-#pragma HLS dependence variable = GBUFF_P RAW false
-        GBUFF_P[i] = (P_arr_x[i], P_arr_y[i], P_arr_z[i]);
-    }
-
     msm_arr(K_arr, cnt_bucket_chunks, num_padd_ops, total_num_padd_ops, GBUFF_P2D,
             padd_input_bucket_fifo, padd_output_fifo);
 
     alg_loop_2and3(GBUFF_P2D, padd_input_loop_2and3_fifo, padd_output_loop_2and3_fifo);
 
-    padd_unit(total_num_padd_ops, padd_input_bucket_fifo, padd_output_fifo,
-              padd_input_loop_2and3_fifo, padd_output_loop_2and3_fifo);
+    padd_unit2(P_arr_x, P_arr_y, P_arr_z, total_num_padd_ops, padd_input_bucket_fifo,
+               padd_output_fifo, padd_input_loop_2and3_fifo, padd_output_loop_2and3_fifo);
 }

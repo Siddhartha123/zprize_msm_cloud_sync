@@ -65,6 +65,23 @@ void bls12_377_test() {
     print_bigInt(p3);
 }
 
+void mul_q_test() {
+    std::cout << std::hex;
+    std::cout << ((fp_ov_t)1 << 378) - ((fp_ov_t)1 << 375) - ((fp_ov_t)1 << 373) -
+                     ((fp_ov_t)1 << 370) + ((fp_ov_t)1 << 367) - ((fp_ov_t)1 << 364) +
+                     ((fp_ov_t)1 << 362) + ((fp_ov_t)1 << 359) + ((fp_ov_t)1 << 356) -
+                     ((fp_ov_t)1 << 354) + ((fp_ov_t)1 << 350) - ((fp_ov_t)1 << 348) -
+                     ((fp_ov_t)1 << 343) + ((fp_ov_t)1 << 339) + ((fp_ov_t)1 << 337) +
+                     ((fp_ov_t)1 << 333) + ((fp_ov_t)1 << 329) - ((fp_ov_t)1 << 325)
+              << "\n";
+
+    fp_t x = 1;
+    std::cout << "input" << x << "\n";
+
+    std::cout << "result from original" << mul_q(x) << "\n";
+    // std::cout << "result from optimized" << mul_q_1(x) << "\n";
+}
+
 void generate_padd_counts() {
     FILE *pFile, *count_file;
     char data[100];
@@ -123,16 +140,77 @@ void generate_padd_counts() {
 }
 
 int main() {
-    generate_padd_counts();
-    return 0;
-
+    // mul_q_test();
+    // generate_padd_counts();
     // bls12_377_test();
-    // u32 B_i[30];
-    // fp_t P_arr_x[NUM_POINTS], P_arr_y[NUM_POINTS], P_arr_z[NUM_POINTS];
-    // fr_t K_arr[NUM_POINTS];
-    // N_t total_num_padd_ops = 5;
-    // hls::stream<N_t> count_stream;
-    // bls12_377_p result =
-    //     msm_arr(P_arr_x, P_arr_y, P_arr_z, K_arr, count_stream, total_num_padd_ops);
-    // std::cout << result.x;
+
+    FILE *K_file, *P_x_file, *P_y_file, *P_z_file;
+    char data[200];
+    ap_uint<253> K_arr[NUM_POINTS];
+    fp_t P_arr_x[NUM_POINTS], P_arr_y[NUM_POINTS], P_arr_z[NUM_POINTS];
+    ap_uint<CHUNK_SIZE> nibble;
+
+    char K_path[] =
+        "/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_8/K_arr_V.txt";
+    K_file = fopen(K_path, "r");
+
+    char P_x_path[] =
+        "/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_8/P_arr_x_V.txt";
+    P_x_file = fopen(P_x_path, "r");
+    char P_y_path[] =
+        "/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_8/P_arr_y_V.txt";
+    P_y_file = fopen(P_y_path, "r");
+    char P_z_path[] =
+        "/home/sid/Documents/zprize/msm_cloud_sync/hls_zprize_msm/tester/testcase_8/P_arr_z_V.txt";
+    P_z_file = fopen(P_z_path, "r");
+
+    std::cout << std::hex;
+    for (int i = 0; i < NUM_POINTS; i++) {
+        fscanf(K_file, "%s", &data);
+        fr_t x(data, 16);
+        K_arr[i] = x;
+
+        fscanf(P_x_file, "%s", &data);
+        fp_t p_x(data, 16);
+        P_arr_x[i] = p_x;
+
+        fscanf(P_y_file, "%s", &data);
+        fp_t p_y(data, 16);
+        P_arr_y[i] = p_y;
+
+        fscanf(P_z_file, "%s", &data);
+        fp_t p_z(data, 16);
+        P_arr_z[i] = p_z;
+    }
+
+    N_t cnt_bucket_chunks[NUM_CHUNKS][TWO_RAISED_CHUNK_SIZE];
+    hls::stream<N_t> num_padd_ops;
+    N_t total_num_padd_ops = 0;
+
+    for (int k = 0; k < NUM_CHUNKS; k++) {
+        int count_B[TWO_RAISED_CHUNK_SIZE];
+        memset(count_B, 0, sizeof(count_B));
+        int num_padd_ops_local = 0;
+        for (int i = 0; i < NUM_POINTS; i++) {
+            nibble = ((ap_uint<43*6>)K_arr[i])(((k + 1) * 6) - 1, k * 6);
+            count_B[nibble] += 1;
+        }
+
+        for (int i = 0; i < TWO_RAISED_CHUNK_SIZE; i++) cnt_bucket_chunks[k][i] = count_B[i];
+
+        // calculate num_padd_ops for current chunk position
+        for (int i = 1; i < TWO_RAISED_CHUNK_SIZE; i++) {
+            if (count_B[i] != 0) num_padd_ops_local += (count_B[i] - 1);
+        }
+        num_padd_ops.write(num_padd_ops_local);
+        total_num_padd_ops += num_padd_ops_local;
+    }
+    std::cout << std::dec;
+
+    std::cout << "executing msm\n";
+    std::cout << "\n----input arguments----\n";
+    std::cout<<"total_num_padd_ops = "<< total_num_padd_ops <<std::endl;
+    
+    top(P_arr_x, P_arr_y, P_arr_z, K_arr, cnt_bucket_chunks, num_padd_ops, total_num_padd_ops);
+    return 0;
 }

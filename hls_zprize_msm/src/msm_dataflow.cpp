@@ -1,8 +1,10 @@
 #include "msm.h"
 
-void bucket_process(N_t count_B[16], N_t num_padd_ops, hls::stream<bls12_377_coord_k_t> &BFIFO,
+void bucket_process(N_t count_B[TWO_RAISED_CHUNK_SIZE], N_t num_padd_ops,
+                    hls::stream<bls12_377_coord_k_t> &BFIFO,
                     hls::stream<bls12_377_coord_k_t> &padd_output_fifo,
-                    bls12_377_coord_t GBUFF_P2D[16], hls::stream<dbl_bls12_377_coord_k_t> &CFIFO) {
+                    bls12_377_coord_t GBUFF_P2D[TWO_RAISED_CHUNK_SIZE],
+                    hls::stream<dbl_bls12_377_coord_k_t> &CFIFO) {
 #pragma HLS dataflow
     bls12_377_coord_k_t data;
     bool valid_data = false;
@@ -11,9 +13,9 @@ void bucket_process(N_t count_B[16], N_t num_padd_ops, hls::stream<bls12_377_coo
     ap_uint<4> nibble_K;
 
     // ---- Buckets ----
-    bool fill_B[16] = {true, true, true, true, true, true, true, true,
-                       true, true, true, true, true, true, true, true};
-    hls::stream<bls12_377_coord_t> B[16];
+    bool fill_B[TWO_RAISED_CHUNK_SIZE] = {true, true, true, true, true, true, true, true,
+                                          true, true, true, true, true, true, true, true};
+    hls::stream<bls12_377_coord_t> B[TWO_RAISED_CHUNK_SIZE];
     // TODO: cosider increasing the bucket depths, since fill_B logic is independently handling the
     // point routing logic OR, use bucket empty condition to route points between bucket and ovfifo.
     // BUT beware of the deadlock condition if there is a point in ovfifo but no point in the
@@ -36,11 +38,10 @@ void bucket_process(N_t count_B[16], N_t num_padd_ops, hls::stream<bls12_377_coo
 #pragma HLS STREAM variable = B[15] depth = 1
 
     hls::stream<bls12_377_coord_k_t> OVFIFO("Overflow fifo");
-#pragma HLS STREAM variable = OVFIFO depth = 16
+#pragma HLS STREAM variable = OVFIFO depth = 17
     // ap_uint<4> nibble_K;
     // bucket-wise padd count
-    fp_t padd_count[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
+    fp_t padd_count[TWO_RAISED_CHUNK_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     while ((count_if < NUM_POINTS) || (count_padd_of < num_padd_ops)) {
         if (count_if < NUM_POINTS && !BFIFO.empty()) {
             data = BFIFO.read();
@@ -100,8 +101,6 @@ void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NU
              fr_t K_arr[NUM_POINTS], u32 B_i[30]) {
     bls12_377_coord_t GBUFF_P[NUM_POINTS];
     fr_t GBUFF_K[NUM_POINTS];
-    bls12_377_coord_t GBUFF_P2D[NUM_CHUNKS][16];
-#pragma HLS array_partition variable = GBUFF_P2D type = cyclic factor = 16 dim = 1
     /*
      * Loop 0: Populating global buffers
      */
@@ -118,48 +117,52 @@ void msm_arr(fp_t P_arr_x[NUM_POINTS], fp_t P_arr_y[NUM_POINTS], fp_t P_arr_z[NU
      */
 
 #pragma HLS dataflow
+    bls12_377_coord_t GBUFF_P2D[NUM_CHUNKS][TWO_RAISED_CHUNK_SIZE];
+#pragma HLS array_partition variable = GBUFF_P2D type = cyclic factor = 16 dim = 1
     ap_uint<4> nibble_K;
-    N_t cnt_bucket_chunks[16][16] = {
+    N_t cnt_bucket_chunks[NUM_CHUNKS][TWO_RAISED_CHUNK_SIZE] = {
         {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
-        {0, 2, 1, 2, 2, 1, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2},
+        {0, 1, 2, 2, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
+        {0, 0, 0, 1, 2, 0, 1, 1, 2, 2, 1, 1, 2, 1, 0, 2},
+        {0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1},
+        {0, 0, 3, 1, 0, 1, 0, 2, 2, 1, 1, 1, 0, 0, 1, 1},
+        {0, 1, 0, 2, 1, 3, 0, 2, 2, 2, 0, 2, 0, 0, 0, 1},
+        {0, 0, 1, 0, 1, 2, 3, 0, 2, 1, 0, 0, 4, 0, 1, 1},
+        {0, 0, 1, 1, 0, 1, 0, 3, 2, 1, 1, 1, 0, 0, 2, 2},
+        {0, 3, 0, 1, 1, 1, 0, 2, 0, 2, 2, 0, 0, 2, 1, 0},
+        {0, 0, 1, 1, 2, 1, 2, 2, 1, 0, 1, 1, 1, 0, 2, 0},
+        {0, 0, 0, 2, 1, 0, 3, 0, 2, 1, 3, 0, 1, 0, 2, 0},
+        {0, 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 0, 1, 1, 1, 2},
+        {0, 2, 2, 0, 0, 1, 0, 0, 1, 3, 1, 1, 0, 1, 2, 0},
+        {0, 0, 0, 1, 2, 0, 1, 0, 2, 3, 0, 1, 0, 1, 2, 2},
+        {0, 0, 2, 2, 0, 1, 0, 4, 0, 2, 2, 1, 0, 2, 0, 0},
+        {0, 1, 0, 2, 2, 0, 1, 0, 2, 0, 2, 2, 0, 3, 0, 1},
     };
-    N_t num_padd_ops[16] = {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7};
+    N_t num_padd_ops[NUM_CHUNKS] = {7, 2, 5, 4, 4, 7, 7, 5, 6, 4, 7, 3, 5, 6, 8, 7};
+    N_t total_num_padd_ops = 91;
 
-    hls::stream<bls12_377_coord_k_t> BFIFO[16];  // Bucket fifos for each chunk position
-    hls::stream<bls12_377_coord_k_t> padd_output_fifo[16];
-#pragma HLS STREAM variable = padd_output_fifo[0] depth = 15
-#pragma HLS STREAM variable = padd_output_fifo[1] depth = 15
+    hls::stream<bls12_377_coord_k_t> BFIFO[NUM_CHUNKS];  // Bucket fifos for each chunk position
+    hls::stream<bls12_377_coord_k_t> padd_output_fifo[NUM_CHUNKS];
+#pragma HLS STREAM variable = padd_output_fifo[0] depth = 14
+#pragma HLS STREAM variable = padd_output_fifo[1] depth = 14
 
 #pragma HLS STREAM variable = BFIFO[0] depth = 5
 #pragma HLS STREAM variable = BFIFO[1] depth = 5
-    hls::stream<dbl_bls12_377_coord_k_t> CFIFO[16];  // PADD FIFOS
-#pragma HLS STREAM variable = CFIFO[0] depth = 15
-#pragma HLS STREAM variable = CFIFO[1] depth = 15
+    hls::stream<dbl_bls12_377_coord_k_t> CFIFO[NUM_CHUNKS];  // PADD FIFOS
+#pragma HLS STREAM variable = CFIFO[0] depth = 14
+#pragma HLS STREAM variable = CFIFO[1] depth = 14
 
     N_t ni = 0;
 msm_arr_dataflow_0:
     for (int i = 0; i < NUM_POINTS; i++) {
-        for (N_t ni = 0; ni < 16; ni = ni + 1) {
-            nibble_K = GBUFF_K[i](((0 + 1) << 2) - 1, (0) << 2);
+        for (N_t ni = 0; ni < NUM_CHUNKS; ni = ni + 1) {
+#pragma HLS unroll
+            nibble_K = GBUFF_K[i](((ni + 1) << 2) - 1, (ni) << 2);
             BFIFO[ni].write((nibble_K, GBUFF_P[i]));
         }
     }
 
-    for (N_t ni = 0; ni < 16; ni = ni + 1) {
+    for (N_t ni = 0; ni < NUM_CHUNKS; ni = ni + 1) {
 #pragma HLS unroll
         bucket_process(cnt_bucket_chunks[ni], num_padd_ops[ni], BFIFO[ni], padd_output_fifo[ni],
                        GBUFF_P2D[ni], CFIFO[ni]);
@@ -170,128 +173,128 @@ msm_arr_dataflow_0:
     bls12_377_p sum(0, 1, 0);
     fp_t p1_x, p1_y, p1_z, p2_x, p2_y, p2_z;
     bool padd_done = false, valid_data = false;
-    N_t padd_count[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    // N_t padd_count[NUM_CHUNKS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    N_t total_padd_count = 0;
+    hls::stream<dbl_bls12_377_coord_k_chunk_t> padd_input_fifo;
+    dbl_bls12_377_coord_k_t input_point_pair;
 
+#pragma HLS STREAM variable = padd_input_fifo depth = 14
 msm_arr_dataflow_4:
-    while (!padd_done) {
-#pragma HLS allocation function instances = padd limit = 1
-
+    while (total_padd_count < total_num_padd_ops) {
         N_t k;
-
-        if (padd_count[0] < num_padd_ops[0] && !CFIFO[0].empty()) {
+        if (!CFIFO[0].empty()) {
             k = 0;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[0].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[0] = padd_count[0] + 1;
-            padd_output_fifo[0].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[1] < num_padd_ops[1] && !CFIFO[1].empty()) {
+            input_point_pair = CFIFO[0].read();
+            // padd_count[0] = padd_count[0] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)0, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[1].empty()) {
             k = 1;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[1].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[1] = padd_count[1] + 1;
-            padd_output_fifo[1].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[2] < num_padd_ops[2] && !CFIFO[2].empty()) {
+            input_point_pair = CFIFO[1].read();
+            // padd_count[1] = padd_count[1] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)1, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[2].empty()) {
             k = 2;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[2].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[2] = padd_count[2] + 1;
-            padd_output_fifo[2].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[3] < num_padd_ops[3] && !CFIFO[3].empty()) {
+            input_point_pair = CFIFO[2].read();
+            // padd_count[2] = padd_count[2] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)2, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[3].empty()) {
             k = 3;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[3].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[3] = padd_count[3] + 1;
-            padd_output_fifo[3].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[4] < num_padd_ops[4] && !CFIFO[4].empty()) {
+            input_point_pair = CFIFO[3].read();
+            // padd_count[3] = padd_count[3] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)3, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[4].empty()) {
             k = 4;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[4].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[4] = padd_count[4] + 1;
-            padd_output_fifo[4].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[5] < num_padd_ops[5] && !CFIFO[5].empty()) {
+            input_point_pair = CFIFO[4].read();
+            // padd_count[4] = padd_count[4] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)4, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[5].empty()) {
             k = 5;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[5].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[5] = padd_count[5] + 1;
-            padd_output_fifo[5].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[6] < num_padd_ops[6] && !CFIFO[6].empty()) {
+            input_point_pair = CFIFO[5].read();
+            // padd_count[5] = padd_count[5] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)5, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[6].empty()) {
             k = 6;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[6].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[6] = padd_count[6] + 1;
-            padd_output_fifo[6].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[7] < num_padd_ops[7] && !CFIFO[7].empty()) {
+            input_point_pair = CFIFO[6].read();
+            // padd_count[6] = padd_count[6] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)6, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[7].empty()) {
             k = 7;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[7].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[7] = padd_count[7] + 1;
-            padd_output_fifo[7].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[8] < num_padd_ops[8] && !CFIFO[8].empty()) {
+            input_point_pair = CFIFO[7].read();
+            // padd_count[7] = padd_count[7] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)7, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[8].empty()) {
             k = 8;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[8].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[8] = padd_count[8] + 1;
-            padd_output_fifo[8].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[9] < num_padd_ops[9] && !CFIFO[9].empty()) {
+            input_point_pair = CFIFO[8].read();
+            // padd_count[8] = padd_count[8] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)8, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[9].empty()) {
             k = 9;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[9].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[9] = padd_count[9] + 1;
-            padd_output_fifo[9].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[10] < num_padd_ops[10] && !CFIFO[10].empty()) {
+            input_point_pair = CFIFO[9].read();
+            // padd_count[9] = padd_count[9] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)9, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[10].empty()) {
             k = 10;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[10].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[10] = padd_count[10] + 1;
-            padd_output_fifo[10].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[11] < num_padd_ops[11] && !CFIFO[11].empty()) {
+            input_point_pair = CFIFO[10].read();
+            // padd_count[10] = padd_count[10] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)10, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[11].empty()) {
             k = 11;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[11].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[11] = padd_count[11] + 1;
-            padd_output_fifo[11].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[12] < num_padd_ops[12] && !CFIFO[12].empty()) {
+            input_point_pair = CFIFO[11].read();
+            // padd_count[11] = padd_count[11] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)11, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[12].empty()) {
             k = 12;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[12].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[12] = padd_count[12] + 1;
-            padd_output_fifo[12].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[13] < num_padd_ops[13] && !CFIFO[13].empty()) {
+            input_point_pair = CFIFO[12].read();
+            // padd_count[12] = padd_count[12] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)12, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[13].empty()) {
             k = 13;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[13].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[13] = padd_count[13] + 1;
-            padd_output_fifo[13].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[14] < num_padd_ops[14] && !CFIFO[14].empty()) {
+            input_point_pair = CFIFO[13].read();
+            // padd_count[13] = padd_count[13] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)13, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[14].empty()) {
             k = 14;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[14].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[14] = padd_count[14] + 1;
-            padd_output_fifo[14].write((nibble_K, sum.x, sum.y, sum.z));
-        } else if (padd_count[15] < num_padd_ops[15] && !CFIFO[15].empty()) {
+            input_point_pair = CFIFO[14].read();
+            // padd_count[14] = padd_count[14] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)14, input_point_pair));
+            total_padd_count++;
+        } else if (!CFIFO[15].empty()) {
             k = 15;
-            (nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = CFIFO[15].read();
-            bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
-            sum = padd(a, b);
-            padd_count[15] = padd_count[15] + 1;
-            padd_output_fifo[15].write((nibble_K, sum.x, sum.y, sum.z));
-        } else
-            padd_done = (padd_count[0] == num_padd_ops[0]) && (padd_count[1] == num_padd_ops[1]);
+            input_point_pair = CFIFO[15].read();
+            // padd_count[15] = padd_count[15] + 1;
+            padd_input_fifo.write(((ap_uint<LOG_NUM_CHUNKS>)15, input_point_pair));
+            total_padd_count++;
+        }
+        //         else {
+        //             padd_done = true;
+        //             for (int i = 0; i < NUM_CHUNKS; i++) {
+        // #pragma HLS unroll
+        //                 padd_done = padd_done && (padd_count[i] == num_padd_ops[i]);
+        //             }
+        //         }
+    }
+
+    ap_uint<LOG_NUM_CHUNKS> chunk_num;
+msm_arr_dataflow_padd:
+    for (int i = 0; i < total_num_padd_ops; i++) {
+        (chunk_num, nibble_K, p1_x, p1_y, p1_z, p2_x, p2_y, p2_z) = padd_input_fifo.read();
+        bls12_377_p a(p1_x, p1_y, p1_z), b(p2_x, p2_y, p2_z);
+        sum = padd(a, b);
+        padd_output_fifo[chunk_num].write((nibble_K, sum.x, sum.y, sum.z));
     }
 
     // -----------------------------------------------------------------------
@@ -307,17 +310,18 @@ msm_arr_dataflow_4:
     bls12_377_p s[NUM_CHUNKS];
     bls12_377_p G_k_arr[NUM_CHUNKS];
 msm_arr_dataflow_5:
-    for (int l = 15; l > 0; l--) {
+    for (int l = TWO_RAISED_CHUNK_SIZE - 1; l > 0; l--) {
+#pragma HLS allocation function instances = padd limit = 1
     msm_arr_label0:
         for (int k = 0; k < NUM_CHUNKS; k++) {
-#pragma HLS pipeline
+#pragma HLS unroll
 #pragma HLS dependence variable = s RAW false
             B_l = bls12_377_p(GBUFF_P2D[k][l]);
             s[k] = padd(s[k], B_l);
         }
     msm_arr_label1:
         for (int k = 0; k < NUM_CHUNKS; k++) {
-#pragma HLS pipeline
+#pragma HLS unroll
 #pragma HLS dependence variable = G_k_arr RAW false
             G_k_arr[k] = padd(G_k_arr[k], s[k]);
         }

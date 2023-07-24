@@ -1,0 +1,19 @@
+Sun May 07 17:30:03 IST 2023
+Trace back: ** Error: (vish-4013) Instance '' not found.
+
+    while executing
+"WlfObjView search wkf32A {} {}"
+    ("eval" body line 1)
+    invoked from within
+"eval [linsert $args 0 $ViewName search $tv $start $pattern]"
+    (object "::WlfDataset::objectTreeView0" method "::AbstractTreeView::search" body line 2)
+    invoked from within
+"$TreeView search $top $pattern"
+    (procedure "ObjectsTreeView::Search" line 8)
+    invoked from within
+"ObjectsTreeView::Search {} {}"
+    ("after" script)
+  <2:/home/sid/tools/intelFPGA_lite/18.1/modelsim_ase/linuxaloem/tk8.5/bgerror.tcl:92: ::tkerror {** Error: (vish-4013) Instance '' not found.
+}
+  <1:eval:1: ::tk::dialog::error::bgerror {** Error: (vish-4013) Instance '' not found.
+}
